@@ -1,0 +1,233 @@
+.mercado-secundario-tabla-container {
+  margin: 2rem 0;
+}
+
+.mercado-secundario-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mercado-secundario-tabla thead {
+  background-color: #003DA5;
+  color: #fff;
+}
+
+.mercado-secundario-tabla th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mercado-secundario-tabla td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+}
+
+.mercado-secundario-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.mercado-secundario-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.venta-publica {
+  font-weight: 600;
+  color: #28a745;
+}
+
+.venta-privada {
+  font-weight: 600;
+  color: #ffc107;
+}
+
+.btn-comprar {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #003DA5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #0052CC;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 61, 165, 0.3);
+}
+
+.btn-comprar:active {
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modal-compra-content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.modal-compra-content h2 {
+  font-size: 1.8rem;
+  color: #003DA5;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.modal-compra-mensaje {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.precio-destacado {
+  font-weight: 700;
+  color: #003DA5;
+  font-size: 1.2rem;
+}
+
+.instrumento-info {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.instrumento-info p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.compra-privada-form {
+  text-align: left;
+}
+
+.compra-privada-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.compra-privada-form .form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.compra-privada-form .form-group input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d0d0d0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.compra-privada-form .form-group input:focus {
+  outline: none;
+  border-color: #003DA5;
+  box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+}
+
+.compra-privada-form .form-group input::placeholder {
+  color: #999;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-confirmar-compra,
+.btn-cancelar-compra {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.btn-confirmar-compra {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-confirmar-compra:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-cancelar-compra {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-cancelar-compra:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.btn-confirmar-compra:active,
+.btn-cancelar-compra:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .mercado-secundario-tabla-container {
+    overflow-x: auto;
+  }
+
+  .mercado-secundario-tabla {
+    font-size: 0.8rem;
+  }
+
+  .mercado-secundario-tabla th,
+  .mercado-secundario-tabla td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-comprar {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .modal-compra-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-compra-mensaje {
+    font-size: 1rem;
+  }
+
+  .instrumento-info p {
+    font-size: 0.9rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .btn-confirmar-compra,
+  .btn-cancelar-compra {
+    width: 100%;
+  }
+}

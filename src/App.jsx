@@ -1,0 +1,63 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import LoginBancoCentral from './pages/LoginBancoCentral'
+import LoginParticipante from './pages/LoginParticipante'
+import ConectarMetamaskBCentral from './pages/ConectarMetamaskBCentral'
+import ConectarMetamaskParticipante from './pages/ConectarMetamaskParticipante'
+import HomeBancoCentral from './pages/HomeBancoCentral'
+import HomeParticipante from './pages/HomeParticipante'
+import AdministrarBancos from './pages/AdministrarBancos'
+import AdministrarCBDC from './pages/AdministrarCBDC'
+import ManejarWalletBCentral from './pages/ManejarWalletBCentral'
+import AdministrarUsuarios from './pages/AdministrarUsuarios'
+import EmisionIIFBCentral from './pages/EmisionIIFBCentral'
+import IIFsEmitidosBCentral from './pages/IIFsEmitidosBCentral'
+import MiWalletParticipante from './pages/MiWalletParticipante'
+import MisIIFsParticipante from './pages/MisIIFsParticipante'
+import MercadoSecundarioParticipante from './pages/MercadoSecundarioParticipante'
+import UsuariosParticipante from './pages/UsuariosParticipante'
+import TransferirParticipante from './pages/TransferirParticipante'
+import GenerarValeVistaParticipante from './pages/GenerarValeVistaParticipante'
+import PedirValeVistaParticipante from './pages/PedirValeVistaParticipante'
+import EmisionPrimariaParticipante from './pages/EmisionPrimariaParticipante'
+import IIFsParticipante from './pages/IIFsParticipante'
+import ValoresPrendadosParticipante from './pages/ValoresPrendadosParticipante'
+import GenerarWalletPivoteParticipante from './pages/GenerarWalletPivoteParticipante'
+import EmitirIIFParticipante from './pages/EmitirIIFParticipante'
+import './App.css'
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login-banco-central" element={<LoginBancoCentral />} />
+        <Route path="/login-participante" element={<LoginParticipante />} />
+        <Route path="/conectar-metamask-bcentral" element={<ConectarMetamaskBCentral />} />
+        <Route path="/conectar-metamask-participante" element={<ConectarMetamaskParticipante />} />
+        <Route path="/home-banco-central" element={<HomeBancoCentral />} />
+        <Route path="/home-participante" element={<HomeParticipante />} />
+        <Route path="/administrar-bancos" element={<AdministrarBancos />} />
+        <Route path="/administrar-cbdc" element={<AdministrarCBDC />} />
+        <Route path="/wallet-banco-central" element={<ManejarWalletBCentral />} />
+        <Route path="/administrar-usuarios" element={<AdministrarUsuarios />} />
+        <Route path="/emision-iif-bcentral" element={<EmisionIIFBCentral />} />
+        <Route path="/iifs-emitidos-bcentral" element={<IIFsEmitidosBCentral />} />
+        <Route path="/mi-wallet-participante" element={<MiWalletParticipante />} />
+        <Route path="/mis-iifs-participante" element={<MisIIFsParticipante />} />
+        <Route path="/mercado-secundario-participante" element={<MercadoSecundarioParticipante />} />
+        <Route path="/usuarios-participante" element={<UsuariosParticipante />} />
+        <Route path="/transferir-participante" element={<TransferirParticipante />} />
+        <Route path="/generar-vale-vista-participante" element={<GenerarValeVistaParticipante />} />
+        <Route path="/pedir-vale-vista-participante" element={<PedirValeVistaParticipante />} />
+        <Route path="/emision-primaria-participante" element={<EmisionPrimariaParticipante />} />
+        <Route path="/iifs-participante" element={<IIFsParticipante />} />
+        <Route path="/emitir-iif-participante" element={<EmitirIIFParticipante />} />
+        <Route path="/valores-prendados-participante" element={<ValoresPrendadosParticipante />} />
+        <Route path="/generar-wallet-pivote-participante" element={<GenerarWalletPivoteParticipante />} />
+      </Routes>
+    </Router>
+  )
+}
+
+export default App

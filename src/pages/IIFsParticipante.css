@@ -1,0 +1,253 @@
+.iifs-tabla-container {
+  margin: 2rem 0;
+}
+
+.iifs-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.iifs-tabla thead {
+  background-color: #003DA5;
+  color: #fff;
+}
+
+.iifs-tabla th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.iifs-tabla td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.iifs-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.iifs-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.actions-cell {
+  width: 380px;
+}
+
+.actions-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.btn-vender,
+.btn-venta-privada,
+.btn-prendar {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-vender {
+  background-color: #28a745;
+}
+
+.btn-vender:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-venta-privada {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.btn-venta-privada:hover {
+  background-color: #e0a800;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+.btn-prendar {
+  background-color: #003DA5;
+}
+
+.btn-prendar:hover {
+  background-color: #0052CC;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 61, 165, 0.3);
+}
+
+.btn-vender:active,
+.btn-venta-privada:active,
+.btn-prendar:active {
+  transform: translateY(0);
+}
+
+.btn-vender:disabled,
+.btn-venta-privada:disabled,
+.btn-prendar:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.btn-vender:disabled:hover,
+.btn-venta-privada:disabled:hover,
+.btn-prendar:disabled:hover {
+  background-color: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+
+.prendado-si {
+  font-weight: 600;
+  color: #dc3545;
+}
+
+.prendado-no {
+  font-weight: 600;
+  color: #28a745;
+}
+
+/* Modal Styles */
+.modal-iif-content {
+  padding: 1rem;
+}
+
+.modal-iif-content h2 {
+  font-size: 1.8rem;
+  color: #003DA5;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.modal-explicacion {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.iif-form {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.iif-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.iif-form .form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.iif-form .form-group input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d0d0d0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.iif-form .form-group input:focus {
+  outline: none;
+  border-color: #003DA5;
+  box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+}
+
+.iif-form .form-group input::placeholder {
+  color: #999;
+}
+
+.btn-modal-confirmar {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #003DA5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-modal-confirmar:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.btn-modal-confirmar:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .iifs-tabla-container {
+    overflow-x: auto;
+  }
+
+  .iifs-tabla {
+    font-size: 0.85rem;
+  }
+
+  .iifs-tabla th,
+  .iifs-tabla td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .actions-buttons {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .btn-vender,
+  .btn-venta-privada,
+  .btn-prendar {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .modal-iif-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-explicacion {
+    font-size: 0.9rem;
+    padding: 0.875rem;
+  }
+
+  .btn-modal-confirmar {
+    font-size: 1rem;
+  }
+}

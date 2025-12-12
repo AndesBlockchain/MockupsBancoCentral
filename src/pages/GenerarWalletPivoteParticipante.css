@@ -1,0 +1,242 @@
+.wallet-pivote-tabla-container {
+  margin: 2rem 0;
+}
+
+.wallet-pivote-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.wallet-pivote-tabla thead {
+  background-color: #003DA5;
+  color: #fff;
+}
+
+.wallet-pivote-tabla th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.wallet-pivote-tabla td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.wallet-pivote-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.wallet-pivote-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.address-cell {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #333;
+  word-break: break-all;
+}
+
+.btn-eliminar {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.btn-eliminar:active {
+  transform: translateY(0);
+}
+
+.btn-generar-wallet {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-generar-wallet:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-generar-wallet:active {
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modal-wallet-content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.modal-wallet-content h2 {
+  font-size: 1.8rem;
+  color: #003DA5;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.modal-wallet-mensaje {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.address-destacada {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: #003DA5;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  word-break: break-all;
+  margin-bottom: 1.5rem;
+}
+
+.btn-modal-aceptar {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #003DA5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-modal-aceptar:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.btn-modal-aceptar:active {
+  transform: translateY(0);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-confirmar-eliminar,
+.btn-cancelar-eliminar {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.btn-confirmar-eliminar {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-confirmar-eliminar:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.btn-cancelar-eliminar {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-cancelar-eliminar:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.btn-confirmar-eliminar:active,
+.btn-cancelar-eliminar:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .wallet-pivote-tabla-container {
+    overflow-x: auto;
+  }
+
+  .wallet-pivote-tabla {
+    font-size: 0.85rem;
+  }
+
+  .wallet-pivote-tabla th,
+  .wallet-pivote-tabla td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .address-cell {
+    font-size: 0.8rem;
+  }
+
+  .btn-eliminar {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-generar-wallet {
+    font-size: 1rem;
+    padding: 0.875rem;
+  }
+
+  .modal-wallet-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-wallet-mensaje {
+    font-size: 1rem;
+  }
+
+  .address-destacada {
+    font-size: 0.85rem;
+    padding: 0.875rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .btn-confirmar-eliminar,
+  .btn-cancelar-eliminar {
+    width: 100%;
+  }
+}

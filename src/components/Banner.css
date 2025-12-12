@@ -1,0 +1,84 @@
+.banner {
+  background-color: #003DA5;
+  width: 100%;
+  padding: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  gap: 30px;
+}
+
+.banner-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+.banner-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+  flex: 1;
+}
+
+.banner-exit-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: opacity 0.2s ease;
+  margin-left: auto;
+}
+
+.banner-exit-button:hover {
+  opacity: 0.8;
+}
+
+.banner-exit-button:active {
+  opacity: 0.6;
+}
+
+.banner-exit-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    position: relative;
+  }
+
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+    gap: 15px;
+  }
+
+  .banner-logo {
+    height: 60px;
+  }
+
+  .banner-title {
+    font-size: 1.5rem;
+  }
+
+  .banner-exit-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}

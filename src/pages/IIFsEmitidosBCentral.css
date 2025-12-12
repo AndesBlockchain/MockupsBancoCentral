@@ -1,0 +1,406 @@
+.table-container {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.iifs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.iifs-table thead {
+  background-color: #003DA5;
+  color: white;
+}
+
+.iifs-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #003DA5;
+  white-space: nowrap;
+}
+
+.iifs-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.iifs-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.iifs-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.iifs-table td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.isin-cell code {
+  background-color: #f5f5f5;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #d63384;
+  border: 1px solid #e0e0e0;
+  display: inline-block;
+}
+
+.nemonico-cell {
+  font-weight: 600;
+  color: #333;
+  width: 120px;
+  white-space: nowrap;
+}
+
+.tipo-cell {
+  text-align: center;
+  width: 100px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-bcu {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+}
+
+.badge-pdbc {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+  border: 1px solid #7b1fa2;
+}
+
+.fecha-cell {
+  width: 140px;
+  white-space: nowrap;
+}
+
+.valor-cell {
+  text-align: right;
+  font-weight: 600;
+  color: #003DA5;
+  width: 150px;
+  white-space: nowrap;
+}
+
+.actions-cell {
+  text-align: center;
+  width: 320px;
+}
+
+.actions-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.btn-tenedores {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: #003DA5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-tenedores:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.btn-tenedores:active {
+  transform: translateY(0);
+}
+
+.btn-emergency {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-emergency:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.btn-emergency:active {
+  transform: translateY(0);
+}
+
+.modal-tenedores {
+  max-width: 600px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #003DA5;
+  text-align: center;
+  margin: 0;
+}
+
+.modal-info {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #003DA5;
+}
+
+.modal-info p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.modal-info strong {
+  color: #003DA5;
+}
+
+.tenedores-tabla-container {
+  overflow-x: auto;
+}
+
+.tenedores-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tenedores-tabla thead {
+  background-color: #003DA5;
+  color: white;
+}
+
+.tenedores-tabla th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.tenedores-tabla tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.tenedores-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.tenedores-tabla tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tenedores-tabla td {
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.operacion-privada {
+  font-style: italic;
+  color: #666;
+  font-weight: 500;
+}
+
+.emergency-warning {
+  background-color: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.emergency-warning p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #856404;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.form-group-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group-modal label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-input {
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #003DA5;
+  box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+.btn-modal-emergency {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  margin-top: 0.5rem;
+}
+
+.btn-modal-emergency:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.btn-modal-emergency:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 968px) {
+  .iifs-table {
+    font-size: 0.9rem;
+  }
+
+  .iifs-table th,
+  .iifs-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .isin-cell code {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    word-break: break-all;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .btn-tenedores,
+  .btn-emergency {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .actions-cell {
+    width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .iifs-table {
+    font-size: 0.85rem;
+  }
+
+  .iifs-table th,
+  .iifs-table td {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .actions-cell {
+    width: auto;
+  }
+
+  .actions-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-tenedores,
+  .btn-emergency {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .modal-form-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-info {
+    padding: 0.75rem;
+  }
+
+  .modal-info p {
+    font-size: 0.9rem;
+  }
+
+  .tenedores-tabla th,
+  .tenedores-tabla td {
+    padding: 0.75rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .emergency-warning {
+    padding: 0.75rem;
+  }
+
+  .emergency-warning p {
+    font-size: 0.9rem;
+  }
+
+  .btn-modal-emergency {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}

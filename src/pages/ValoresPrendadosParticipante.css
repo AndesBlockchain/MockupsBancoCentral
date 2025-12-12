@@ -1,0 +1,177 @@
+.valores-prendados-tabla-container {
+  margin: 2rem 0;
+}
+
+.valores-prendados-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.valores-prendados-tabla thead {
+  background-color: #003DA5;
+  color: #fff;
+}
+
+.valores-prendados-tabla th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.valores-prendados-tabla td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.valores-prendados-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.valores-prendados-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.btn-alzar-prenda {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #003DA5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-alzar-prenda:hover {
+  background-color: #0052CC;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 61, 165, 0.3);
+}
+
+.btn-alzar-prenda:active {
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modal-alzar-content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.modal-alzar-content h2 {
+  font-size: 1.8rem;
+  color: #003DA5;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.modal-alzar-mensaje {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.instrumento-destacado {
+  font-weight: 700;
+  color: #003DA5;
+  font-size: 1.2rem;
+}
+
+.modal-alzar-info {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  padding: 0.875rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-confirmar-alzar,
+.btn-cancelar-alzar {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.btn-confirmar-alzar {
+  background-color: #003DA5;
+  color: #fff;
+}
+
+.btn-confirmar-alzar:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.btn-cancelar-alzar {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-cancelar-alzar:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.btn-confirmar-alzar:active,
+.btn-cancelar-alzar:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .valores-prendados-tabla-container {
+    overflow-x: auto;
+  }
+
+  .valores-prendados-tabla {
+    font-size: 0.85rem;
+  }
+
+  .valores-prendados-tabla th,
+  .valores-prendados-tabla td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .btn-alzar-prenda {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .modal-alzar-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-alzar-mensaje {
+    font-size: 1rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .btn-confirmar-alzar,
+  .btn-cancelar-alzar {
+    width: 100%;
+  }
+}

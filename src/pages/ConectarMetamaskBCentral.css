@@ -1,0 +1,183 @@
+.conectar-metamask-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+.conectar-metamask-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+.metamask-card {
+  background: white;
+  border-radius: 24px;
+  border: 3px solid #003DA5;
+  padding: 3rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.1);
+}
+
+.metamask-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #003DA5;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+.metamask-description {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 0 2.5rem 0;
+}
+
+.metamask-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.metamask-button {
+  padding: 1.25rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.metamask-button-primary {
+  background-color: #003DA5;
+  color: white;
+}
+
+.metamask-button-primary:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.metamask-button-secondary {
+  background-color: white;
+  color: #003DA5;
+  border: 2px solid #003DA5;
+}
+
+.metamask-button-secondary:hover {
+  background-color: #003DA5;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.metamask-button:active {
+  transform: translateY(0);
+}
+
+.metamask-button-success {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+  cursor: default;
+}
+
+.metamask-button-success:hover {
+  background-color: #28a745 !important;
+  transform: none;
+}
+
+.metamask-button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.modal-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.modal-text {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.modal-button {
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #003DA5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.modal-button:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.modal-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .conectar-metamask-content {
+    padding: 2rem 1rem;
+  }
+
+  .metamask-card {
+    padding: 2rem;
+  }
+
+  .metamask-title {
+    font-size: 1.5rem;
+  }
+
+  .metamask-description {
+    font-size: 1rem;
+  }
+
+  .metamask-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .modal-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .modal-text {
+    font-size: 1rem;
+  }
+
+  .modal-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
