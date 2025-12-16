@@ -1,0 +1,178 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  color: #003DA5;
+  margin: 0;
+  font-weight: 600;
+}
+
+.table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cartola-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cartola-table thead {
+  background-color: #003DA5;
+  color: white;
+}
+
+.cartola-table th {
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.cartola-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.cartola-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.cartola-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.cartola-table td {
+  padding: 1.2rem 1.5rem;
+  font-size: 1rem;
+}
+
+.fecha-cell {
+  color: #666;
+  font-weight: 500;
+  width: 180px;
+}
+
+.destinatario-cell {
+  color: #333;
+  font-weight: 500;
+  width: 220px;
+  max-width: 220px;
+}
+
+.privada-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-style: italic;
+  color: #7b1fa2;
+  font-weight: 600;
+}
+
+.privada-icon {
+  font-size: 0.9rem;
+}
+
+.tipo-cell {
+  text-align: center;
+  width: 120px;
+}
+
+.badge-tipo {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-tipo.entrada {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+}
+
+.badge-tipo.salida {
+  background-color: #fce8e6;
+  color: #d32f2f;
+}
+
+.monto-cell {
+  text-align: right;
+  font-weight: 600;
+  font-size: 1.1rem;
+  width: 180px;
+}
+
+.monto-cell.entrada {
+  color: #1e7e34;
+}
+
+.monto-cell.salida {
+  color: #d32f2f;
+}
+
+@media (max-width: 968px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .cartola-table {
+    min-width: 600px;
+  }
+
+  .cartola-table th,
+  .cartola-table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.3rem;
+  }
+
+  .cartola-table {
+    min-width: 550px;
+  }
+
+  .cartola-table th,
+  .cartola-table td {
+    padding: 0.875rem;
+    font-size: 0.85rem;
+  }
+
+  .fecha-cell {
+    width: 150px;
+  }
+
+  .monto-cell {
+    width: 150px;
+    font-size: 1rem;
+  }
+
+  .badge-tipo {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}

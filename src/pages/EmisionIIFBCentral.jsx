@@ -300,7 +300,9 @@ const EmisionIIFBCentral = () => {
             {selectedInstrumento && (
               <div className="modal-info">
                 <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
+                <p><strong>Nemo:</strong> BCPDBC2233432</p>
                 <p><strong>Capital Nominal:</strong> {selectedInstrumento.capitalNominal} {selectedInstrumento.moneda}</p>
+                <p><strong>Vencimiento:</strong> {selectedInstrumento.fechaVencimiento}</p>
               </div>
             )}
             <form onSubmit={handleSubmitPDBC}>
@@ -340,12 +342,16 @@ const EmisionIIFBCentral = () => {
             </form>
           </div>
         ) : modalType === 'BCU' ? (
-          <div className="modal-form">
+          <div className="modal-wide">
             <h3 className="modal-form-title">Vender BCU</h3>
             {selectedInstrumento && (
               <div className="modal-info">
                 <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
+                <p><strong>nemónico:</strong> BCCLP213123</p>
                 <p><strong>Capital Nominal:</strong> {selectedInstrumento.capitalNominal} {selectedInstrumento.moneda}</p>
+                <p><strong>Tasa Anual:</strong> 4% </p>
+                <p><strong>Frecuencia Pago:</strong>Semestral</p>
+                <p><strong>Vencimiento:</strong> 10/10/2040</p>
                 <p><strong>Corte Mínimo:</strong> {selectedInstrumento.corteMinimo} {selectedInstrumento.moneda}</p>
               </div>
             )}
@@ -382,6 +388,20 @@ const EmisionIIFBCentral = () => {
                     className="form-input"
                   />
                 </div>
+                <div className="form-field">
+                <label htmlFor="porcentaje">Monto</label>
+                <input
+                  type="number"
+                  id="porcentaje"
+                  value={porcentajeAsignado}
+                  onChange={(e) => setPorcentajeAsignado(e.target.value)}
+                  placeholder="Ingrese el porcentaje"
+                  required
+                  min="1"
+                  max="100"
+                  className="form-input"
+                />
+              </div>
                 <button type="submit" className="btn-agregar-asignacion">
                   Agregar
                 </button>
@@ -524,20 +544,6 @@ const EmisionIIFBCentral = () => {
                   min="1"
                   className="form-input"
                 />
-              </div>
-              <div className="form-group-modal">
-                <label htmlFor="moneda">Moneda</label>
-                <select
-                  id="moneda"
-                  value={moneda}
-                  onChange={(e) => setMoneda(e.target.value)}
-                  required
-                  className="form-select"
-                >
-                  <option value="">Seleccione una moneda</option>
-                  <option value="CLP">CLP</option>
-                  <option value="UF">UF</option>
-                </select>
               </div>
               <div className="form-group-modal">
                 <label htmlFor="tasaAnual">Tasa Anual (%)</label>

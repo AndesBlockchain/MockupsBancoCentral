@@ -14,9 +14,10 @@ const SidebarParticipante = () => {
       expanded: isWalletExpanded,
       toggleHandler: () => setIsWalletExpanded(!isWalletExpanded),
       subitems: [
+        { path: '/cartola-participante', label: 'Cartola' },
         { path: '/transferir-participante', label: 'Transferir' },
-        { path: '/generar-vale-vista-participante', label: 'Vales Vista' },
-        { path: '/pedir-vale-vista-participante', label: 'Pedir Vale Vista' },
+        { path: '/generar-vale-vista-participante', label: 'Transferencia Privada' },
+        { path: '/pedir-vale-vista-participante', label: 'Pedir Trasn. Privada' },
         { path: '/generar-wallet-pivote-participante', label: 'Generar Wallet Pivote' },
       ]
     },

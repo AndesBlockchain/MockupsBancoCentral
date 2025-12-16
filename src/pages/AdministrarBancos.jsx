@@ -70,6 +70,7 @@ const AdministrarBancos = () => {
               <th>Institución</th>
               <th>Address</th>
               <th>Autorizada</th>
+              <th>Agregar Wallet</th>
             </tr>
           </thead>
           <tbody>
@@ -84,6 +85,9 @@ const AdministrarBancos = () => {
                     checked={banco.autorizada}
                     onChange={() => handleToggle(banco.id)}
                   />
+                </td>
+                <td>
+                <button>Agregar Admin</button>
                 </td>
               </tr>
             ))}
@@ -113,6 +117,17 @@ const AdministrarBancos = () => {
                 className="form-input"
               />
             </div>
+            <div className="form-group-modal">
+            <label htmlFor="nombreBanco">Wallet</label>
+            <input
+              type="text"
+              id="nombreBanco"
+              value={nombreBanco}
+              placeholder="Wallet primer usuario"
+              required
+              className="form-input"
+            />
+          </div>
             <button type="submit" className="btn-modal-agregar">
               Agregar
             </button>

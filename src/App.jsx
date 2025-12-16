@@ -9,10 +9,12 @@ import HomeParticipante from './pages/HomeParticipante'
 import AdministrarBancos from './pages/AdministrarBancos'
 import AdministrarCBDC from './pages/AdministrarCBDC'
 import ManejarWalletBCentral from './pages/ManejarWalletBCentral'
+import CartolaBancoCentral from './pages/CartolaBancoCentral'
 import AdministrarUsuarios from './pages/AdministrarUsuarios'
 import EmisionIIFBCentral from './pages/EmisionIIFBCentral'
 import IIFsEmitidosBCentral from './pages/IIFsEmitidosBCentral'
 import MiWalletParticipante from './pages/MiWalletParticipante'
+import CartolaParticipante from './pages/CartolaParticipante'
 import MisIIFsParticipante from './pages/MisIIFsParticipante'
 import MercadoSecundarioParticipante from './pages/MercadoSecundarioParticipante'
 import UsuariosParticipante from './pages/UsuariosParticipante'
@@ -40,10 +42,12 @@ function App() {
         <Route path="/administrar-bancos" element={<AdministrarBancos />} />
         <Route path="/administrar-cbdc" element={<AdministrarCBDC />} />
         <Route path="/wallet-banco-central" element={<ManejarWalletBCentral />} />
+        <Route path="/cartola-banco-central" element={<CartolaBancoCentral />} />
         <Route path="/administrar-usuarios" element={<AdministrarUsuarios />} />
         <Route path="/emision-iif-bcentral" element={<EmisionIIFBCentral />} />
         <Route path="/iifs-emitidos-bcentral" element={<IIFsEmitidosBCentral />} />
         <Route path="/mi-wallet-participante" element={<MiWalletParticipante />} />
+        <Route path="/cartola-participante" element={<CartolaParticipante />} />
         <Route path="/mis-iifs-participante" element={<MisIIFsParticipante />} />
         <Route path="/mercado-secundario-participante" element={<MercadoSecundarioParticipante />} />
         <Route path="/usuarios-participante" element={<UsuariosParticipante />} />

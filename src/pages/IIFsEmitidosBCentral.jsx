@@ -18,6 +18,7 @@ const IIFsEmitidosBCentral = () => {
       fechaVencimiento: '2027-01-15',
       valorNominal: '150,000,000',
       moneda: 'UF',
+      estado: 'vigente',
     },
     {
       id: 2,
@@ -27,6 +28,7 @@ const IIFsEmitidosBCentral = () => {
       fechaVencimiento: '2025-08-20',
       valorNominal: '75,000,000',
       moneda: 'CLP',
+      estado: 'vigente',
     },
     {
       id: 3,
@@ -36,6 +38,7 @@ const IIFsEmitidosBCentral = () => {
       fechaVencimiento: '2028-06-10',
       valorNominal: '200,000,000',
       moneda: 'CLP',
+      estado: 'vigente',
     },
     {
       id: 4,
@@ -45,6 +48,7 @@ const IIFsEmitidosBCentral = () => {
       fechaVencimiento: '2025-12-05',
       valorNominal: '50,000,000',
       moneda: 'CLP',
+      estado: 'vigente',
     },
     {
       id: 5,
@@ -54,6 +58,57 @@ const IIFsEmitidosBCentral = () => {
       fechaVencimiento: '2029-03-15',
       valorNominal: '180,000,000',
       moneda: 'UF',
+      estado: 'vigente',
+    },
+    {
+      id: 6,
+      isin: 'CL0006789012',
+      nemonico: 'BCU-241120',
+      tipo: 'BCU',
+      fechaVencimiento: '2024-11-20',
+      valorNominal: '120,000,000',
+      moneda: 'UF',
+      estado: 'pagado',
+    },
+    {
+      id: 7,
+      isin: 'CL0007890123',
+      nemonico: 'PDBC-240915',
+      tipo: 'PDBC',
+      fechaVencimiento: '2024-09-15',
+      valorNominal: '85,000,000',
+      moneda: 'CLP',
+      estado: 'pagado',
+    },
+    {
+      id: 8,
+      isin: 'CL0008901234',
+      nemonico: 'BCU-240630',
+      tipo: 'BCU',
+      fechaVencimiento: '2024-06-30',
+      valorNominal: '95,000,000',
+      moneda: 'CLP',
+      estado: 'pagado',
+    },
+    {
+      id: 9,
+      isin: 'CL0009012345',
+      nemonico: 'PDBC-240405',
+      tipo: 'PDBC',
+      fechaVencimiento: '2024-04-05',
+      valorNominal: '65,000,000',
+      moneda: 'CLP',
+      estado: 'pagado',
+    },
+    {
+      id: 10,
+      isin: 'CL0010123456',
+      nemonico: 'BCU-240225',
+      tipo: 'BCU',
+      fechaVencimiento: '2024-02-25',
+      valorNominal: '110,000,000',
+      moneda: 'UF',
+      estado: 'pagado',
     },
   ]);
 
@@ -112,6 +167,7 @@ const IIFsEmitidosBCentral = () => {
               <th>Tipo</th>
               <th>Fecha de Vencimiento</th>
               <th>Valor Nominal</th>
+              <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -131,6 +187,11 @@ const IIFsEmitidosBCentral = () => {
                 <td className="valor-cell">
                   {instrumento.valorNominal} {instrumento.moneda}
                 </td>
+                <td className="estado-cell">
+                  <span className={`badge-estado badge-estado-${instrumento.estado}`}>
+                    {instrumento.estado.charAt(0).toUpperCase() + instrumento.estado.slice(1)}
+                  </span>
+                </td>
                 <td className="actions-cell">
                   <div className="actions-buttons">
                     <button
@@ -139,12 +200,14 @@ const IIFsEmitidosBCentral = () => {
                     >
                       Tenedores
                     </button>
-                    <button
-                      className="btn-emergency"
-                      onClick={() => handleTraspasoEmergencia(instrumento)}
-                    >
-                      Traspaso de Emergencia
-                    </button>
+                    {instrumento.estado === 'vigente' && (
+                      <button
+                        className="btn-emergency"
+                        onClick={() => handleTraspasoEmergencia(instrumento)}
+                      >
+                        Traspaso de Emergencia
+                      </button>
+                    )}
                   </div>
                 </td>
               </tr>

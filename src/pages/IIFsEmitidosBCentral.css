@@ -92,6 +92,33 @@
   white-space: nowrap;
 }
 
+.estado-cell {
+  text-align: center;
+  width: 100px;
+}
+
+.badge-estado {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-estado-vigente {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+  border: 1px solid #1e7e34;
+}
+
+.badge-estado-pagado {
+  background-color: #e8eaed;
+  color: #5f6368;
+  border: 1px solid #5f6368;
+}
+
 .valor-cell {
   text-align: right;
   font-weight: 600;

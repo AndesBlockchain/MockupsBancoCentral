@@ -26,15 +26,15 @@ const PedirValeVistaParticipante = () => {
   };
 
   return (
-    <DashboardLayoutParticipante title="Pedir Vale Vista">
+    <DashboardLayoutParticipante title="Pedir Transferencia Privada">
       <p style={{ fontSize: '1.1rem', color: '#666', lineHeight: '1.6', marginBottom: '2rem' }}>
-        Acá puedes generar el secreto de cobro para pedir un pago con Vale Vista. No pierdas el secreto, recuperarlo implica un proceso por parte del Banco Central.
+        Acá puedes generar el secreto de cobro para pedir un pago con transferencia privada. No pierdas el secreto, recuperarlo implica un proceso por parte del Banco Central.
       </p>
 
       <div className="pedir-vale-container">
         <form onSubmit={handleGenerarSecreto} className="pedir-vale-form">
           <div className="form-group">
-            <label htmlFor="addressTransferencia">Address de Transferencia</label>
+            <label htmlFor="addressTransferencia">Address de Transferencia (sólo si no es su wallet principal)</label>
             <input
               type="text"
               id="addressTransferencia"

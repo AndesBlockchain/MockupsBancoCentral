@@ -40,9 +40,9 @@ const GenerarValeVistaParticipante = () => {
   };
 
   return (
-    <DashboardLayoutParticipante title="Vales Vista">
+    <DashboardLayoutParticipante title="Transferencia Privada">
       <p style={{ fontSize: '1.1rem', color: '#666', lineHeight: '1.6', marginBottom: '2rem' }}>
-        El Vale Vista permite ejecutar una transferencia a otra institución sin necesidad de revelar su address, y por ende manteniendo su información privada. Para esto, necesita solicitar a su contraparte que genere y le envíe un secreto de cobro. Para poder cobrar uno de estos vales, necesitas ingresar el secreto de cobro.
+        Acá puede ejecutar una transferencia a otra institución sin necesidad de revelar su address, y por ende manteniendo su información privada. Para esto, necesita solicitar a su contraparte que genere y le envíe un secreto de cobro. Para poder cobrar una de estas transferencias, necesitas ingresar el secreto de cobro.
       </p>
 
       <div className="vales-tabla-container">
@@ -113,7 +113,7 @@ const GenerarValeVistaParticipante = () => {
           </div>
 
           <button type="submit" className="btn-crear-vale">
-            Crear Vale Vista
+            Crear Nueva Transferencia
           </button>
         </form>
       </Modal>
@@ -121,11 +121,11 @@ const GenerarValeVistaParticipante = () => {
       {/* Modal Cobrar Vale */}
       <Modal isOpen={isCobrarModalOpen} onClose={() => setIsCobrarModalOpen(false)}>
         <div className="modal-header">
-          <h2>Cobrar Vale Vista</h2>
+          <h2>Cobrar Transferencia</h2>
         </div>
         <form onSubmit={handleValidarCobrar} className="vale-vista-form">
           <div className="form-group">
-            <label htmlFor="walletPago">Wallet de Pago</label>
+            <label htmlFor="walletPago">Wallet de Pago (sólo si no es su wallet principal)</label>
             <input
               type="text"
               id="walletPago"

@@ -33,15 +33,13 @@ const TransferirParticipante = () => {
 
         <form onSubmit={handleTransferir} className="transferir-form">
           <div className="form-group">
-            <label htmlFor="address">Address de transferencia</label>
-            <input
-              type="text"
-              id="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="0x..."
-              required
-            />
+            <label htmlFor="address">Institución</label>
+            <select className="form-select">
+              <option value="">Seleccione una institución</option>
+                <option>Banco de Chile</option>
+                <option>Banco Santander</option>
+                <option>BCI</option>
+              </select>
           </div>
 
           <div className="form-group">
