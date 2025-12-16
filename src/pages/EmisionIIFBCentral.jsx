@@ -346,7 +346,7 @@ const EmisionIIFBCentral = () => {
                   </select>
                 </div>
                 <div className="form-field">
-                  <label htmlFor="montoVenta">Monto de Venta</label>
+                  <label htmlFor="montoVenta">Monto Nominal</label>
                   <input
                     type="number"
                     id="montoVenta"
@@ -359,7 +359,7 @@ const EmisionIIFBCentral = () => {
                   />
                 </div>
                 <div className="form-field">
-                  <label htmlFor="porcentajeAsignadoPDBC">% Asignado</label>
+                  <label htmlFor="porcentajeAsignadoPDBC">Monto a Recibir</label>
                   <input
                     type="number"
                     id="porcentajeAsignadoPDBC"
@@ -367,8 +367,6 @@ const EmisionIIFBCentral = () => {
                     onChange={(e) => setPorcentajeAsignado(e.target.value)}
                     placeholder="Ingrese el porcentaje"
                     required
-                    min="1"
-                    max="100"
                     className="form-input"
                   />
                 </div>
@@ -385,7 +383,7 @@ const EmisionIIFBCentral = () => {
                     <tr>
                       <th>Institución</th>
                       <th>Monto</th>
-                      <th>% Asignado</th>
+                      <th>Precio</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -453,7 +451,7 @@ const EmisionIIFBCentral = () => {
                   </select>
                 </div>
                 <div className="form-field">
-                  <label htmlFor="porcentaje">Porcentaje Asignado (%)</label>
+                  <label htmlFor="porcentaje">Precio</label>
                   <input
                     type="number"
                     id="porcentaje"
