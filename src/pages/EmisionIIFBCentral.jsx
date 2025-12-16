@@ -11,6 +11,7 @@ const EmisionIIFBCentral = () => {
   const [montoVenta, setMontoVenta] = useState('');
   const [porcentajeAsignado, setPorcentajeAsignado] = useState('');
   const [asignaciones, setAsignaciones] = useState([]);
+  const [asignacionesPDBC, setAsignacionesPDBC] = useState([]);
 
   // Estados para crear PDBC
   const [isin, setIsin] = useState('');
@@ -120,6 +121,7 @@ const EmisionIIFBCentral = () => {
     setMontoVenta('');
     setPorcentajeAsignado('');
     setAsignaciones([]);
+    setAsignacionesPDBC([]);
     setIsModalOpen(true);
   };
 
@@ -131,14 +133,33 @@ const EmisionIIFBCentral = () => {
     setMontoVenta('');
     setPorcentajeAsignado('');
     setAsignaciones([]);
+    setAsignacionesPDBC([]);
   };
 
-  const handleSubmitPDBC = (e) => {
+  const handleAgregarAsignacionPDBC = (e) => {
     e.preventDefault();
+    if (institucion && montoVenta && porcentajeAsignado) {
+      const nuevaAsignacion = {
+        id: Date.now(),
+        institucion,
+        monto: montoVenta,
+        porcentaje: porcentajeAsignado,
+      };
+      setAsignacionesPDBC([...asignacionesPDBC, nuevaAsignacion]);
+      setInstitucion('');
+      setMontoVenta('');
+      setPorcentajeAsignado('');
+    }
+  };
+
+  const handleEliminarAsignacionPDBC = (id) => {
+    setAsignacionesPDBC(asignacionesPDBC.filter((asig) => asig.id !== id));
+  };
+
+  const handleConfirmarPDBC = () => {
     console.log('Vender PDBC:', {
       isin: selectedInstrumento.isin,
-      institucion,
-      montoVenta,
+      asignaciones: asignacionesPDBC,
     });
     closeModal();
   };
@@ -293,9 +314,9 @@ const EmisionIIFBCentral = () => {
         </button>
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal} className={modalType === 'BCU' || modalType === 'crear-BCU' ? 'modal-bcu-wide' : ''}>
+      <Modal isOpen={isModalOpen} onClose={closeModal} className={modalType === 'BCU' || modalType === 'crear-BCU' || modalType === 'PDBC' ? 'modal-bcu-wide' : ''}>
         {modalType === 'PDBC' ? (
-          <div className="modal-form">
+          <div className="modal-wide">
             <h3 className="modal-form-title">Vender PDBC</h3>
             {selectedInstrumento && (
               <div className="modal-info">
@@ -305,41 +326,98 @@ const EmisionIIFBCentral = () => {
                 <p><strong>Vencimiento:</strong> {selectedInstrumento.fechaVencimiento}</p>
               </div>
             )}
-            <form onSubmit={handleSubmitPDBC}>
-              <div className="form-group-modal">
-                <label htmlFor="institucion">Institución Bancaria</label>
-                <select
-                  id="institucion"
-                  value={institucion}
-                  onChange={(e) => setInstitucion(e.target.value)}
-                  required
-                  className="form-select"
-                >
-                  <option value="">Seleccione una institución</option>
-                  {instituciones.map((inst, index) => (
-                    <option key={index} value={inst}>
-                      {inst}
-                    </option>
-                  ))}
-                </select>
+            <form onSubmit={handleAgregarAsignacionPDBC}>
+              <div className="form-group-horizontal">
+                <div className="form-field">
+                  <label htmlFor="institucion">Institución Bancaria</label>
+                  <select
+                    id="institucion"
+                    value={institucion}
+                    onChange={(e) => setInstitucion(e.target.value)}
+                    required
+                    className="form-select"
+                  >
+                    <option value="">Seleccione una institución</option>
+                    {instituciones.map((inst, index) => (
+                      <option key={index} value={inst}>
+                        {inst}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-field">
+                  <label htmlFor="montoVenta">Monto de Venta</label>
+                  <input
+                    type="number"
+                    id="montoVenta"
+                    value={montoVenta}
+                    onChange={(e) => setMontoVenta(e.target.value)}
+                    placeholder="Ingrese el monto"
+                    required
+                    min="1"
+                    className="form-input"
+                  />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="porcentajeAsignadoPDBC">% Asignado</label>
+                  <input
+                    type="number"
+                    id="porcentajeAsignadoPDBC"
+                    value={porcentajeAsignado}
+                    onChange={(e) => setPorcentajeAsignado(e.target.value)}
+                    placeholder="Ingrese el porcentaje"
+                    required
+                    min="1"
+                    max="100"
+                    className="form-input"
+                  />
+                </div>
+                <button type="submit" className="btn-agregar-asignacion">
+                  Agregar
+                </button>
               </div>
-              <div className="form-group-modal">
-                <label htmlFor="montoVenta">Monto de Venta</label>
-                <input
-                  type="number"
-                  id="montoVenta"
-                  value={montoVenta}
-                  onChange={(e) => setMontoVenta(e.target.value)}
-                  placeholder="Ingrese el monto de venta"
-                  required
-                  min="1"
-                  className="form-input"
-                />
-              </div>
-              <button type="submit" className="btn-modal-confirmar">
-                Confirmar
-              </button>
             </form>
+
+            {asignacionesPDBC.length > 0 && (
+              <div className="asignaciones-tabla-container">
+                <table className="asignaciones-tabla">
+                  <thead>
+                    <tr>
+                      <th>Institución</th>
+                      <th>Monto</th>
+                      <th>% Asignado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {asignacionesPDBC.map((asignacion) => (
+                      <tr key={asignacion.id}>
+                        <td>{asignacion.institucion}</td>
+                        <td>{asignacion.monto}</td>
+                        <td>{asignacion.porcentaje}%</td>
+                        <td>
+                          <button
+                            type="button"
+                            className="btn-eliminar-asignacion"
+                            onClick={() => handleEliminarAsignacionPDBC(asignacion.id)}
+                          >
+                            Eliminar
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            <button
+              type="button"
+              className="btn-modal-confirmar"
+              onClick={handleConfirmarPDBC}
+            >
+              Confirmar
+            </button>
           </div>
         ) : modalType === 'BCU' ? (
           <div className="modal-wide">

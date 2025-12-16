@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 
 const SidebarParticipante = () => {
+  const location = useLocation();
   const [isWalletExpanded, setIsWalletExpanded] = useState(false);
   const [isIIFsExpanded, setIsIIFsExpanded] = useState(false);
 
@@ -36,6 +37,30 @@ const SidebarParticipante = () => {
     },
     { path: '/usuarios-participante', label: 'Usuarios' },
   ];
+
+  useEffect(() => {
+    // Check if current path is in "Mi Wallet" submenu
+    const walletMenu = menuItems.find(item => item.label === 'Mi Wallet');
+    if (walletMenu && walletMenu.subitems) {
+      const isWalletPageActive = walletMenu.subitems.some(
+        subitem => subitem.path === location.pathname
+      );
+      if (isWalletPageActive) {
+        setIsWalletExpanded(true);
+      }
+    }
+
+    // Check if current path is in "Mis IIFs" submenu
+    const iifsMenu = menuItems.find(item => item.label === 'Mis IIFs');
+    if (iifsMenu && iifsMenu.subitems) {
+      const isIIFsPageActive = iifsMenu.subitems.some(
+        subitem => subitem.path === location.pathname
+      );
+      if (isIIFsPageActive) {
+        setIsIIFsExpanded(true);
+      }
+    }
+  }, [location.pathname]);
 
   const toggleWallet = () => {
     setIsWalletExpanded(!isWalletExpanded);

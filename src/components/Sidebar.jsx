@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = () => {
+  const location = useLocation();
   const [walletExpanded, setWalletExpanded] = useState(false);
 
   const menuItems = [
@@ -21,6 +22,18 @@ const Sidebar = () => {
     { path: '/emision-iif-bcentral', label: 'Emisión y Venta IIFs' },
     { path: '/iifs-emitidos-bcentral', label: 'IIFs Emitidos' },
   ];
+
+  useEffect(() => {
+    const walletSubmenu = menuItems.find(item => item.isParent);
+    if (walletSubmenu && walletSubmenu.submenu) {
+      const isWalletPageActive = walletSubmenu.submenu.some(
+        subitem => subitem.path === location.pathname
+      );
+      if (isWalletPageActive) {
+        setWalletExpanded(true);
+      }
+    }
+  }, [location.pathname]);
 
   return (
     <aside className="sidebar">
