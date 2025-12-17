@@ -64,7 +64,7 @@ const MisIIFsParticipante = () => {
               <th>Tipo de Instrumento</th>
               <th>Capital Nominal</th>
               <th>Precio</th>
-              <th>Acciones</th>
+              <th>Operar Instrumentos</th>
             </tr>
           </thead>
           <tbody>

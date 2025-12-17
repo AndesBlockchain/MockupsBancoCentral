@@ -7,6 +7,7 @@ const IIFsParticipante = () => {
   const [isVenderModalOpen, setIsVenderModalOpen] = useState(false);
   const [isVentaPrivadaModalOpen, setIsVentaPrivadaModalOpen] = useState(false);
   const [isPrendarModalOpen, setIsPrendarModalOpen] = useState(false);
+  const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
 
   // Estados para los campos del modal Vender
@@ -24,46 +25,86 @@ const IIFsParticipante = () => {
       id: 1,
       isin: 'CL0002468135',
       nemonico: 'BCU-23',
-      fechaVencimiento: '2023-12-31',
       tipo: 'BCU',
+      fechaEmision: '2023-01-15',
+      fechaVencimiento: '2023-12-31',
       capitalNominal: 8000000,
-      prendado: false
+      moneda: 'CLP',
+      tasaAnual: 4.5,
+      frecuenciaPago: 'Semestral',
+      corteMinimo: 1000000,
+      prendado: false,
+      estado: 'vigente',
+      cupones: [
+        { fecha: '2023-07-15', monto: '180,000', estado: 'pagado' },
+        { fecha: '2023-12-31', monto: '8,180,000', estado: 'pendiente' },
+      ],
     },
     {
       id: 2,
       isin: 'CL0001357924',
       nemonico: 'PDBC-24',
-      fechaVencimiento: '2024-09-30',
       tipo: 'PDBC',
+      fechaEmision: '2024-03-30',
+      fechaVencimiento: '2024-09-30',
       capitalNominal: 12000000,
-      prendado: true
+      moneda: 'CLP',
+      prendado: true,
+      estado: 'vigente',
     },
     {
       id: 3,
       isin: 'CL0003691258',
       nemonico: 'BCU-26',
-      fechaVencimiento: '2026-03-15',
       tipo: 'BCU',
+      fechaEmision: '2024-03-15',
+      fechaVencimiento: '2026-03-15',
       capitalNominal: 20000000,
-      prendado: false
+      moneda: 'UF',
+      tasaAnual: 3.8,
+      frecuenciaPago: 'Anual',
+      corteMinimo: 2000000,
+      prendado: false,
+      estado: 'vigente',
+      cupones: [
+        { fecha: '2025-03-15', monto: '760,000', estado: 'pendiente' },
+        { fecha: '2026-03-15', monto: '20,760,000', estado: 'pendiente' },
+      ],
     },
     {
       id: 4,
       isin: 'CL0004826147',
       nemonico: 'PDBC-26',
-      fechaVencimiento: '2026-12-31',
       tipo: 'PDBC',
+      fechaEmision: '2024-06-30',
+      fechaVencimiento: '2026-12-31',
       capitalNominal: 6000000,
-      prendado: true
+      moneda: 'CLP',
+      prendado: true,
+      estado: 'vigente',
     },
     {
       id: 5,
       isin: 'CL0008001234',
       nemonico: 'BCHILE-27',
-      fechaVencimiento: '2027-06-30',
       tipo: 'Bono Empresa',
+      fechaEmision: '2024-06-30',
+      fechaVencimiento: '2027-06-30',
       capitalNominal: 50000000,
-      prendado: false
+      moneda: 'CLP',
+      tasaAnual: 5.2,
+      frecuenciaPago: 'Semestral',
+      corteMinimo: 5000000,
+      prendado: false,
+      estado: 'vigente',
+      cupones: [
+        { fecha: '2024-12-30', monto: '1,300,000', estado: 'pendiente' },
+        { fecha: '2025-06-30', monto: '1,300,000', estado: 'pendiente' },
+        { fecha: '2025-12-30', monto: '1,300,000', estado: 'pendiente' },
+        { fecha: '2026-06-30', monto: '1,300,000', estado: 'pendiente' },
+        { fecha: '2026-12-30', monto: '1,300,000', estado: 'pendiente' },
+        { fecha: '2027-06-30', monto: '51,300,000', estado: 'pendiente' },
+      ],
     }
   ];
 
@@ -107,6 +148,16 @@ const IIFsParticipante = () => {
     setSelectedInstrumento(null);
   };
 
+  const handleVerDetalle = (instrumento) => {
+    setSelectedInstrumento(instrumento);
+    setIsDetalleModalOpen(true);
+  };
+
+  const closeDetalleModal = () => {
+    setIsDetalleModalOpen(false);
+    setSelectedInstrumento(null);
+  };
+
   return (
     <DashboardLayoutParticipante title="Mis IIFs">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
@@ -119,20 +170,31 @@ const IIFsParticipante = () => {
             <tr>
               <th>ISIN</th>
               <th>Nemónico</th>
-              <th>Fecha de Vencimiento</th>
               <th>Tipo de Instrumento</th>
+              <th>Fecha de Vencimiento</th>
               <th>Capital Nominal</th>
               <th>Prendado</th>
-              <th>Acciones</th>
+              <th>Operar Instrumento</th>
             </tr>
           </thead>
           <tbody>
             {misIIFs.map((instrumento) => (
               <tr key={instrumento.id}>
-                <td>{instrumento.isin}</td>
+                <td className="isin-cell">
+                  <button
+                    className="btn-isin"
+                    onClick={() => handleVerDetalle(instrumento)}
+                  >
+                    {instrumento.isin}
+                  </button>
+                </td>
                 <td>{instrumento.nemonico}</td>
+                <td>
+                  <span className={`badge badge-${instrumento.tipo.toLowerCase().replace(' ', '-')}`}>
+                    {instrumento.tipo}
+                  </span>
+                </td>
                 <td>{instrumento.fechaVencimiento}</td>
-                <td>{instrumento.tipo}</td>
                 <td>${instrumento.capitalNominal.toLocaleString('es-CL')}</td>
                 <td className={instrumento.prendado ? 'prendado-si' : 'prendado-no'}>
                   {instrumento.prendado ? 'Sí' : 'No'}
@@ -248,6 +310,124 @@ const IIFsParticipante = () => {
               Confirmar Prenda
             </button>
           </form>
+        </div>
+      </Modal>
+
+      {/* Modal Detalle */}
+      <Modal isOpen={isDetalleModalOpen} onClose={closeDetalleModal} className="modal-detalle-wide">
+        <div className="modal-form">
+          <h3 className="modal-form-title">Detalle del Instrumento</h3>
+          {selectedInstrumento && (
+            <>
+              <div className="detalle-info-section">
+                <h4 className="detalle-subtitle">Información General</h4>
+                <table className="detalle-table">
+                  <tbody>
+                    <tr>
+                      <td className="detalle-label">ISIN:</td>
+                      <td className="detalle-value">{selectedInstrumento.isin}</td>
+                    </tr>
+                    <tr>
+                      <td className="detalle-label">Nemónico:</td>
+                      <td className="detalle-value">{selectedInstrumento.nemonico}</td>
+                    </tr>
+                    <tr>
+                      <td className="detalle-label">Tipo:</td>
+                      <td className="detalle-value">
+                        <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase().replace(' ', '-')}`}>
+                          {selectedInstrumento.tipo}
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="detalle-label">Fecha de Emisión:</td>
+                      <td className="detalle-value">{selectedInstrumento.fechaEmision}</td>
+                    </tr>
+                    <tr>
+                      <td className="detalle-label">Fecha de Vencimiento:</td>
+                      <td className="detalle-value">{selectedInstrumento.fechaVencimiento}</td>
+                    </tr>
+                    <tr>
+                      <td className="detalle-label">Capital Nominal:</td>
+                      <td className="detalle-value">
+                        ${selectedInstrumento.capitalNominal.toLocaleString('es-CL')} {selectedInstrumento.moneda}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="detalle-label">Moneda:</td>
+                      <td className="detalle-value">{selectedInstrumento.moneda}</td>
+                    </tr>
+                    {(selectedInstrumento.tipo === 'BCU' || selectedInstrumento.tipo === 'Bono Empresa') && (
+                      <>
+                        <tr>
+                          <td className="detalle-label">Tasa Anual:</td>
+                          <td className="detalle-value">{selectedInstrumento.tasaAnual}%</td>
+                        </tr>
+                        <tr>
+                          <td className="detalle-label">Frecuencia de Pago:</td>
+                          <td className="detalle-value">{selectedInstrumento.frecuenciaPago}</td>
+                        </tr>
+                        <tr>
+                          <td className="detalle-label">Corte Mínimo:</td>
+                          <td className="detalle-value">
+                            ${selectedInstrumento.corteMinimo.toLocaleString('es-CL')} {selectedInstrumento.moneda}
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                    <tr>
+                      <td className="detalle-label">Estado:</td>
+                      <td className="detalle-value">
+                        <span className={`badge-estado badge-estado-${selectedInstrumento.estado}`}>
+                          {selectedInstrumento.estado.charAt(0).toUpperCase() + selectedInstrumento.estado.slice(1)}
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="detalle-label">Prendado:</td>
+                      <td className="detalle-value">
+                        <span className={selectedInstrumento.prendado ? 'prendado-si' : 'prendado-no'}>
+                          {selectedInstrumento.prendado ? 'Sí' : 'No'}
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {(selectedInstrumento.tipo === 'BCU' || selectedInstrumento.tipo === 'Bono Empresa') && selectedInstrumento.cupones && (
+                <div className="detalle-info-section">
+                  <h4 className="detalle-subtitle">Cupones</h4>
+                  <div className="cupones-tabla-container">
+                    <table className="cupones-tabla">
+                      <thead>
+                        <tr>
+                          <th>Fecha de Pago</th>
+                          <th>Monto</th>
+                          <th>Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {selectedInstrumento.cupones.map((cupon, index) => (
+                          <tr key={index}>
+                            <td>{cupon.fecha}</td>
+                            <td>
+                              ${cupon.monto} {selectedInstrumento.moneda}
+                            </td>
+                            <td>
+                              <span className={`badge-cupon badge-cupon-${cupon.estado}`}>
+                                {cupon.estado.charAt(0).toUpperCase() + cupon.estado.slice(1)}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </Modal>
     </DashboardLayoutParticipante>

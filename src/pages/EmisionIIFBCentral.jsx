@@ -28,6 +28,7 @@ const EmisionIIFBCentral = () => {
   const [frecuenciaPago, setFrecuenciaPago] = useState('');
   const [fechaVencimientoBCU, setFechaVencimientoBCU] = useState('');
   const [corteMinimo, setCorteMinimo] = useState('');
+  const [tablaDesarrollo, setTablaDesarrollo] = useState(null);
 
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
@@ -220,6 +221,7 @@ const EmisionIIFBCentral = () => {
     setFrecuenciaPago('');
     setFechaVencimientoBCU('');
     setCorteMinimo('');
+    setTablaDesarrollo(null);
     setIsModalOpen(true);
   };
 
@@ -266,7 +268,7 @@ const EmisionIIFBCentral = () => {
               <th>Capital Nominal</th>
               <th>Moneda</th>
               <th>Estado</th>
-              <th>Acciones</th>
+              <th>Operar Instrumentos</th>
             </tr>
           </thead>
           <tbody>
@@ -346,7 +348,7 @@ const EmisionIIFBCentral = () => {
                   </select>
                 </div>
                 <div className="form-field">
-                  <label htmlFor="montoVenta">Monto Nominal</label>
+                  <label htmlFor="montoVenta">Monto Emisión</label>
                   <input
                     type="number"
                     id="montoVenta"
@@ -359,7 +361,7 @@ const EmisionIIFBCentral = () => {
                   />
                 </div>
                 <div className="form-field">
-                  <label htmlFor="porcentajeAsignadoPDBC">Monto a Recibir</label>
+                  <label htmlFor="porcentajeAsignadoPDBC">Monto Pagado</label>
                   <input
                     type="number"
                     id="porcentajeAsignadoPDBC"
@@ -384,7 +386,7 @@ const EmisionIIFBCentral = () => {
                       <th>Institución</th>
                       <th>Monto</th>
                       <th>Precio</th>
-                      <th>Acciones</th>
+                      <th>Operar Instrumentos</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -451,30 +453,24 @@ const EmisionIIFBCentral = () => {
                   </select>
                 </div>
                 <div className="form-field">
-                  <label htmlFor="porcentaje">Precio</label>
+                  <label htmlFor="porcentaje">Monto Emisión</label>
                   <input
                     type="number"
                     id="porcentaje"
                     value={porcentajeAsignado}
                     onChange={(e) => setPorcentajeAsignado(e.target.value)}
-                    placeholder="Ingrese el porcentaje"
                     required
-                    min="1"
-                    max="100"
                     className="form-input"
                   />
                 </div>
                 <div className="form-field">
-                <label htmlFor="porcentaje">Monto</label>
+                <label htmlFor="porcentaje">Monto Pagado</label>
                 <input
                   type="number"
                   id="porcentaje"
                   value={porcentajeAsignado}
                   onChange={(e) => setPorcentajeAsignado(e.target.value)}
-                  placeholder="Ingrese el porcentaje"
                   required
-                  min="1"
-                  max="100"
                   className="form-input"
                 />
               </div>
@@ -672,6 +668,19 @@ const EmisionIIFBCentral = () => {
                   min="1"
                   className="form-input"
                 />
+              </div>
+              <div className="form-group-modal">
+                <label htmlFor="tablaDesarrollo">Tabla de desarrollo</label>
+                <input
+                  type="file"
+                  id="tablaDesarrollo"
+                  accept=".csv"
+                  onChange={(e) => setTablaDesarrollo(e.target.files[0])}
+                  className="form-input-file"
+                />
+                {tablaDesarrollo && (
+                  <span className="file-name">{tablaDesarrollo.name}</span>
+                )}
               </div>
               <button type="submit" className="btn-modal-confirmar">
                 Revisar Emisión

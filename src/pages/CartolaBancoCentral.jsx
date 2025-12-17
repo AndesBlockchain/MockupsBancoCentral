@@ -69,7 +69,7 @@ const CartolaBancoCentral = () => {
       </div>
 
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        Historial de operaciones realizadas en la wallet del Banco Central.
+        Historial de operaciones de CBDC realizadas en la wallet del Banco Central.
       </p>
 
       <div className="table-container">

@@ -108,7 +108,7 @@ const MercadoSecundarioParticipante = () => {
               <th>Fecha de Vencimiento</th>
               <th>Tipo de Venta</th>
               <th>Precio de Venta</th>
-              <th>Acciones</th>
+              <th>Operar Instrumento</th>
             </tr>
           </thead>
           <tbody>
