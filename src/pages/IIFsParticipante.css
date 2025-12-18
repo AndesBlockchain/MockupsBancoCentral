@@ -150,9 +150,29 @@
   box-shadow: 0 2px 8px rgba(0, 61, 165, 0.3);
 }
 
+.btn-preparar-pago {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  background-color: #6f42c1;
+}
+
+.btn-preparar-pago:hover {
+  background-color: #5a32a3;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(111, 66, 193, 0.3);
+}
+
 .btn-vender:active,
 .btn-venta-privada:active,
-.btn-prendar:active {
+.btn-prendar:active,
+.btn-preparar-pago:active {
   transform: translateY(0);
 }
 

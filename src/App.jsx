@@ -26,6 +26,9 @@ import IIFsParticipante from './pages/IIFsParticipante'
 import ValoresPrendadosParticipante from './pages/ValoresPrendadosParticipante'
 import GenerarWalletPivoteParticipante from './pages/GenerarWalletPivoteParticipante'
 import EmitirIIFParticipante from './pages/EmitirIIFParticipante'
+import AdministrarUF from './pages/AdministrarUF'
+import AdministrarCalendario from './pages/AdministrarCalendario'
+import ImpuestosRetenidos from './pages/ImpuestosRetenidos'
 import './App.css'
 
 function App() {
@@ -59,6 +62,9 @@ function App() {
         <Route path="/emitir-iif-participante" element={<EmitirIIFParticipante />} />
         <Route path="/valores-prendados-participante" element={<ValoresPrendadosParticipante />} />
         <Route path="/generar-wallet-pivote-participante" element={<GenerarWalletPivoteParticipante />} />
+        <Route path="/administrar-uf" element={<AdministrarUF />} />
+        <Route path="/administrar-calendario" element={<AdministrarCalendario />} />
+        <Route path="/impuestos-retenidos" element={<ImpuestosRetenidos />} />
       </Routes>
     </Router>
   )

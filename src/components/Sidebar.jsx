@@ -16,11 +16,14 @@ const Sidebar = () => {
       submenu: [
         { path: '/cartola-banco-central', label: 'Cartola' },
         { path: '/wallet-banco-central', label: 'Transferir' },
+        { path: '/impuestos-retenidos', label: 'Impuestos Retenidos' },
       ]
     },
     { path: '/administrar-usuarios', label: 'Administrar Usuarios' },
     { path: '/emision-iif-bcentral', label: 'Emisión y Venta IIFs' },
     { path: '/iifs-emitidos-bcentral', label: 'IIFs Emitidos' },
+    { path: '/administrar-uf', label: 'Administrar UF' },
+    { path: '/administrar-calendario', label: 'Administrar Calendario' },
   ];
 
   useEffect(() => {

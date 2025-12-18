@@ -8,6 +8,7 @@ const IIFsParticipante = () => {
   const [isVentaPrivadaModalOpen, setIsVentaPrivadaModalOpen] = useState(false);
   const [isPrendarModalOpen, setIsPrendarModalOpen] = useState(false);
   const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
+  const [isPrepararPagoModalOpen, setIsPrepararPagoModalOpen] = useState(false);
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
 
   // Estados para los campos del modal Vender
@@ -19,6 +20,10 @@ const IIFsParticipante = () => {
 
   // Estado para el campo del modal Prendar
   const [addressPrendatario, setAddressPrendatario] = useState('');
+
+  // Estados para los campos del modal Preparar Pago
+  const [addressPago, setAddressPago] = useState('');
+  const [secretoPago, setSecretoPago] = useState('');
 
   const misIIFs = [
     {
@@ -148,6 +153,20 @@ const IIFsParticipante = () => {
     setSelectedInstrumento(null);
   };
 
+  const handlePrepararPago = (instrumento) => {
+    setSelectedInstrumento(instrumento);
+    setIsPrepararPagoModalOpen(true);
+  };
+
+  const handleConfirmarPrepararPago = (e) => {
+    e.preventDefault();
+    console.log('Preparar Pago:', selectedInstrumento, 'Address:', addressPago, 'Secreto:', secretoPago);
+    setAddressPago('');
+    setSecretoPago('');
+    setIsPrepararPagoModalOpen(false);
+    setSelectedInstrumento(null);
+  };
+
   const handleVerDetalle = (instrumento) => {
     setSelectedInstrumento(instrumento);
     setIsDetalleModalOpen(true);
@@ -221,6 +240,12 @@ const IIFsParticipante = () => {
                       disabled={instrumento.prendado}
                     >
                       Prendar
+                    </button>
+                    <button
+                      className="btn-preparar-pago"
+                      onClick={() => handlePrepararPago(instrumento)}
+                    >
+                      Preparar Pago
                     </button>
                   </div>
                 </td>
@@ -308,6 +333,43 @@ const IIFsParticipante = () => {
             </div>
             <button type="submit" className="btn-modal-confirmar">
               Confirmar Prenda
+            </button>
+          </form>
+        </div>
+      </Modal>
+
+      {/* Modal Preparar Pago */}
+      <Modal isOpen={isPrepararPagoModalOpen} onClose={() => setIsPrepararPagoModalOpen(false)}>
+        <div className="modal-iif-content">
+          <h2>Preparar Pago</h2>
+          <p className="modal-explicacion">
+            Si el instrumento es privado, acá puede revelar el secreto para indicar a que address deben pagarse los cupones o el vencimiento.
+          </p>
+          <form onSubmit={handleConfirmarPrepararPago} className="iif-form">
+            <div className="form-group">
+              <label htmlFor="addressPago">Address de Pago</label>
+              <input
+                type="text"
+                id="addressPago"
+                value={addressPago}
+                onChange={(e) => setAddressPago(e.target.value)}
+                placeholder="0x..."
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="secretoPago">Secreto</label>
+              <input
+                type="text"
+                id="secretoPago"
+                value={secretoPago}
+                onChange={(e) => setSecretoPago(e.target.value)}
+                placeholder="Ingrese el secreto"
+                required
+              />
+            </div>
+            <button type="submit" className="btn-modal-confirmar">
+              Confirmar
             </button>
           </form>
         </div>

@@ -1,0 +1,241 @@
+.info-box {
+  background-color: #e7f3ff;
+  border-left: 4px solid #003DA5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.info-text {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.fecha-actual-box {
+  background-color: white;
+  border: 2px solid #003DA5;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.fecha-actual-titulo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #003DA5;
+  margin: 0 0 0.5rem 0;
+}
+
+.fecha-actual-valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #003DA5;
+  margin: 0;
+  font-family: monospace;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.calendario-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.calendario-table thead {
+  background-color: #003DA5;
+  color: white;
+}
+
+.calendario-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #003DA5;
+}
+
+.calendario-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.calendario-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.calendario-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.calendario-table td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.fecha-cell {
+  font-weight: 600;
+  color: #003DA5;
+}
+
+.btn-ajustar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-ajustar-fecha {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #003DA5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-ajustar-fecha:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.btn-ajustar-fecha:active {
+  transform: translateY(0);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #003DA5;
+  text-align: center;
+  margin: 0;
+}
+
+.form-group-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group-modal label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-input {
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #003DA5;
+  box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+}
+
+.fecha-minima-texto {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+.btn-modal-ajustar {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #003DA5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  margin-top: 0.5rem;
+}
+
+.btn-modal-ajustar:hover {
+  background-color: #0052CC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 61, 165, 0.3);
+}
+
+.btn-modal-ajustar:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .info-box {
+    padding: 1rem;
+  }
+
+  .info-text {
+    font-size: 0.95rem;
+  }
+
+  .fecha-actual-box {
+    padding: 1rem;
+  }
+
+  .fecha-actual-titulo {
+    font-size: 1rem;
+  }
+
+  .fecha-actual-valor {
+    font-size: 1.5rem;
+  }
+
+  .btn-ajustar-container {
+    margin-top: 1.5rem;
+  }
+
+  .btn-ajustar-fecha {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+  }
+
+  .calendario-table {
+    font-size: 0.9rem;
+  }
+
+  .calendario-table th,
+  .calendario-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .modal-form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-input {
+    padding: 0.75rem;
+  }
+
+  .btn-modal-ajustar {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
