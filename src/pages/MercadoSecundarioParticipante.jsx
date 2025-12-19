@@ -93,7 +93,7 @@ const MercadoSecundarioParticipante = () => {
   return (
     <DashboardLayoutParticipante title="Mercado Secundario">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        En esta ventana se encuentran los Instrumentos Financieros en Venta.
+        En esta ventana se encuentran los Instrumentos Financieros a la espera de su pago para serle transferidos.
       </p>
 
       <div className="mercado-secundario-tabla-container">
@@ -107,7 +107,7 @@ const MercadoSecundarioParticipante = () => {
               <th>Capital Nominal</th>
               <th>Fecha de Vencimiento</th>
               <th>Tipo de Venta</th>
-              <th>Precio de Venta</th>
+              <th>Monto Pagado</th>
               <th>Operar Instrumento</th>
             </tr>
           </thead>

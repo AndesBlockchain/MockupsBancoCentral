@@ -15,7 +15,7 @@ const CartolaParticipante = () => {
     {
       id: 2,
       fecha: '2025-12-16 09:15',
-      destinatario: 'Transferencia Privada',
+      destinatario: 'Banco Santander',
       monto: '3,500,000',
       tipo: 'Salida',
       esPrivada: true,
@@ -31,7 +31,7 @@ const CartolaParticipante = () => {
     {
       id: 4,
       fecha: '2025-12-15 14:20',
-      destinatario: 'Transferencia Privada',
+      destinatario: 'Banco Santander',
       monto: '2,750,000',
       tipo: 'Entrada',
       esPrivada: true,
@@ -55,7 +55,7 @@ const CartolaParticipante = () => {
     {
       id: 7,
       fecha: '2025-12-14 15:15',
-      destinatario: 'Transferencia Privada',
+      destinatario: 'Banco Estado',
       monto: '7,800,000',
       tipo: 'Salida',
       esPrivada: true,
@@ -71,7 +71,7 @@ const CartolaParticipante = () => {
     {
       id: 9,
       fecha: '2025-12-13 16:45',
-      destinatario: 'Transferencia Privada',
+      destinatario: 'Banco Estado',
       monto: '1,950,000',
       tipo: 'Entrada',
       esPrivada: true,
@@ -95,7 +95,7 @@ const CartolaParticipante = () => {
     {
       id: 12,
       fecha: '2025-12-12 14:20',
-      destinatario: 'Transferencia Privada',
+      destinatario: 'Banco de Chile',
       monto: '4,500,000',
       tipo: 'Salida',
       esPrivada: true,

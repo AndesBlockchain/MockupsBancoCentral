@@ -180,10 +180,10 @@ const IIFsEmitidosBCentral = () => {
 
   const [tenedores] = useState([
     { id: 1, institucion: 'Banco de Chile', fechaTraspaso: '2024-01-15' },
-    { id: 2, institucion: 'Operación Privada', fechaTraspaso: '2024-02-20' },
+    { id: 2, institucion: 'Banco Scotiabank', fechaTraspaso: '2024-02-20' },
     { id: 3, institucion: 'Banco Santander', fechaTraspaso: '2024-03-10' },
     { id: 4, institucion: 'Banco Estado', fechaTraspaso: '2024-04-05' },
-    { id: 5, institucion: 'Operación Privada', fechaTraspaso: '2024-05-12' },
+    { id: 5, institucion: 'Banco BICE', fechaTraspaso: '2024-05-12' },
     { id: 6, institucion: 'Banco BCI', fechaTraspaso: '2024-06-18' },
   ]);
 

@@ -12,6 +12,7 @@ const EmisionIIFBCentral = () => {
   const [porcentajeAsignado, setPorcentajeAsignado] = useState('');
   const [asignaciones, setAsignaciones] = useState([]);
   const [asignacionesPDBC, setAsignacionesPDBC] = useState([]);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 
   // Estados para crear PDBC
   const [isin, setIsin] = useState('');
@@ -36,6 +37,7 @@ const EmisionIIFBCentral = () => {
     {
       id: 1,
       isin: 'CL0001234567',
+      nemonico: 'BCHCL20251212000001',
       tipo: 'BCU',
       fechaEmision: '2024-01-15',
       fechaVencimiento: '2025-01-15',
@@ -47,6 +49,7 @@ const EmisionIIFBCentral = () => {
     {
       id: 2,
       isin: 'CL0002345678',
+      nemonico: 'BCHCL20251212000001',
       tipo: 'PDBC',
       fechaEmision: '2024-02-20',
       fechaVencimiento: '2024-08-20',
@@ -57,6 +60,7 @@ const EmisionIIFBCentral = () => {
     {
       id: 3,
       isin: 'CL0003456789',
+      nemonico: 'BCHCL20251212000001',
       tipo: 'BCU',
       fechaEmision: '2024-01-10',
       fechaVencimiento: '2026-01-10',
@@ -67,6 +71,7 @@ const EmisionIIFBCentral = () => {
     {
       id: 4,
       isin: 'CL0004567890',
+      nemonico: 'BCHCL20251212000001',
       tipo: 'PDBC',
       fechaEmision: '2024-03-05',
       fechaVencimiento: '2024-09-05',
@@ -77,6 +82,7 @@ const EmisionIIFBCentral = () => {
     {
       id: 5,
       isin: 'CL0005678901',
+      nemonico: 'BCHCL20251212000001',
       tipo: 'BCU',
       fechaEmision: '2024-02-01',
       fechaVencimiento: '2027-02-01',
@@ -88,6 +94,7 @@ const EmisionIIFBCentral = () => {
     {
       id: 6,
       isin: 'CL0006789012',
+      nemonico: 'BCHCL20251212000001',
       tipo: 'PDBC',
       fechaEmision: '2024-03-15',
       fechaVencimiento: '2024-12-15',
@@ -98,6 +105,7 @@ const EmisionIIFBCentral = () => {
     {
       id: 7,
       isin: 'CL0007890123',
+      nemonico: 'BCHCL20251212000001',
       tipo: 'BCU',
       fechaEmision: '2024-01-20',
       fechaVencimiento: '2025-07-20',
@@ -114,6 +122,16 @@ const EmisionIIFBCentral = () => {
     'Banco BCI',
     'Banco Scotiabank',
   ];
+
+  const handleVerInfo = (instrumento) => {
+    setSelectedInstrumento(instrumento);
+    setIsInfoModalOpen(true);
+  };
+
+  const closeInfoModal = () => {
+    setIsInfoModalOpen(false);
+    setSelectedInstrumento(null);
+  };
 
   const handleVender = (instrumento) => {
     setSelectedInstrumento(instrumento);
@@ -261,7 +279,7 @@ const EmisionIIFBCentral = () => {
         <table className="instrumentos-table">
           <thead>
             <tr>
-              <th>ISIN</th>
+              <th>Nemotécnico</th>
               <th>Tipo</th>
               <th>Fecha Emisión</th>
               <th>Fecha Vencimiento</th>
@@ -275,7 +293,12 @@ const EmisionIIFBCentral = () => {
             {instrumentos.map((instrumento) => (
               <tr key={instrumento.id}>
                 <td className="isin-cell">
-                  <code>{instrumento.isin}</code>
+                  <button
+                    className="nemonico-button"
+                    onClick={() => handleVerInfo(instrumento)}
+                  >
+                    {instrumento.nemonico}
+                  </button>
                 </td>
                 <td className="tipo-cell">
                   <span className={`badge badge-${instrumento.tipo.toLowerCase()}`}>
@@ -772,6 +795,75 @@ const EmisionIIFBCentral = () => {
             Crear BCU
           </button>
         </div>
+      </Modal>
+
+      <Modal isOpen={isInfoModalOpen} onClose={closeInfoModal} className="modal-info-instrumento">
+        {selectedInstrumento && (
+          <div className="modal-form">
+            <h3 className="modal-form-title">Información del Instrumento</h3>
+
+            <div className="review-info-section">
+              <table className="review-table">
+                <tbody>
+                  <tr>
+                    <td className="review-label">ISIN:</td>
+                    <td className="review-value">{selectedInstrumento.isin}</td>
+                  </tr>
+                  <tr>
+                    <td className="review-label">Nemotécnico:</td>
+                    <td className="review-value">{selectedInstrumento.nemonico}</td>
+                  </tr>
+                  <tr>
+                    <td className="review-label">Tipo:</td>
+                    <td className="review-value">
+                      <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>
+                        {selectedInstrumento.tipo}
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="review-label">Fecha de Emisión:</td>
+                    <td className="review-value">{selectedInstrumento.fechaEmision}</td>
+                  </tr>
+                  <tr>
+                    <td className="review-label">Fecha de Vencimiento:</td>
+                    <td className="review-value">{selectedInstrumento.fechaVencimiento}</td>
+                  </tr>
+                  <tr>
+                    <td className="review-label">Capital Nominal:</td>
+                    <td className="review-value">{selectedInstrumento.capitalNominal} {selectedInstrumento.moneda}</td>
+                  </tr>
+                  <tr>
+                    <td className="review-label">Moneda:</td>
+                    <td className="review-value">{selectedInstrumento.moneda}</td>
+                  </tr>
+                  {selectedInstrumento.corteMinimo && (
+                    <tr>
+                      <td className="review-label">Corte Mínimo:</td>
+                      <td className="review-value">{selectedInstrumento.corteMinimo} {selectedInstrumento.moneda}</td>
+                    </tr>
+                  )}
+                  <tr>
+                    <td className="review-label">Estado:</td>
+                    <td className="review-value">
+                      <span className={`estado estado-${selectedInstrumento.estado}`}>
+                        {selectedInstrumento.estado.charAt(0).toUpperCase() + selectedInstrumento.estado.slice(1)}
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <button
+              type="button"
+              className="btn-modal-confirmar"
+              onClick={closeInfoModal}
+            >
+              Cerrar
+            </button>
+          </div>
+        )}
       </Modal>
     </DashboardLayout>
   );

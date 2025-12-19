@@ -19,9 +19,11 @@ const Sidebar = () => {
         { path: '/impuestos-retenidos', label: 'Impuestos Retenidos' },
       ]
     },
-    { path: '/administrar-usuarios', label: 'Administrar Usuarios' },
+   
     { path: '/emision-iif-bcentral', label: 'Emisión y Venta IIFs' },
     { path: '/iifs-emitidos-bcentral', label: 'IIFs Emitidos' },
+    { path: '/pago-pdbc-bcu', label: 'Pago PDBC/BCU' },
+    { path: '/administrar-usuarios', label: 'Administrar Usuarios' },
     { path: '/administrar-uf', label: 'Administrar UF' },
     { path: '/administrar-calendario', label: 'Administrar Calendario' },
   ];

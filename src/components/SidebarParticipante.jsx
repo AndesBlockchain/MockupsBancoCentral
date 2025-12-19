@@ -19,7 +19,7 @@ const SidebarParticipante = () => {
         { path: '/transferir-participante', label: 'Transferir' },
         { path: '/generar-vale-vista-participante', label: 'Transferencia Privada' },
         { path: '/pedir-vale-vista-participante', label: 'Pedir Trasn. Privada' },
-        { path: '/generar-wallet-pivote-participante', label: 'Generar Wallet Pivote' },
+        // { path: '/generar-wallet-pivote-participante', label: 'Generar Wallet Pivote' },
       ]
     },
     {

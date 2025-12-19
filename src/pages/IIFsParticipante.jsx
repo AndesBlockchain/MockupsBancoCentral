@@ -12,7 +12,9 @@ const IIFsParticipante = () => {
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
 
   // Estados para los campos del modal Vender
-  const [precioVenta, setPrecioVenta] = useState('');
+  const [contraparte, setContraparte] = useState('');
+  const [montoNominal, setMontoNominal] = useState('');
+  const [montoPagado, setMontoPagado] = useState('');
 
   // Estados para los campos del modal Venta Privada
   const [precioVentaPrivada, setPrecioVentaPrivada] = useState('');
@@ -24,6 +26,18 @@ const IIFsParticipante = () => {
   // Estados para los campos del modal Preparar Pago
   const [addressPago, setAddressPago] = useState('');
   const [secretoPago, setSecretoPago] = useState('');
+
+  // Lista de instituciones para contraparte
+  const instituciones = [
+    'Banco de Chile',
+    'Banco Santander',
+    'Banco Estado',
+    'Banco BCI',
+    'Banco Scotiabank',
+    'Banco Itaú',
+    'Banco Security',
+    'Banco Falabella',
+  ];
 
   const misIIFs = [
     {
@@ -130,8 +144,15 @@ const IIFsParticipante = () => {
 
   const handleConfirmarVender = (e) => {
     e.preventDefault();
-    console.log('Vender instrumento:', selectedInstrumento, 'Precio:', precioVenta);
-    setPrecioVenta('');
+    console.log('Vender instrumento:', {
+      instrumento: selectedInstrumento,
+      contraparte,
+      montoNominal,
+      montoPagado
+    });
+    setContraparte('');
+    setMontoNominal('');
+    setMontoPagado('');
     setIsVenderModalOpen(false);
     setSelectedInstrumento(null);
   };
@@ -230,7 +251,7 @@ const IIFsParticipante = () => {
                     <button
                       className="btn-venta-privada"
                       onClick={() => handleVentaPrivada(instrumento)}
-                      disabled={instrumento.prendado}
+                      disabled={instrumento.prendado || instrumento.tipo !== 'Bono Empresa'}
                     >
                       Venta Privada
                     </button>
@@ -261,14 +282,44 @@ const IIFsParticipante = () => {
           <h2>Vender Instrumento</h2>
           <form onSubmit={handleConfirmarVender} className="iif-form">
             <div className="form-group">
-              <label htmlFor="precioVenta">Precio de Venta</label>
+              <label htmlFor="contraparte">Contraparte</label>
+              <select
+                id="contraparte"
+                value={contraparte}
+                onChange={(e) => setContraparte(e.target.value)}
+                required
+                className="form-select"
+              >
+                <option value="">Seleccione una institución</option>
+                {instituciones.map((inst, index) => (
+                  <option key={index} value={inst}>
+                    {inst}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="montoNominal">Monto Nominal</label>
               <input
                 type="number"
-                id="precioVenta"
-                value={precioVenta}
-                onChange={(e) => setPrecioVenta(e.target.value)}
-                placeholder="Ingrese el precio de venta"
+                id="montoNominal"
+                value={montoNominal}
+                onChange={(e) => setMontoNominal(e.target.value)}
+                placeholder="Ingrese el monto nominal"
                 required
+                min="1"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="montoPagado">Monto Pagado</label>
+              <input
+                type="number"
+                id="montoPagado"
+                value={montoPagado}
+                onChange={(e) => setMontoPagado(e.target.value)}
+                placeholder="Ingrese el monto pagado"
+                required
+                min="1"
               />
             </div>
             <button type="submit" className="btn-modal-confirmar">

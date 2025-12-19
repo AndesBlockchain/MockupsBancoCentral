@@ -1,0 +1,193 @@
+.pagos-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.pagos-table thead {
+  background-color: #003DA5;
+  color: white;
+}
+
+.pagos-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #003DA5;
+  white-space: nowrap;
+}
+
+.pagos-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.pagos-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.pagos-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.pagos-table td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.nemonico-cell {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.tipo-vencimiento {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tipo-vencimiento-cupón {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #4caf50;
+}
+
+.tipo-vencimiento-capital {
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ff9800;
+}
+
+.monto-cell {
+  text-align: right;
+  font-weight: 600;
+  color: #003DA5;
+  font-size: 1rem;
+}
+
+.btn-pagar {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.btn-pagar:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-pagar:active {
+  transform: translateY(0);
+}
+
+.modal-info-pago {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #003DA5;
+  margin-bottom: 1rem;
+}
+
+.modal-info-pago p {
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-info-pago strong {
+  color: #003DA5;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn-modal-cancelar {
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.btn-modal-cancelar:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.btn-modal-cancelar:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 968px) {
+  .pagos-table {
+    font-size: 0.9rem;
+  }
+
+  .pagos-table th,
+  .pagos-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .nemonico-cell {
+    font-size: 0.75rem;
+  }
+
+  .btn-pagar {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .tipo-vencimiento {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .monto-cell {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-modal-cancelar,
+  .btn-modal-confirmar {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .modal-info-pago {
+    padding: 1rem;
+  }
+
+  .modal-info-pago p {
+    font-size: 0.9rem;
+  }
+}
