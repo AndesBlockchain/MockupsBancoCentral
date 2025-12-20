@@ -11,10 +11,10 @@ const ImpuestosRetenidos = () => {
   const [institucionSeleccionada, setInstitucionSeleccionada] = useState(null);
 
   const [instituciones, setInstituciones] = useState([
-    { id: 1, nombre: 'Banco de Chile', montoRetenido: 15420000 },
-    { id: 2, nombre: 'Banco Santander', montoRetenido: 12350000 },
-    { id: 3, nombre: 'Banco Estado', montoRetenido: 9875000 },
-    { id: 4, nombre: 'Banco BCI', montoRetenido: 18920000 },
+    { id: 1, nombre: 'Banco de Chile',instrumento_asociado:'BCH22332323',fecha:"24/12/2025",tasa:"4%", montoRetenido: 15420000 },
+    { id: 2, nombre: 'Banco Santander',instrumento_asociado:'BCH22332323',fecha:"24/12/2025",tasa:"4%", montoRetenido: 12350000 },
+    { id: 3, nombre: 'Banco Estado',instrumento_asociado:'BCH22332323',fecha:"24/12/2025",tasa:"4%", montoRetenido: 9875000 },
+    { id: 4, nombre: 'Banco BCI',instrumento_asociado:'BCH22332323',fecha:"24/12/2025",tasa:"4%", montoRetenido: 18920000 },
   ]);
 
   const openModalTasa = () => {
@@ -92,6 +92,8 @@ const ImpuestosRetenidos = () => {
             <tr>
               <th>Institución</th>
               <th>Monto Retenido</th>
+              <th>Instrumento</th>
+              <th>Tasa de Retención</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -100,6 +102,8 @@ const ImpuestosRetenidos = () => {
               <tr key={institucion.id}>
                 <td className="institucion-cell">{institucion.nombre}</td>
                 <td className="monto-cell">{formatMonto(institucion.montoRetenido)}</td>
+                <td className="monto-cell">{institucion.instrumento_asociado}</td>
+                <td className="monto-cell">{institucion.tasa}%</td>
                 <td className="acciones-cell">
                   <button
                     className="btn-liquidar"

@@ -3,7 +3,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import Modal from '../components/Modal';
 import './EmisionIIFBCentral.css';
 
-const EmisionIIFBCentral = () => {
+const CrearIIF = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
@@ -268,10 +268,20 @@ const EmisionIIFBCentral = () => {
   };
 
   return (
-    <DashboardLayout title="Asignación IIFs">
+    <DashboardLayout title="Crear IIF">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        En esta sección podrá asignar los IIFs a sus respectivos adjudicatarios
+        En esta sección podrá emitir instrumentos financieros de Banco Central
       </p>
+
+
+      <div className="btn-crear-container">
+        <button className="btn-crear btn-crear-pdbc" onClick={handleCrearPDBC}>
+          Crear PDBC
+        </button>
+        <button className="btn-crear btn-crear-bcu" onClick={handleCrearBCU}>
+          Crear BCU
+        </button>
+      </div>
 
       <h2 className="section-subtitle">Instrumentos Emitidos</h2>
 
@@ -286,7 +296,6 @@ const EmisionIIFBCentral = () => {
               <th>Capital Nominal</th>
               <th>Moneda</th>
               <th>Estado</th>
-              <th>Operar Instrumentos</th>
             </tr>
           </thead>
           <tbody>
@@ -314,16 +323,7 @@ const EmisionIIFBCentral = () => {
                     {instrumento.estado.charAt(0).toUpperCase() + instrumento.estado.slice(1)}
                   </span>
                 </td>
-                <td className="actions-cell">
-                  {instrumento.estado === 'creado' && (
-                    <button
-                      className="btn-vender"
-                      onClick={() => handleVender(instrumento)}
-                    >
-                      Asignar
-                    </button>
-                  )}
-                </td>
+
               </tr>
             ))}
           </tbody>
@@ -778,7 +778,13 @@ const EmisionIIFBCentral = () => {
             </table>
           </div>
 
-
+          <button
+            type="button"
+            className="btn-modal-confirmar"
+            onClick={handleSubmitCrearBCU}
+          >
+            Crear BCU
+          </button>
         </div>
       </Modal>
 
@@ -854,4 +860,4 @@ const EmisionIIFBCentral = () => {
   );
 };
 
-export default EmisionIIFBCentral;
+export default CrearIIF;

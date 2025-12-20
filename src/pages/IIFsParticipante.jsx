@@ -199,7 +199,7 @@ const IIFsParticipante = () => {
   };
 
   return (
-    <DashboardLayoutParticipante title="Mis IIFs">
+    <DashboardLayoutParticipante title="Mi Cartera">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
         En esta sección podrá ver los Instrumentos de Inversión Financieros (IIFs) que posee actualmente.
       </p>
@@ -208,7 +208,6 @@ const IIFsParticipante = () => {
         <table className="iifs-tabla">
           <thead>
             <tr>
-              <th>ISIN</th>
               <th>Nemónico</th>
               <th>Tipo de Instrumento</th>
               <th>Fecha de Vencimiento</th>
@@ -225,10 +224,9 @@ const IIFsParticipante = () => {
                     className="btn-isin"
                     onClick={() => handleVerDetalle(instrumento)}
                   >
-                    {instrumento.isin}
+                    {instrumento.nemonico}
                   </button>
                 </td>
-                <td>{instrumento.nemonico}</td>
                 <td>
                   <span className={`badge badge-${instrumento.tipo.toLowerCase().replace(' ', '-')}`}>
                     {instrumento.tipo}
@@ -262,10 +260,7 @@ const IIFsParticipante = () => {
                     >
                       Prendar
                     </button>
-                    <button
-                      className="btn-preparar-pago"
-                      onClick={() => handlePrepararPago(instrumento)}
-                    >
+                    <button disabled={instrumento.tipo!=="Bono Empresa"} className="btn-prendar" onClick={() => handlePrepararPago(instrumento)}>
                       Preparar Pago
                     </button>
                   </div>
@@ -337,8 +332,25 @@ const IIFsParticipante = () => {
             El secreto que ingrese quedará asociado al vale vista con que le paguen el instrumento, y lo necesitará para hacer el cobro.
           </p>
           <form onSubmit={handleConfirmarVentaPrivada} className="iif-form">
+          <div className="form-group">
+          <label htmlFor="contraparte">Contraparte</label>
+          <select
+            id="contraparte"
+            value={contraparte}
+            onChange={(e) => setContraparte(e.target.value)}
+            required
+            className="form-select"
+          >
+            <option value="">Seleccione una institución</option>
+            {instituciones.map((inst, index) => (
+              <option key={index} value={inst}>
+                {inst}
+              </option>
+            ))}
+          </select>
+        </div>
             <div className="form-group">
-              <label htmlFor="precioVentaPrivada">Precio</label>
+              <label htmlFor="precioVentaPrivada">Monto Pagado</label>
               <input
                 type="number"
                 id="precioVentaPrivada"

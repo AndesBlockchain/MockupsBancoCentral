@@ -4,13 +4,17 @@ import './Sidebar.css';
 
 const Sidebar = () => {
   const location = useLocation();
-  const [walletExpanded, setWalletExpanded] = useState(false);
+  const [expandedMenus, setExpandedMenus] = useState({
+    wallet: false,
+    iifs: false
+  });
 
   const menuItems = [
     { path: '/home-banco-central', label: 'Inicio' },
     { path: '/administrar-bancos', label: 'Administrar Bancos' },
     { path: '/administrar-cbdc', label: 'Administrar CBDC' },
     {
+      id: 'wallet',
       label: 'Wallet Banco Central',
       isParent: true,
       submenu: [
@@ -19,24 +23,37 @@ const Sidebar = () => {
         { path: '/impuestos-retenidos', label: 'Impuestos Retenidos' },
       ]
     },
-   
-    { path: '/emision-iif-bcentral', label: 'Emisión y Venta IIFs' },
-    { path: '/iifs-emitidos-bcentral', label: 'IIFs Emitidos' },
-    { path: '/pago-pdbc-bcu', label: 'Pago PDBC/BCU' },
+    {
+      id: 'iifs',
+      label: 'Administrar IIFs',
+      isParent: true,
+      submenu: [
+        { path: '/crear-iif', label: 'Crear IIF' },
+        { path: '/emision-iif-bcentral', label: 'Asignación IIFs' },
+        { path: '/iifs-emitidos-bcentral', label: 'IIFs Emitidos' },
+        { path: '/pago-pdbc-bcu', label: 'Pago Cupones / Vencimiento' },
+      ]
+    },
     { path: '/administrar-usuarios', label: 'Administrar Usuarios' },
     { path: '/administrar-uf', label: 'Administrar UF' },
     { path: '/administrar-calendario', label: 'Administrar Calendario' },
   ];
 
   useEffect(() => {
-    const walletSubmenu = menuItems.find(item => item.isParent);
-    if (walletSubmenu && walletSubmenu.submenu) {
-      const isWalletPageActive = walletSubmenu.submenu.some(
+    const parentMenus = menuItems.filter(item => item.isParent);
+    const newExpandedState = {};
+
+    parentMenus.forEach(menu => {
+      const isPageActive = menu.submenu.some(
         subitem => subitem.path === location.pathname
       );
-      if (isWalletPageActive) {
-        setWalletExpanded(true);
+      if (isPageActive) {
+        newExpandedState[menu.id] = true;
       }
+    });
+
+    if (Object.keys(newExpandedState).length > 0) {
+      setExpandedMenus(prev => ({ ...prev, ...newExpandedState }));
     }
   }, [location.pathname]);
 
@@ -49,13 +66,16 @@ const Sidebar = () => {
               {item.isParent ? (
                 <>
                   <button
-                    className={`sidebar-link sidebar-submenu-toggle ${walletExpanded ? 'expanded' : ''}`}
-                    onClick={() => setWalletExpanded(!walletExpanded)}
+                    className={`sidebar-link sidebar-submenu-toggle ${expandedMenus[item.id] ? 'expanded' : ''}`}
+                    onClick={() => setExpandedMenus(prev => ({
+                      ...prev,
+                      [item.id]: !prev[item.id]
+                    }))}
                   >
                     {item.label}
-                    <span className="submenu-arrow">{walletExpanded ? '▼' : '▶'}</span>
+                    <span className="submenu-arrow">{expandedMenus[item.id] ? '▼' : '▶'}</span>
                   </button>
-                  {walletExpanded && (
+                  {expandedMenus[item.id] && (
                     <ul className="sidebar-submenu">
                       {item.submenu.map((subitem) => (
                         <li key={subitem.path} className="sidebar-submenu-item">

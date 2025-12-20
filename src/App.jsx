@@ -30,6 +30,7 @@ import AdministrarUF from './pages/AdministrarUF'
 import AdministrarCalendario from './pages/AdministrarCalendario'
 import ImpuestosRetenidos from './pages/ImpuestosRetenidos'
 import PagoPDBCBCU from './pages/PagoPDBCBCU'
+import CrearIIF from './pages/CrearIIF'
 import './App.css'
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/emision-iif-bcentral" element={<EmisionIIFBCentral />} />
         <Route path="/iifs-emitidos-bcentral" element={<IIFsEmitidosBCentral />} />
         <Route path="/pago-pdbc-bcu" element={<PagoPDBCBCU />} />
+        <Route path="/crear-iif" element={<CrearIIF />} />
         <Route path="/mi-wallet-participante" element={<MiWalletParticipante />} />
         <Route path="/cartola-participante" element={<CartolaParticipante />} />
         <Route path="/mis-iifs-participante" element={<MisIIFsParticipante />} />

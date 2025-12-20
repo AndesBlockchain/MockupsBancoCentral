@@ -127,14 +127,8 @@ const CartolaParticipante = () => {
               <tr key={transferencia.id}>
                 <td className="fecha-cell">{transferencia.fecha}</td>
                 <td className="destinatario-cell">
-                  {transferencia.esPrivada ? (
-                    <span className="privada-label">
-                      <span className="privada-icon">🔒</span>
+ 
                       {transferencia.destinatario}
-                    </span>
-                  ) : (
-                    transferencia.destinatario
-                  )}
                 </td>
                 <td className="tipo-cell">
                   <span className={`badge-tipo ${transferencia.tipo.toLowerCase()}`}>

@@ -7,8 +7,11 @@ const IIFsEmitidosBCentral = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEmergencyModalOpen, setIsEmergencyModalOpen] = useState(false);
   const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
+  const [isHistorialModalOpen, setIsHistorialModalOpen] = useState(false);
+  const [isPosicionModalOpen, setIsPosicionModalOpen] = useState(false);
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
   const [emergencyAddress, setEmergencyAddress] = useState('');
+  const [acordeonAbierto, setAcordeonAbierto] = useState(null);
 
   const [instrumentos] = useState([
     {
@@ -187,6 +190,85 @@ const IIFsEmitidosBCentral = () => {
     { id: 6, institucion: 'Banco BCI', fechaTraspaso: '2024-06-18' },
   ]);
 
+  const [historialTraspasos] = useState([
+    {
+      id: 1,
+      fecha: '2024-03-15',
+      de: 'Banco de Chile',
+      a: 'Banco Santander',
+      montoPagado: '50,000,000'
+    },
+    {
+      id: 2,
+      fecha: '2024-05-20',
+      de: 'Banco Santander',
+      a: 'Banco Estado',
+      montoPagado: '75,000,000'
+    },
+    {
+      id: 3,
+      fecha: '2024-07-10',
+      de: 'Banco Estado',
+      a: 'Banco BCI',
+      montoPagado: '60,000,000'
+    },
+    {
+      id: 4,
+      fecha: '2024-09-05',
+      de: 'Banco BCI',
+      a: 'Banco Scotiabank',
+      montoPagado: '80,000,000'
+    },
+    {
+      id: 5,
+      fecha: '2024-11-12',
+      de: 'Banco Scotiabank',
+      a: 'Banco Itaú',
+      montoPagado: '55,000,000'
+    },
+  ]);
+
+  const [posicionHistorica] = useState([
+    {
+      fecha: '2024-12-01',
+      tenedores: [
+        { institucion: 'Banco de Chile', montoPagado: '120,000,000', porcentaje: '40%' },
+        { institucion: 'Banco Santander', montoPagado: '90,000,000', porcentaje: '30%' },
+        { institucion: 'Banco Estado', montoPagado: '60,000,000', porcentaje: '20%' },
+        { institucion: 'Banco BCI', montoPagado: '30,000,000', porcentaje: '10%' },
+      ]
+    },
+    {
+      fecha: '2024-11-01',
+      tenedores: [
+        { institucion: 'Banco de Chile', montoPagado: '150,000,000', porcentaje: '50%' },
+        { institucion: 'Banco Santander', montoPagado: '75,000,000', porcentaje: '25%' },
+        { institucion: 'Banco Estado', montoPagado: '75,000,000', porcentaje: '25%' },
+      ]
+    },
+    {
+      fecha: '2024-10-01',
+      tenedores: [
+        { institucion: 'Banco de Chile', montoPagado: '180,000,000', porcentaje: '60%' },
+        { institucion: 'Banco Santander', montoPagado: '90,000,000', porcentaje: '30%' },
+        { institucion: 'Banco Scotiabank', montoPagado: '30,000,000', porcentaje: '10%' },
+      ]
+    },
+    {
+      fecha: '2024-09-01',
+      tenedores: [
+        { institucion: 'Banco de Chile', montoPagado: '200,000,000', porcentaje: '66.67%' },
+        { institucion: 'Banco Estado', montoPagado: '100,000,000', porcentaje: '33.33%' },
+      ]
+    },
+    {
+      fecha: '2024-08-01',
+      tenedores: [
+        { institucion: 'Banco de Chile', montoPagado: '300,000,000', porcentaje: '100%' },
+      ]
+    },
+  ]);
+
   const handleVerTenedores = (instrumento) => {
     setSelectedInstrumento(instrumento);
     setIsModalOpen(true);
@@ -228,6 +310,32 @@ const IIFsEmitidosBCentral = () => {
     setSelectedInstrumento(null);
   };
 
+  const handleVerHistorial = (instrumento) => {
+    setSelectedInstrumento(instrumento);
+    setIsHistorialModalOpen(true);
+  };
+
+  const closeHistorialModal = () => {
+    setIsHistorialModalOpen(false);
+    setSelectedInstrumento(null);
+  };
+
+  const handleVerPosicion = (instrumento) => {
+    setSelectedInstrumento(instrumento);
+    setAcordeonAbierto(null);
+    setIsPosicionModalOpen(true);
+  };
+
+  const closePosicionModal = () => {
+    setIsPosicionModalOpen(false);
+    setSelectedInstrumento(null);
+    setAcordeonAbierto(null);
+  };
+
+  const toggleAcordeon = (fecha) => {
+    setAcordeonAbierto(acordeonAbierto === fecha ? null : fecha);
+  };
+
   return (
     <DashboardLayout title="IIFs Emitidos">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
@@ -238,13 +346,12 @@ const IIFsEmitidosBCentral = () => {
         <table className="iifs-table">
           <thead>
             <tr>
-              <th>ISIN</th>
               <th>Nemónico</th>
               <th>Tipo</th>
-              <th>Fecha de Vencimiento</th>
+              <th>Vencimiento</th>
               <th>Valor Nominal</th>
               <th>Estado</th>
-              <th>Operar Instrumentos</th>
+              <th>Información de Instrumentos</th>
             </tr>
           </thead>
           <tbody>
@@ -254,11 +361,9 @@ const IIFsEmitidosBCentral = () => {
                   <button
                     className="btn-isin"
                     onClick={() => handleVerDetalle(instrumento)}
-                  >
-                    {instrumento.isin}
+                  >{instrumento.nemonico}
                   </button>
                 </td>
-                <td className="nemonico-cell">{instrumento.nemonico}</td>
                 <td className="tipo-cell">
                   <span className={`badge badge-${instrumento.tipo.toLowerCase()}`}>
                     {instrumento.tipo}
@@ -279,16 +384,20 @@ const IIFsEmitidosBCentral = () => {
                       className="btn-tenedores"
                       onClick={() => handleVerTenedores(instrumento)}
                     >
-                      Tenedores
+                      Tenedores Actuales
                     </button>
-                    {instrumento.estado === 'vigente' && (
-                      <button
-                        className="btn-emergency"
-                        onClick={() => handleTraspasoEmergencia(instrumento)}
-                      >
-                        Traspaso de Emergencia
-                      </button>
-                    )}
+                    <button
+                      className="btn-historial"
+                      onClick={() => handleVerHistorial(instrumento)}
+                    >
+                      Historial
+                    </button>
+                    <button
+                      className="btn-posicion"
+                      onClick={() => handleVerPosicion(instrumento)}
+                    >
+                      Posición Histórica
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -468,6 +577,91 @@ const IIFsEmitidosBCentral = () => {
               )}
             </>
           )}
+        </div>
+      </Modal>
+
+      <Modal isOpen={isHistorialModalOpen} onClose={closeHistorialModal} className="modal-historial">
+        <div className="modal-form">
+          <h3 className="modal-form-title">Historial de Traspasos</h3>
+          {selectedInstrumento && (
+            <div className="modal-info">
+              <p><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</p>
+              <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
+              <p><strong>Tipo:</strong> <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>{selectedInstrumento.tipo}</span></p>
+            </div>
+          )}
+
+          <div className="historial-tabla-container">
+            <table className="historial-tabla">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>De</th>
+                  <th>A</th>
+                  <th>Monto Pagado</th>
+                </tr>
+              </thead>
+              <tbody>
+                {historialTraspasos.map((traspaso) => (
+                  <tr key={traspaso.id}>
+                    <td>{traspaso.fecha}</td>
+                    <td>{traspaso.de}</td>
+                    <td>{traspaso.a}</td>
+                    <td className="monto-cell">{traspaso.montoPagado} CLP</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal isOpen={isPosicionModalOpen} onClose={closePosicionModal} className="modal-posicion">
+        <div className="modal-form">
+          <h3 className="modal-form-title">Posición Histórica</h3>
+          {selectedInstrumento && (
+            <div className="modal-info">
+              <p><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</p>
+              <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
+              <p><strong>Tipo:</strong> <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>{selectedInstrumento.tipo}</span></p>
+            </div>
+          )}
+
+          <div className="acordeon-container">
+            {posicionHistorica.map((posicion, index) => (
+              <div key={index} className="acordeon-item">
+                <button
+                  className={`acordeon-header ${acordeonAbierto === posicion.fecha ? 'active' : ''}`}
+                  onClick={() => toggleAcordeon(posicion.fecha)}
+                >
+                  <span className="acordeon-fecha">{posicion.fecha}</span>
+                  <span className="acordeon-arrow">{acordeonAbierto === posicion.fecha ? '▼' : '▶'}</span>
+                </button>
+                {acordeonAbierto === posicion.fecha && (
+                  <div className="acordeon-content">
+                    <table className="posicion-tabla">
+                      <thead>
+                        <tr>
+                          <th>Tenedor</th>
+                          <th>Monto Pagado</th>
+                          <th>Porcentaje</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {posicion.tenedores.map((tenedor, idx) => (
+                          <tr key={idx}>
+                            <td>{tenedor.institucion}</td>
+                            <td className="monto-cell">{tenedor.montoPagado} CLP</td>
+                            <td className="porcentaje-cell">{tenedor.porcentaje}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </Modal>
     </DashboardLayout>

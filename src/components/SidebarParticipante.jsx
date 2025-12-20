@@ -17,8 +17,8 @@ const SidebarParticipante = () => {
       subitems: [
         { path: '/cartola-participante', label: 'Cartola' },
         { path: '/transferir-participante', label: 'Transferir' },
-        { path: '/generar-vale-vista-participante', label: 'Transferencia Privada' },
-        { path: '/pedir-vale-vista-participante', label: 'Pedir Trasn. Privada' },
+      //  { path: '/generar-vale-vista-participante', label: 'Transferencia Privada' },
+    //    { path: '/pedir-vale-vista-participante', label: 'Pedir Trasn. Privada' },
         // { path: '/generar-wallet-pivote-participante', label: 'Generar Wallet Pivote' },
       ]
     },
@@ -28,11 +28,13 @@ const SidebarParticipante = () => {
       expanded: isIIFsExpanded,
       toggleHandler: () => setIsIIFsExpanded(!isIIFsExpanded),
       subitems: [
-        { path: '/emision-primaria-participante', label: 'Emisión Primaria' },
-        { path: '/iifs-participante', label: 'IIFs' },
+        
+        { path: '/iifs-participante', label: 'Mi Cartera' },
         { path: '/emitir-iif-participante', label: 'Emitir IIF' },
+        { path: '/mercado-secundario-participante', label: 'Mis IIFs por comprar' },
+        { path: '/emision-primaria-participante', label: 'Pago de Vencimientos' },
         { path: '/valores-prendados-participante', label: 'Valores Prendados' },
-        { path: '/mercado-secundario-participante', label: 'Mercado Secundario' },
+        
       ]
     },
     { path: '/usuarios-participante', label: 'Usuarios' },

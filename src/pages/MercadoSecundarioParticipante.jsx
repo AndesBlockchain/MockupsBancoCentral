@@ -6,6 +6,7 @@ import './MercadoSecundarioParticipante.css';
 const MercadoSecundarioParticipante = () => {
   const [isModalPublicaOpen, setIsModalPublicaOpen] = useState(false);
   const [isModalPrivadaOpen, setIsModalPrivadaOpen] = useState(false);
+  const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
   const [secretoControl, setSecretoControl] = useState('');
 
@@ -17,7 +18,12 @@ const MercadoSecundarioParticipante = () => {
       tipo: 'BCU',
       emisor: 'Banco Central',
       capitalNominal: 10000000,
+      fechaEmision: '2024-01-15',
       fechaVencimiento: '2024-12-31',
+      moneda: 'CLP',
+      tasaAnual: 4.5,
+      frecuenciaPago: 'Semestral',
+      corteMinimo: 1000000,
       tipoVenta: 'Publica',
       precioVenta: 9850000
     },
@@ -28,8 +34,10 @@ const MercadoSecundarioParticipante = () => {
       tipo: 'PDBC',
       emisor: 'Banco Central',
       capitalNominal: 5000000,
+      fechaEmision: '2024-12-01',
       fechaVencimiento: '2025-06-30',
-      tipoVenta: 'Privada',
+      moneda: 'CLP',
+      tipoVenta: 'Publica',
       precioVenta: 5025000
     },
     {
@@ -39,8 +47,13 @@ const MercadoSecundarioParticipante = () => {
       tipo: 'BE',
       emisor: 'Banco Santander',
       capitalNominal: 50000000,
+      fechaEmision: '2024-06-15',
       fechaVencimiento: '2027-06-30',
-      tipoVenta: 'Publica',
+      moneda: 'UF',
+      tasaAnual: 3.2,
+      frecuenciaPago: 'Anual',
+      corteMinimo: 5000000,
+      tipoVenta: 'Privada',
       precioVenta: 49500000
     },
     {
@@ -50,8 +63,13 @@ const MercadoSecundarioParticipante = () => {
       tipo: 'BCU',
       emisor: 'Banco Central',
       capitalNominal: 15000000,
+      fechaEmision: '2024-09-15',
       fechaVencimiento: '2026-03-15',
-      tipoVenta: 'Privada',
+      moneda: 'UF',
+      tasaAnual: 3.8,
+      frecuenciaPago: 'Semestral',
+      corteMinimo: 1500000,
+      tipoVenta: 'Publica',
       precioVenta: 14900000
     },
     {
@@ -61,7 +79,12 @@ const MercadoSecundarioParticipante = () => {
       tipo: 'BE',
       emisor: 'Banco BCI',
       capitalNominal: 75000000,
+      fechaEmision: '2024-11-01',
       fechaVencimiento: '2028-12-31',
+      moneda: 'CLP',
+      tasaAnual: 4.1,
+      frecuenciaPago: 'Trimestral',
+      corteMinimo: 7500000,
       tipoVenta: 'Publica',
       precioVenta: 74800000
     }
@@ -90,8 +113,18 @@ const MercadoSecundarioParticipante = () => {
     setSelectedInstrumento(null);
   };
 
+  const handleVerDetalle = (instrumento) => {
+    setSelectedInstrumento(instrumento);
+    setIsDetalleModalOpen(true);
+  };
+
+  const closeDetalleModal = () => {
+    setIsDetalleModalOpen(false);
+    setSelectedInstrumento(null);
+  };
+
   return (
-    <DashboardLayoutParticipante title="Mercado Secundario">
+    <DashboardLayoutParticipante title="Mis IIFs por comprar">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
         En esta ventana se encuentran los Instrumentos Financieros a la espera de su pago para serle transferidos.
       </p>
@@ -100,7 +133,6 @@ const MercadoSecundarioParticipante = () => {
         <table className="mercado-secundario-tabla">
           <thead>
             <tr>
-              <th>ISIN</th>
               <th>Nemónico</th>
               <th>Tipo de Instrumento</th>
               <th>Emisor</th>
@@ -114,8 +146,14 @@ const MercadoSecundarioParticipante = () => {
           <tbody>
             {instrumentosEnVenta.map((instrumento) => (
               <tr key={instrumento.id}>
-                <td>{instrumento.isin}</td>
-                <td>{instrumento.nemonico}</td>
+                <td>
+                  <button
+                    className="btn-nemonico"
+                    onClick={() => handleVerDetalle(instrumento)}
+                  >
+                    {instrumento.nemonico}
+                  </button>
+                </td>
                 <td>{instrumento.tipo}</td>
                 <td>{instrumento.emisor}</td>
                 <td>${instrumento.capitalNominal.toLocaleString('es-CL')}</td>
@@ -129,7 +167,7 @@ const MercadoSecundarioParticipante = () => {
                     className="btn-comprar"
                     onClick={() => handleComprar(instrumento)}
                   >
-                    Comprar
+                    Pagar
                   </button>
                 </td>
               </tr>
@@ -217,6 +255,86 @@ const MercadoSecundarioParticipante = () => {
                   </button>
                 </div>
               </form>
+            </>
+          )}
+        </div>
+      </Modal>
+
+      {/* Modal de Detalle del Instrumento */}
+      <Modal isOpen={isDetalleModalOpen} onClose={closeDetalleModal}>
+        <div className="modal-detalle-content">
+          <h2>Detalle del Instrumento</h2>
+          {selectedInstrumento && (
+            <>
+              <div className="modal-detalle-info">
+                <div className="detalle-row">
+                  <span className="detalle-label">Nemotécnico:</span>
+                  <span className="detalle-value">{selectedInstrumento.nemonico}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">ISIN:</span>
+                  <span className="detalle-value">{selectedInstrumento.isin}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Tipo de Instrumento:</span>
+                  <span className="detalle-value">{selectedInstrumento.tipo}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Emisor:</span>
+                  <span className="detalle-value">{selectedInstrumento.emisor}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Fecha de Emisión:</span>
+                  <span className="detalle-value">{selectedInstrumento.fechaEmision}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Fecha de Vencimiento:</span>
+                  <span className="detalle-value">{selectedInstrumento.fechaVencimiento}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Capital Nominal:</span>
+                  <span className="detalle-value">${selectedInstrumento.capitalNominal.toLocaleString('es-CL')}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Precio de Venta:</span>
+                  <span className="detalle-value">${selectedInstrumento.precioVenta.toLocaleString('es-CL')}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Moneda:</span>
+                  <span className="detalle-value">{selectedInstrumento.moneda}</span>
+                </div>
+                <div className="detalle-row">
+                  <span className="detalle-label">Tipo de Venta:</span>
+                  <span className="detalle-value">{selectedInstrumento.tipoVenta}</span>
+                </div>
+
+                {/* Información adicional para instrumentos con tasa */}
+                {selectedInstrumento.tasaAnual && (
+                  <>
+                    <div className="detalle-row">
+                      <span className="detalle-label">Tasa Anual:</span>
+                      <span className="detalle-value">{selectedInstrumento.tasaAnual}%</span>
+                    </div>
+                    <div className="detalle-row">
+                      <span className="detalle-label">Frecuencia de Pago:</span>
+                      <span className="detalle-value">{selectedInstrumento.frecuenciaPago}</span>
+                    </div>
+                    <div className="detalle-row">
+                      <span className="detalle-label">Corte Mínimo:</span>
+                      <span className="detalle-value">${selectedInstrumento.corteMinimo.toLocaleString('es-CL')}</span>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              <div className="modal-buttons">
+                <button
+                  className="btn-cancelar"
+                  onClick={closeDetalleModal}
+                >
+                  Cerrar
+                </button>
+              </div>
             </>
           )}
         </div>

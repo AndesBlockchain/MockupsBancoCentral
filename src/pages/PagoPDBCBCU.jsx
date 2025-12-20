@@ -131,7 +131,7 @@ const PagoPDBCBCU = () => {
                     className="btn-pagar"
                     onClick={() => handlePagar(vencimiento)}
                   >
-                    Pagar
+                    Pagar {vencimiento.tipoVencimiento}
                   </button>
                 </td>
               </tr>
