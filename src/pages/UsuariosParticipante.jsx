@@ -109,7 +109,22 @@ const UsuariosParticipante = () => {
                 required
               />
             </div>
-
+            <div className="form-group-modal">
+              <label htmlFor="nombreUsuario">Password</label>
+              <input
+                type="password"
+                required
+                className="form-input"
+              />
+            </div>
+            <div className="form-group-modal">
+              <label htmlFor="nombreUsuario">Repita Password</label>
+              <input
+                type="password"
+                required
+                className="form-input"
+              />
+            </div>
             <div className="form-group">
               <label htmlFor="address">Address</label>
               <input

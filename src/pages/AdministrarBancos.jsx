@@ -207,6 +207,36 @@ const AdministrarBancos = () => {
                   className="form-input"
                 />
               </div>
+
+              <div className="form-group-modal">
+              <label htmlFor="nuevoAdmin">Login del nuevo admin</label>
+              <input
+                type="text"
+                id="nuevoAdmin"
+                value={nuevoAdmin}
+                onChange={(e) => setNuevoAdmin(e.target.value)}
+                placeholder="Ingrese la wallet del administrador"
+                required
+                className="form-input"
+              />
+            </div>
+            <div className="form-group-modal">
+            <label htmlFor="nuevoAdmin">Password del nuevo admin</label>
+            <input
+              type="password"
+              required
+              className="form-input"
+            />
+          </div>
+          <div className="form-group-modal">
+          <label htmlFor="nuevoAdmin">Repita el password</label>
+          <input
+            type="password"
+            required
+            className="form-input"
+          />
+        </div>
+
                 <button type="submit" className="btn-modal-agregar">
                   Agregar Administrador
                 </button>

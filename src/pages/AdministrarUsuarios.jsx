@@ -111,6 +111,34 @@ const AdministrarUsuarios = () => {
               />
             </div>
             <div className="form-group-modal">
+              <label htmlFor="nombreUsuario">Login</label>
+              <input
+                type="text"
+                id="nombreUsuario"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                placeholder="Ingrese el nombre del usuario"
+                required
+                className="form-input"
+              />
+            </div>
+            <div className="form-group-modal">
+              <label htmlFor="nombreUsuario">Password</label>
+              <input
+                type="password"
+                required
+                className="form-input"
+              />
+            </div>
+            <div className="form-group-modal">
+              <label htmlFor="nombreUsuario">Repita Password</label>
+              <input
+                type="password"
+                required
+                className="form-input"
+              />
+            </div>
+            <div className="form-group-modal">
               <label htmlFor="walletUsuario">Wallet</label>
               <input
                 type="text"
