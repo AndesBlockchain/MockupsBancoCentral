@@ -195,7 +195,7 @@ const EmisionPrimariaParticipante = () => {
                   <span className="detalle-value">{selectedInstrumento.nemonico}</span>
                 </div>
                 <div className="detalle-row">
-                  <span className="detalle-label">Capital Nominal Total:</span>
+                  <span className="detalle-label">Valor Nominal Total:</span>
                   <span className="detalle-value">${selectedInstrumento.capitalNominal.toLocaleString('es-CL')}</span>
                 </div>
               </div>
@@ -262,7 +262,7 @@ const EmisionPrimariaParticipante = () => {
                   <span className="detalle-value">{selectedInstrumento.fechaVencimiento}</span>
                 </div>
                 <div className="detalle-row">
-                  <span className="detalle-label">Capital Nominal:</span>
+                  <span className="detalle-label">Valor Nominal:</span>
                   <span className="detalle-value">${selectedInstrumento.capitalNominal.toLocaleString('es-CL')}</span>
                 </div>
                 <div className="detalle-row">

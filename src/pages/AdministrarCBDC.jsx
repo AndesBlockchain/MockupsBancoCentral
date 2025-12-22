@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 import Modal from '../components/Modal';
+import ToggleSwitch from '../components/ToggleSwitch';
 import './AdministrarCBDC.css';
 
 const AdministrarCBDC = () => {
@@ -8,6 +9,7 @@ const AdministrarCBDC = () => {
   const [monto, setMonto] = useState('');
   const [totalCirculante] = useState('1,500,000,000');
   const [saldoBancoCentral] = useState('500,000,000');
+  const [pausaOperaciones, setPausaOperaciones] = useState(false);
 
   const openModal = (type) => {
     setMonto('');
@@ -54,6 +56,13 @@ const AdministrarCBDC = () => {
         <button className="btn-cbdc btn-quemar" onClick={() => openModal('quemar')}>
           Quemar CBDC
         </button>
+      </div>
+
+      <div className="cbdc-pause-toggle">
+        <span className="cbdc-pause-label">Desactivar todas las operaciones</span>
+        <ToggleSwitch
+          onChange={() => setPausaOperaciones(!pausaOperaciones)}
+        />
       </div>
 
       <Modal isOpen={activeModal === 'acunar'} onClose={closeModal}>

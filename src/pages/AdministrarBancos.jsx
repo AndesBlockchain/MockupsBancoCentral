@@ -157,6 +157,16 @@ const AdministrarBancos = () => {
               className="form-input"
             />
           </div>
+          <div className="form-group-modal">
+          <label htmlFor="nombreBanco">Nombre Admin</label>
+          <input
+            type="text"
+          
+            placeholder="Nombre Primer Admin"
+            required
+            className="form-input"
+          />
+        </div>
             <button type="submit" className="btn-modal-agregar">
               Agregar
             </button>
@@ -188,6 +198,15 @@ const AdministrarBancos = () => {
                     className="form-input"
                   />
                 </div>
+                <div className="form-group-modal">
+                <label htmlFor="nuevoAdmin">Nombre del Nuevo Administrador</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese el nombre del administrador"
+                  required
+                  className="form-input"
+                />
+              </div>
                 <button type="submit" className="btn-modal-agregar">
                   Agregar Administrador
                 </button>

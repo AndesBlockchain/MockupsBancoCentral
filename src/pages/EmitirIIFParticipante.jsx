@@ -93,9 +93,7 @@ const EmitirIIFParticipante = () => {
               <th>Nemónico</th>
               <th>Emisor</th>
               <th>Fecha Vencimiento</th>
-              <th>Capital Nominal</th>
-              <th>Institución Compradora</th>
-              <th>Precio Venta</th>
+              <th>Valor Nominal</th>
             </tr>
           </thead>
           <tbody>
@@ -107,8 +105,6 @@ const EmitirIIFParticipante = () => {
                 <td>{bono.emisor}</td>
                 <td>{bono.fechaVencimiento}</td>
                 <td>${bono.capitalNominal.toLocaleString('es-CL')}</td>
-                <td>{bono.institucionCompradora}</td>
-                <td>${bono.precioVenta.toLocaleString('es-CL')}</td>
               </tr>
             ))}
           </tbody>
@@ -163,7 +159,7 @@ const EmitirIIFParticipante = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="capitalNominal">Capital Nominal</label>
+              <label htmlFor="capitalNominal">Valor Nominal</label>
               <input
                 type="number"
                 id="capitalNominal"
@@ -182,35 +178,6 @@ const EmitirIIFParticipante = () => {
                 value={corteMinimo}
                 onChange={(e) => setCorteMinimo(e.target.value)}
                 placeholder="Ingrese el corte mínimo"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="institucionCompradora">Institución Compradora</label>
-              <select
-                id="institucionCompradora"
-                value={institucionCompradora}
-                onChange={(e) => setInstitucionCompradora(e.target.value)}
-                required
-              >
-                <option value="">Seleccione una institución</option>
-                {institucionesDisponibles.map((institucion, index) => (
-                  <option key={index} value={institucion}>
-                    {institucion}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="precioVenta">Precio de Venta</label>
-              <input
-                type="number"
-                id="precioVenta"
-                value={precioVenta}
-                onChange={(e) => setPrecioVenta(e.target.value)}
-                placeholder="Ingrese el precio de venta"
                 required
               />
             </div>
