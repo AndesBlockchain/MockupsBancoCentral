@@ -6,7 +6,10 @@ import './AdministrarBancos.css';
 
 const AdministrarBancos = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalAdminOpen, setIsModalAdminOpen] = useState(false);
   const [nombreBanco, setNombreBanco] = useState('');
+  const [bancoSeleccionado, setBancoSeleccionado] = useState(null);
+  const [nuevoAdmin, setNuevoAdmin] = useState('');
   const [bancos, setBancos] = useState([
     {
       id: 1,
@@ -61,6 +64,24 @@ const AdministrarBancos = () => {
     closeModal();
   };
 
+  const openModalAdmin = (banco) => {
+    setBancoSeleccionado(banco);
+    setNuevoAdmin('');
+    setIsModalAdminOpen(true);
+  };
+
+  const closeModalAdmin = () => {
+    setIsModalAdminOpen(false);
+    setBancoSeleccionado(null);
+    setNuevoAdmin('');
+  };
+
+  const handleSubmitAdmin = (e) => {
+    e.preventDefault();
+    console.log('Agregar admin:', nuevoAdmin, 'al banco:', bancoSeleccionado.institucion);
+    closeModalAdmin();
+  };
+
   return (
     <DashboardLayout title="Administrar Bancos">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
@@ -86,7 +107,7 @@ const AdministrarBancos = () => {
                   <code>{banco.address}</code>
                 </td>
                 <td className="address-cell">
-                  <code>{banco.address}</code>
+                  <code>{banco.pivote}</code>
                 </td>
                 <td className="toggle-cell">
                   <ToggleSwitch
@@ -95,7 +116,7 @@ const AdministrarBancos = () => {
                   />
                 </td>
                 <td>
-                <button>Agregar Admin</button>
+                <button onClick={() => openModalAdmin(banco)}>Agregar Admin</button>
                 </td>
               </tr>
             ))}
@@ -140,6 +161,39 @@ const AdministrarBancos = () => {
               Agregar
             </button>
           </form>
+        </div>
+      </Modal>
+
+      <Modal isOpen={isModalAdminOpen} onClose={closeModalAdmin}>
+        <div className="modal-form">
+          <h3 className="modal-form-title">Agregar Administrador</h3>
+          {bancoSeleccionado && (
+            <>
+              <div className="form-group-modal">
+                <label>Banco</label>
+                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#333', marginTop: '0.5rem' }}>
+                  {bancoSeleccionado.institucion}
+                </p>
+              </div>
+              <form onSubmit={handleSubmitAdmin}>
+                <div className="form-group-modal">
+                  <label htmlFor="nuevoAdmin">Wallet del Nuevo Administrador</label>
+                  <input
+                    type="text"
+                    id="nuevoAdmin"
+                    value={nuevoAdmin}
+                    onChange={(e) => setNuevoAdmin(e.target.value)}
+                    placeholder="Ingrese la wallet del administrador"
+                    required
+                    className="form-input"
+                  />
+                </div>
+                <button type="submit" className="btn-modal-agregar">
+                  Agregar Administrador
+                </button>
+              </form>
+            </>
+          )}
         </div>
       </Modal>
     </DashboardLayout>

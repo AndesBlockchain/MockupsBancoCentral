@@ -73,6 +73,14 @@ const AdministrarCBDC = () => {
                 className="form-input"
               />
             </div>
+            <div className="form-group-modal">
+              <label htmlFor="montoAcunar">Comentario</label>
+              <input
+                type="text"
+                id="montoAcunar"
+                className="form-input"
+              />
+            </div>
             <button type="submit" className="btn-modal-submit">
               Confirmar Acuñación
             </button>
@@ -97,6 +105,14 @@ const AdministrarCBDC = () => {
                 className="form-input"
               />
             </div>
+            <div className="form-group-modal">
+            <label htmlFor="montoAcunar">Comentario</label>
+            <input
+              type="text"
+              id="montoAcunar"
+              className="form-input"
+            />
+          </div>
             <button type="submit" className="btn-modal-submit">
               Confirmar Quema
             </button>

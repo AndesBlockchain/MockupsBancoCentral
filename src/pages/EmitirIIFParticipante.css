@@ -64,14 +64,14 @@
 
 /* Modal Styles */
 .modal-crear-bono-content {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .modal-crear-bono-content h2 {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: #003DA5;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 600;
 }
 
@@ -82,22 +82,22 @@
 }
 
 .crear-bono-form .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .crear-bono-form .form-group label {
   display: block;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #333;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .crear-bono-form .form-group input,
 .crear-bono-form .form-group select {
   width: 100%;
-  padding: 0.875rem 1rem;
-  font-size: 1rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.875rem;
   border: 2px solid #d0d0d0;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -126,8 +126,8 @@
 
 .btn-modal-crear {
   width: 100%;
-  padding: 1rem;
-  font-size: 1.1rem;
+  padding: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #fff;
   background-color: #003DA5;
@@ -135,7 +135,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 .btn-modal-crear:hover {

@@ -11,6 +11,7 @@ const EmitirIIFParticipante = () => {
   const [nemonico, setNemonico] = useState('');
   const [fechaVencimiento, setFechaVencimiento] = useState('');
   const [capitalNominal, setCapitalNominal] = useState('');
+  const [corteMinimo, setCorteMinimo] = useState('');
   const [institucionCompradora, setInstitucionCompradora] = useState('');
   const [precioVenta, setPrecioVenta] = useState('');
 
@@ -60,6 +61,7 @@ const EmitirIIFParticipante = () => {
       emisor: nombreInstitucion,
       fechaVencimiento,
       capitalNominal: parseFloat(capitalNominal),
+      corteMinimo: parseFloat(corteMinimo),
       institucionCompradora,
       precioVenta: parseFloat(precioVenta)
     };
@@ -70,6 +72,7 @@ const EmitirIIFParticipante = () => {
     setNemonico('');
     setFechaVencimiento('');
     setCapitalNominal('');
+    setCorteMinimo('');
     setInstitucionCompradora('');
     setPrecioVenta('');
     setIsModalOpen(false);
@@ -167,6 +170,18 @@ const EmitirIIFParticipante = () => {
                 value={capitalNominal}
                 onChange={(e) => setCapitalNominal(e.target.value)}
                 placeholder="Ingrese el capital nominal"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="corteMinimo">Corte Mínimo</label>
+              <input
+                type="number"
+                id="corteMinimo"
+                value={corteMinimo}
+                onChange={(e) => setCorteMinimo(e.target.value)}
+                placeholder="Ingrese el corte mínimo"
                 required
               />
             </div>

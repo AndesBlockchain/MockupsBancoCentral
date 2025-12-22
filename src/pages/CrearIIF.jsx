@@ -585,6 +585,16 @@ const CrearIIF = () => {
                   className="form-input"
                 />
               </div>
+              <div className="form-group-modal">
+              <label htmlFor="valorNominal">Corte Mínimo</label>
+              <input
+                type="number"
+                id="corteMinimoPDBC"
+                required
+                min="1"
+                className="form-input"
+              />
+            </div>
               <button type="submit" className="btn-modal-confirmar">
                 Crear PDBC
               </button>
