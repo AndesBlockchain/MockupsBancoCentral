@@ -6,6 +6,7 @@ const SidebarParticipante = () => {
   const location = useLocation();
   const [isWalletExpanded, setIsWalletExpanded] = useState(false);
   const [isIIFsExpanded, setIsIIFsExpanded] = useState(false);
+  const [isPasivosExpanded, setIsPasivosExpanded] = useState(false);
 
   const menuItems = [
     { path: '/home-participante', label: 'Inicio' },
@@ -23,18 +24,26 @@ const SidebarParticipante = () => {
       ]
     },
     {
-      label: 'Mis IIFs',
+      label: 'Activos',
       hasSubmenu: true,
       expanded: isIIFsExpanded,
       toggleHandler: () => setIsIIFsExpanded(!isIIFsExpanded),
       subitems: [
-        
+
         { path: '/iifs-participante', label: 'Mi Cartera' },
-        { path: '/emitir-iif-participante', label: 'Emitir IIF' },
-        { path: '/mercado-secundario-participante', label: 'Mis IIFs por comprar' },
-        { path: '/emision-primaria-participante', label: 'Pago de Vencimientos' },
+        { path: '/mercado-secundario-participante', label: 'Mis IRF por comprar' },
         { path: '/valores-prendados-participante', label: 'Valores Prendados' },
-        
+
+      ]
+    },
+    {
+      label: 'Pasivos',
+      hasSubmenu: true,
+      expanded: isPasivosExpanded,
+      toggleHandler: () => setIsPasivosExpanded(!isPasivosExpanded),
+      subitems: [
+        { path: '/emitir-iif-participante', label: 'Emitir IRF' },
+        { path: '/emision-primaria-participante', label: 'Pago de Vencimientos' },
       ]
     },
     { path: '/usuarios-participante', label: 'Usuarios' },
@@ -60,6 +69,17 @@ const SidebarParticipante = () => {
       );
       if (isIIFsPageActive) {
         setIsIIFsExpanded(true);
+      }
+    }
+
+    // Check if current path is in "Pasivos" submenu
+    const pasivosMenu = menuItems.find(item => item.label === 'Pasivos');
+    if (pasivosMenu && pasivosMenu.subitems) {
+      const isPasivosPageActive = pasivosMenu.subitems.some(
+        subitem => subitem.path === location.pathname
+      );
+      if (isPasivosPageActive) {
+        setIsPasivosExpanded(true);
       }
     }
   }, [location.pathname]);

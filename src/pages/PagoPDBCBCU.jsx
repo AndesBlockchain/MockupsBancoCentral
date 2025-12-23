@@ -91,7 +91,7 @@ const PagoPDBCBCU = () => {
   };
 
   return (
-    <DashboardLayout title="Pago PDBC/BCU">
+    <DashboardLayout title="Próximos Vencimientos">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
         En esta sección podrá gestionar los pagos de cupones y capital de los instrumentos PDBC y BCU.
       </p>

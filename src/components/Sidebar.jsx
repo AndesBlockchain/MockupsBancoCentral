@@ -6,7 +6,8 @@ const Sidebar = () => {
   const location = useLocation();
   const [expandedMenus, setExpandedMenus] = useState({
     wallet: false,
-    iifs: false
+    iifs: false,
+    pagos: false
   });
 
   const menuItems = [
@@ -25,13 +26,21 @@ const Sidebar = () => {
     },
     {
       id: 'iifs',
-      label: 'Administrar IIFs',
+      label: 'Administrar IRF',
       isParent: true,
       submenu: [
-        { path: '/crear-iif', label: 'Crear IIF' },
-        { path: '/emision-iif-bcentral', label: 'Asignación IIFs' },
-        { path: '/iifs-emitidos-bcentral', label: 'IIFs Emitidos' },
-        { path: '/pago-pdbc-bcu', label: 'Pago Cupones / Vencimiento' },
+        { path: '/crear-iif', label: 'Crear IRF' },
+        { path: '/emision-iif-bcentral', label: 'Asignación IRF' },
+        { path: '/iifs-emitidos-bcentral', label: 'IRF Emitidos' },
+      ]
+    },
+    {
+      id: 'pagos',
+      label: 'Pagos de Vencimientos',
+      isParent: true,
+      submenu: [
+        { path: '/pago-pdbc-bcu', label: 'Próximos Vencimientos' },
+        { path: '/vencimientos-pagados', label: 'Vencimientos Pagados' },
       ]
     },
     { path: '/administrar-usuarios', label: 'Administrar Usuarios' },

@@ -1,0 +1,120 @@
+.vencimientos-pagados-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.vencimientos-pagados-table thead {
+  background-color: #003DA5;
+  color: white;
+}
+
+.vencimientos-pagados-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #003DA5;
+  white-space: nowrap;
+}
+
+.vencimientos-pagados-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.vencimientos-pagados-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.vencimientos-pagados-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.vencimientos-pagados-table td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.nemonico-cell {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.institucion-cell {
+  font-weight: 500;
+  color: #003DA5;
+}
+
+.monto-cell {
+  text-align: right;
+  font-weight: 600;
+  color: #28a745;
+  font-size: 1rem;
+}
+
+.tipo-pago {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tipo-pago-cupón {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #4caf50;
+}
+
+.tipo-pago-capital {
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ff9800;
+}
+
+@media (max-width: 968px) {
+  .vencimientos-pagados-table {
+    font-size: 0.9rem;
+  }
+
+  .vencimientos-pagados-table th,
+  .vencimientos-pagados-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .nemonico-cell {
+    font-size: 0.75rem;
+  }
+
+  .tipo-pago {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .monto-cell {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .vencimientos-pagados-table th,
+  .vencimientos-pagados-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .institucion-cell {
+    font-size: 0.85rem;
+  }
+}

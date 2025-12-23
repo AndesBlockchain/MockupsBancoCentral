@@ -15,10 +15,14 @@ const IIFsParticipante = () => {
   const [contraparte, setContraparte] = useState('');
   const [montoNominal, setMontoNominal] = useState('');
   const [montoPagado, setMontoPagado] = useState('');
+  const [listaVentas, setListaVentas] = useState([]);
+  const [archivoCSV, setArchivoCSV] = useState(null);
 
   // Estados para los campos del modal Venta Privada
   const [precioVentaPrivada, setPrecioVentaPrivada] = useState('');
   const [secretoTransferencia, setSecretoTransferencia] = useState('');
+  const [listaVentasPrivadas, setListaVentasPrivadas] = useState([]);
+  const [archivoCSVPrivada, setArchivoCSVPrivada] = useState(null);
 
   // Estado para el campo del modal Prendar
   const [addressPrendatario, setAddressPrendatario] = useState('');
@@ -142,26 +146,77 @@ const IIFsParticipante = () => {
     setIsPrendarModalOpen(true);
   };
 
-  const handleConfirmarVender = (e) => {
+  const handleAgregarVenta = (e) => {
     e.preventDefault();
-    console.log('Vender instrumento:', {
-      instrumento: selectedInstrumento,
+    const nuevaVenta = {
+      id: Date.now(),
       contraparte,
-      montoNominal,
-      montoPagado
-    });
+      montoNominal: parseFloat(montoNominal),
+      montoPagado: parseFloat(montoPagado)
+    };
+    setListaVentas([...listaVentas, nuevaVenta]);
     setContraparte('');
     setMontoNominal('');
     setMontoPagado('');
+  };
+
+  const handleEliminarVenta = (id) => {
+    setListaVentas(listaVentas.filter(venta => venta.id !== id));
+  };
+
+  const handleCargarCSV = (e) => {
+    const archivo = e.target.files[0];
+    if (archivo) {
+      setArchivoCSV(archivo);
+      // Aquí iría la lógica para procesar el CSV
+      console.log('Archivo CSV cargado:', archivo.name);
+    }
+  };
+
+  const handleConfirmarVender = () => {
+    console.log('Confirmar ventas:', {
+      instrumento: selectedInstrumento,
+      ventas: listaVentas
+    });
+    setListaVentas([]);
+    setArchivoCSV(null);
     setIsVenderModalOpen(false);
     setSelectedInstrumento(null);
   };
 
-  const handleConfirmarVentaPrivada = (e) => {
+  const handleAgregarVentaPrivada = (e) => {
     e.preventDefault();
-    console.log('Venta Privada:', selectedInstrumento, 'Precio:', precioVentaPrivada, 'Secreto:', secretoTransferencia);
+    const nuevaVentaPrivada = {
+      id: Date.now(),
+      contraparte,
+      montoPagado: parseFloat(precioVentaPrivada),
+      secreto: secretoTransferencia
+    };
+    setListaVentasPrivadas([...listaVentasPrivadas, nuevaVentaPrivada]);
+    setContraparte('');
     setPrecioVentaPrivada('');
     setSecretoTransferencia('');
+  };
+
+  const handleEliminarVentaPrivada = (id) => {
+    setListaVentasPrivadas(listaVentasPrivadas.filter(venta => venta.id !== id));
+  };
+
+  const handleCargarCSVPrivada = (e) => {
+    const archivo = e.target.files[0];
+    if (archivo) {
+      setArchivoCSVPrivada(archivo);
+      console.log('Archivo CSV de venta privada cargado:', archivo.name);
+    }
+  };
+
+  const handleConfirmarVentaPrivada = () => {
+    console.log('Confirmar ventas privadas:', {
+      instrumento: selectedInstrumento,
+      ventas: listaVentasPrivadas
+    });
+    setListaVentasPrivadas([]);
+    setArchivoCSVPrivada(null);
     setIsVentaPrivadaModalOpen(false);
     setSelectedInstrumento(null);
   };
@@ -201,7 +256,7 @@ const IIFsParticipante = () => {
   return (
     <DashboardLayoutParticipante title="Mi Cartera">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        En esta sección podrá ver los Instrumentos de Inversión Financieros (IIFs) que posee actualmente.
+        En esta sección podrá ver los Instrumentos de Renta Fija (IRF) que posee actualmente.
       </p>
 
       <div className="iifs-tabla-container">
@@ -239,13 +294,17 @@ const IIFsParticipante = () => {
                 </td>
                 <td className="actions-cell">
                   <div className="actions-buttons">
-                    <button
-                      className="btn-vender"
-                      onClick={() => handleVender(instrumento)}
-                      disabled={instrumento.prendado}
-                    >
-                      Vender
-                    </button>
+
+                    {instrumento.tipo !== 'Bono Empresa' && (
+                      <button
+                        className="btn-vender"
+                        onClick={() => handleVender(instrumento)}
+                        disabled={instrumento.prendado}
+                      >
+                        Vender
+                      </button>
+                    )}
+                    {instrumento.tipo === 'Bono Empresa' && (
                     <button
                       className="btn-venta-privada"
                       onClick={() => handleVentaPrivada(instrumento)}
@@ -253,6 +312,7 @@ const IIFsParticipante = () => {
                     >
                       Venta Privada
                     </button>
+                    )}
                     <button
                       className="btn-prendar"
                       onClick={() => handlePrendar(instrumento)}
@@ -275,17 +335,19 @@ const IIFsParticipante = () => {
       <Modal isOpen={isVenderModalOpen} onClose={() => setIsVenderModalOpen(false)}>
         <div className="modal-iif-content">
           <h2>Vender Instrumento</h2>
-          <form onSubmit={handleConfirmarVender} className="iif-form">
-            <div className="form-group">
+
+          {/* Fila de campos */}
+          <form onSubmit={handleAgregarVenta} className="vender-form-inline">
+            <div className="form-field-inline">
               <label htmlFor="contraparte">Contraparte</label>
               <select
                 id="contraparte"
                 value={contraparte}
                 onChange={(e) => setContraparte(e.target.value)}
                 required
-                className="form-select"
+                className="form-select-inline"
               >
-                <option value="">Seleccione una institución</option>
+                <option value="">Seleccionar</option>
                 {instituciones.map((inst, index) => (
                   <option key={index} value={inst}>
                     {inst}
@@ -293,34 +355,93 @@ const IIFsParticipante = () => {
                 ))}
               </select>
             </div>
-            <div className="form-group">
-              <label htmlFor="montoNominal">Monto Nominal</label>
+            <div className="form-field-inline">
+              <label htmlFor="montoNominal">Nominal</label>
               <input
                 type="number"
                 id="montoNominal"
                 value={montoNominal}
                 onChange={(e) => setMontoNominal(e.target.value)}
-                placeholder="Ingrese el monto nominal"
+                placeholder="Nominal"
                 required
                 min="1"
+                className="form-input-inline"
               />
             </div>
-            <div className="form-group">
+            <div className="form-field-inline">
               <label htmlFor="montoPagado">Monto Pagado</label>
               <input
                 type="number"
                 id="montoPagado"
                 value={montoPagado}
                 onChange={(e) => setMontoPagado(e.target.value)}
-                placeholder="Ingrese el monto pagado"
+                placeholder="Monto"
                 required
                 min="1"
+                className="form-input-inline"
               />
             </div>
-            <button type="submit" className="btn-modal-confirmar">
-              Confirmar Venta
+            <button type="submit" className="btn-agregar-inline">
+              Agregar
             </button>
           </form>
+
+          {/* Campo para cargar CSV */}
+          <div className="csv-upload-section">
+            <label htmlFor="csvFile" className="csv-upload-label">
+              Cargar desde archivo
+            </label>
+            <input
+              type="file"
+              id="csvFile"
+              accept=".csv"
+              onChange={handleCargarCSV}
+              className="csv-upload-input"
+            />
+          </div>
+
+          {/* Tabla de ventas */}
+          {listaVentas.length > 0 && (
+            <div className="ventas-tabla-container">
+              <table className="ventas-tabla">
+                <thead>
+                  <tr>
+                    <th>Contraparte</th>
+                    <th>Nominal</th>
+                    <th>Monto Pagado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {listaVentas.map((venta) => (
+                    <tr key={venta.id}>
+                      <td>{venta.contraparte}</td>
+                      <td>${venta.montoNominal.toLocaleString('es-CL')}</td>
+                      <td>${venta.montoPagado.toLocaleString('es-CL')}</td>
+                      <td>
+                        <button
+                          className="btn-eliminar-venta"
+                          onClick={() => handleEliminarVenta(venta.id)}
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Botón confirmar */}
+          <button
+            type="button"
+            className="btn-modal-confirmar"
+            onClick={handleConfirmarVender}
+            disabled={listaVentas.length === 0}
+          >
+            Confirmar Venta
+          </button>
         </div>
       </Modal>
 
@@ -331,50 +452,112 @@ const IIFsParticipante = () => {
           <p className="modal-explicacion">
             El secreto que ingrese quedará asociado al vale vista con que le paguen el instrumento, y lo necesitará para hacer el cobro.
           </p>
-          <form onSubmit={handleConfirmarVentaPrivada} className="iif-form">
-          <div className="form-group">
-          <label htmlFor="contraparte">Contraparte</label>
-          <select
-            id="contraparte"
-            value={contraparte}
-            onChange={(e) => setContraparte(e.target.value)}
-            required
-            className="form-select"
-          >
-            <option value="">Seleccione una institución</option>
-            {instituciones.map((inst, index) => (
-              <option key={index} value={inst}>
-                {inst}
-              </option>
-            ))}
-          </select>
-        </div>
-            <div className="form-group">
+
+          {/* Fila de campos */}
+          <form onSubmit={handleAgregarVentaPrivada} className="vender-form-inline">
+            <div className="form-field-inline">
+              <label htmlFor="contrapartePrivada">Contraparte</label>
+              <select
+                id="contrapartePrivada"
+                value={contraparte}
+                onChange={(e) => setContraparte(e.target.value)}
+                required
+                className="form-select-inline"
+              >
+                <option value="">Seleccionar</option>
+                {instituciones.map((inst, index) => (
+                  <option key={index} value={inst}>
+                    {inst}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-field-inline">
               <label htmlFor="precioVentaPrivada">Monto Pagado</label>
               <input
                 type="number"
                 id="precioVentaPrivada"
                 value={precioVentaPrivada}
                 onChange={(e) => setPrecioVentaPrivada(e.target.value)}
-                placeholder="Ingrese el precio"
+                placeholder="Monto"
                 required
+                min="1"
+                className="form-input-inline"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="secretoTransferencia">Secreto de Transferencia</label>
+            <div className="form-field-inline">
+              <label htmlFor="secretoTransferencia">Secreto</label>
               <input
                 type="text"
                 id="secretoTransferencia"
                 value={secretoTransferencia}
                 onChange={(e) => setSecretoTransferencia(e.target.value)}
-                placeholder="Ingrese el secreto"
+                placeholder="Secreto"
                 required
+                className="form-input-inline"
               />
             </div>
-            <button type="submit" className="btn-modal-confirmar">
-              Confirmar Venta Privada
+            <button type="submit" className="btn-agregar-inline">
+              Agregar
             </button>
           </form>
+
+          {/* Campo para cargar CSV */}
+          <div className="csv-upload-section">
+            <label htmlFor="csvFilePrivada" className="csv-upload-label">
+              Cargar desde archivo
+            </label>
+            <input
+              type="file"
+              id="csvFilePrivada"
+              accept=".csv"
+              onChange={handleCargarCSVPrivada}
+              className="csv-upload-input"
+            />
+          </div>
+
+          {/* Tabla de ventas privadas */}
+          {listaVentasPrivadas.length > 0 && (
+            <div className="ventas-tabla-container">
+              <table className="ventas-tabla">
+                <thead>
+                  <tr>
+                    <th>Contraparte</th>
+                    <th>Monto Pagado</th>
+                    <th>Secreto</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {listaVentasPrivadas.map((venta) => (
+                    <tr key={venta.id}>
+                      <td>{venta.contraparte}</td>
+                      <td>${venta.montoPagado.toLocaleString('es-CL')}</td>
+                      <td>{venta.secreto}</td>
+                      <td>
+                        <button
+                          className="btn-eliminar-venta"
+                          onClick={() => handleEliminarVentaPrivada(venta.id)}
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Botón confirmar */}
+          <button
+            type="button"
+            className="btn-modal-confirmar"
+            onClick={handleConfirmarVentaPrivada}
+            disabled={listaVentasPrivadas.length === 0}
+          >
+            Confirmar Venta Privada
+          </button>
         </div>
       </Modal>
 

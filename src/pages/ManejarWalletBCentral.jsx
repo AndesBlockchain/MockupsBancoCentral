@@ -101,6 +101,14 @@ const ManejarWalletBCentral = () => {
                 className="form-input"
               />
             </div>
+                        <div className="form-group-modal">
+              <label htmlFor="monto">Comentario</label>
+              <input
+                type="text"
+                id="monto"
+                className="form-input"
+              />
+            </div>
             <button type="submit" className="btn-modal-transferir">
               Transferir
             </button>

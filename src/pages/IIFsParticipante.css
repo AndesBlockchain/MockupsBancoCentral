@@ -534,3 +534,204 @@
     padding: 0.2rem 0.4rem;
   }
 }
+
+/* Estilos para el modal Vender con formulario inline */
+.vender-form-inline {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.form-field-inline {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 150px;
+}
+
+.form-field-inline label {
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.form-select-inline,
+.form-input-inline {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  border: 2px solid #d0d0d0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-select-inline:focus,
+.form-input-inline:focus {
+  outline: none;
+  border-color: #003DA5;
+  box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+}
+
+.btn-agregar-inline {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+
+.btn-agregar-inline:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-agregar-inline:active {
+  transform: translateY(0);
+}
+
+/* Sección de carga de CSV */
+.csv-upload-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 2px dashed #d0d0d0;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.csv-upload-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.csv-upload-input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+/* Tabla de ventas */
+.ventas-tabla-container {
+  margin-bottom: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.ventas-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.ventas-tabla thead {
+  background-color: #003DA5;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.ventas-tabla th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ventas-tabla tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.ventas-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.ventas-tabla tbody tr:last-child {
+  border-bottom: none;
+}
+
+.ventas-tabla td {
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.btn-eliminar-venta {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-eliminar-venta:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.btn-eliminar-venta:active {
+  transform: translateY(0);
+}
+
+.btn-modal-confirmar:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-modal-confirmar:disabled:hover {
+  background-color: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive para modal vender */
+@media (max-width: 768px) {
+  .vender-form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-field-inline {
+    min-width: 100%;
+  }
+
+  .btn-agregar-inline {
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .ventas-tabla-container {
+    max-height: 200px;
+  }
+
+  .ventas-tabla th,
+  .ventas-tabla td {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}

@@ -110,6 +110,14 @@ const UsuariosParticipante = () => {
               />
             </div>
             <div className="form-group-modal">
+              <label htmlFor="nombreUsuario">Login</label>
+              <input
+                type="text"
+                required
+                className="form-input"
+              />
+            </div>
+            <div className="form-group-modal">
               <label htmlFor="nombreUsuario">Password</label>
               <input
                 type="password"

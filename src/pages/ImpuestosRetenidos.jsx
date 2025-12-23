@@ -92,6 +92,7 @@ const ImpuestosRetenidos = () => {
             <tr>
               <th>Institución</th>
               <th>Monto Retenido</th>
+              <th>Fecha</th>
               <th>Instrumento</th>
               <th>Tasa de Retención</th>
               <th>Acciones</th>
@@ -102,6 +103,7 @@ const ImpuestosRetenidos = () => {
               <tr key={institucion.id}>
                 <td className="institucion-cell">{institucion.nombre}</td>
                 <td className="monto-cell">{formatMonto(institucion.montoRetenido)}</td>
+                <td className="monto-cell">10/12/2026</td>
                 <td className="monto-cell">{institucion.instrumento_asociado}</td>
                 <td className="monto-cell">{institucion.tasa}%</td>
                 <td className="acciones-cell">

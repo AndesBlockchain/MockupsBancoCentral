@@ -124,9 +124,9 @@ const MercadoSecundarioParticipante = () => {
   };
 
   return (
-    <DashboardLayoutParticipante title="Mis IIFs por comprar">
+    <DashboardLayoutParticipante title="Mis IRF por comprar">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        En esta ventana se encuentran los Instrumentos Financieros a la espera de su pago para serle transferidos.
+        En esta ventana se encuentran los Instrumentos de Renta Fija a la espera de su pago para serle transferidos.
       </p>
 
       <div className="mercado-secundario-tabla-container">

@@ -15,28 +15,48 @@ const AdministrarBancos = () => {
       id: 1,
       institucion: 'Banco de Chile',
       address: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1',
-      pivote: '0x74810B281bDB1D8caCC3A130C4E02bB09df7452b',
+      pivote: [
+        { institucion: 'Banco de Chile', wallet: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b' },
+        { institucion: 'Banco Santander', wallet: '0x2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c' },
+        { institucion: 'Banco Estado', wallet: '0x3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d' },
+        { institucion: 'Banco BCI', wallet: '0x4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e' }
+      ],
       autorizada: true,
     },
     {
       id: 2,
       institucion: 'Banco Santander',
       address: '0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed',
-      pivote: '0x74810B281bDB1D8caCC3A130C4E02bB09df7452b',
+      pivote: [
+        { institucion: 'Banco de Chile', wallet: '0x5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f' },
+        { institucion: 'Banco Santander', wallet: '0x6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a' },
+        { institucion: 'Banco Estado', wallet: '0x7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b' },
+        { institucion: 'Banco BCI', wallet: '0x8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c' }
+      ],
       autorizada: true,
     },
     {
       id: 3,
       institucion: 'Banco Estado',
       address: '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359',
-      pivote: '0xB377F3BeF1aA51FF830DaDc8175Da2E41D28c98D',
+      pivote: [
+        { institucion: 'Banco de Chile', wallet: '0x9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d' },
+        { institucion: 'Banco Santander', wallet: '0xa0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9' },
+        { institucion: 'Banco Estado', wallet: '0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0' },
+        { institucion: 'Banco BCI', wallet: '0xc2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1' }
+      ],
       autorizada: false,
     },
     {
       id: 4,
       institucion: 'Banco BCI',
       address: '0xdD870fA1b7C4700F2BD7f44238821C26f7392148',
-      pivote: '0xB377F3BeF1aA51FF830DaDc8175Da2E41D28c98D',
+      pivote: [
+        { institucion: 'Banco de Chile', wallet: '0xd3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2' },
+        { institucion: 'Banco Santander', wallet: '0xe4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3' },
+        { institucion: 'Banco Estado', wallet: '0xf5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4' },
+        { institucion: 'Banco BCI', wallet: '0xa6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5' }
+      ],
       autorizada: true,
     },
   ]);
@@ -107,7 +127,16 @@ const AdministrarBancos = () => {
                   <code>{banco.address}</code>
                 </td>
                 <td className="address-cell">
-                  <code>{banco.pivote}</code>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    {banco.pivote.map((item, index) => (
+                      <div key={index} style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                        <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#003DA5' }}>
+                          {item.institucion}
+                        </span>
+                        <code style={{ fontSize: '0.8rem' }}>{item.wallet}</code>
+                      </div>
+                    ))}
+                  </div>
                 </td>
                 <td className="toggle-cell">
                   <ToggleSwitch

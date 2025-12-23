@@ -80,6 +80,15 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+.badge-tipo.minting {
+  background-color: #fce8e6;
+  color: #2fd332;
+}
+
+.badge-tipo.burning {
+  background-color: #fce8e6;
+  color: #d32f2f;
+}
 
 .badge-tipo.entrada {
   background-color: #e6f4ea;

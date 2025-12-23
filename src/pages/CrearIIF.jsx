@@ -268,9 +268,9 @@ const CrearIIF = () => {
   };
 
   return (
-    <DashboardLayout title="Crear IIF">
+    <DashboardLayout title="Crear IRF">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        En esta sección podrá emitir instrumentos financieros de Banco Central
+        En esta sección podrá emitir Instrumentos de Renta Fija de Banco Central
       </p>
 
 
@@ -655,20 +655,7 @@ const CrearIIF = () => {
                   className="form-input"
                 />
               </div>
-              <div className="form-group-modal">
-                <label htmlFor="frecuenciaPago">Frecuencia Pago Cupón</label>
-                <select
-                  id="frecuenciaPago"
-                  value={frecuenciaPago}
-                  onChange={(e) => setFrecuenciaPago(e.target.value)}
-                  required
-                  className="form-select"
-                >
-                  <option value="">Seleccione la frecuencia</option>
-                  <option value="Semestral">Semestral</option>
-                  <option value="Anual">Anual</option>
-                </select>
-              </div>
+    
               <div className="form-group-modal">
                 <label htmlFor="fechaVencimientoBCU">Fecha de Vencimiento</label>
                 <input

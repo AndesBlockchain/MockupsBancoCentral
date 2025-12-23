@@ -337,9 +337,9 @@ const IIFsEmitidosBCentral = () => {
   };
 
   return (
-    <DashboardLayout title="IIFs Emitidos">
+    <DashboardLayout title="IRF Emitidos">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        En esta sección podrá ver todos los Instrumentos de Inversión Financieros (IIFs) emitidos.
+        En esta sección podrá ver todos los Instrumentos de Renta Fija emitidos.
       </p>
 
       <div className="table-container">
@@ -413,6 +413,7 @@ const IIFsEmitidosBCentral = () => {
             <div className="modal-info">
               <p><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</p>
               <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
+              <p><strong>Monto Nominal:</strong>$50.000.000</p>
               <p><strong>Tipo:</strong> <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>{selectedInstrumento.tipo}</span></p>
             </div>
           )}
@@ -423,6 +424,8 @@ const IIFsEmitidosBCentral = () => {
                 <tr>
                   <th>Institución</th>
                   <th>Fecha Traspaso</th>
+                  <th>Monto Nominal</th>
+                  <th>Monto Pagado</th>
                 </tr>
               </thead>
               <tbody>
@@ -432,6 +435,8 @@ const IIFsEmitidosBCentral = () => {
                       {tenedor.institucion}
                     </td>
                     <td>{tenedor.fechaTraspaso}</td>
+                    <td>$20.000.000</td>
+                    <td>$18.500.000</td>
                   </tr>
                 ))}
               </tbody>
@@ -587,6 +592,7 @@ const IIFsEmitidosBCentral = () => {
             <div className="modal-info">
               <p><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</p>
               <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
+              <p><strong>Monto Nominal:</strong>$100.000.000</p>
               <p><strong>Tipo:</strong> <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>{selectedInstrumento.tipo}</span></p>
             </div>
           )}
@@ -598,6 +604,7 @@ const IIFsEmitidosBCentral = () => {
                   <th>Fecha</th>
                   <th>De</th>
                   <th>A</th>
+                  <th>Monto Nominal</th>
                   <th>Monto Pagado</th>
                 </tr>
               </thead>
@@ -607,6 +614,7 @@ const IIFsEmitidosBCentral = () => {
                     <td>{traspaso.fecha}</td>
                     <td>{traspaso.de}</td>
                     <td>{traspaso.a}</td>
+                    <td className="monto-cell">$20.000.000 CLP</td>
                     <td className="monto-cell">{traspaso.montoPagado} CLP</td>
                   </tr>
                 ))}
@@ -623,6 +631,7 @@ const IIFsEmitidosBCentral = () => {
             <div className="modal-info">
               <p><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</p>
               <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
+              <p><strong>Monto Nominal:</strong> $50.000.000</p>
               <p><strong>Tipo:</strong> <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>{selectedInstrumento.tipo}</span></p>
             </div>
           )}

@@ -7,16 +7,16 @@ const CartolaBancoCentral = () => {
     {
       id: 1,
       fecha: '2025-12-15 14:30',
-      institucion: 'Banco de Chile',
+      institucion: 'Banco Central',
       monto: '10,000,000',
-      tipo: 'Entrada'
+      tipo: 'Minting'
     },
     {
       id: 2,
       fecha: '2025-12-15 13:15',
-      institucion: 'Banco Santander',
+      institucion: 'Banco Central',
       monto: '15,500,000',
-      tipo: 'Salida'
+      tipo: 'Burning'
     },
     {
       id: 3,

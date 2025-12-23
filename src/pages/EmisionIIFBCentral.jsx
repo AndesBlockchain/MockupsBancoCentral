@@ -268,9 +268,9 @@ const EmisionIIFBCentral = () => {
   };
 
   return (
-    <DashboardLayout title="Asignación IIFs">
+    <DashboardLayout title="Asignación IRF">
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
-        En esta sección podrá asignar los IIFs a sus respectivos adjudicatarios
+        En esta sección podrá asignar los Instrumentos de Renta Fija a sus respectivos adjudicatarios
       </p>
 
       <h2 className="section-subtitle">Instrumentos Emitidos</h2>
@@ -320,7 +320,7 @@ const EmisionIIFBCentral = () => {
                       className="btn-vender"
                       onClick={() => handleVender(instrumento)}
                     >
-                      Asignar
+                      Asignar 
                     </button>
                   )}
                 </td>
@@ -390,6 +390,13 @@ const EmisionIIFBCentral = () => {
                   Agregar
                 </button>
               </div>
+              <div className="form-field">
+              <label htmlFor="porcentajeAsignadoPDBC">Cargar desde CSV</label>
+              <input
+                type="file"
+                className="form-input"
+              />
+            </div>            
             </form>
 
             {asignacionesPDBC.length > 0 && (
@@ -441,7 +448,7 @@ const EmisionIIFBCentral = () => {
                 <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
                 <p><strong>nemónico:</strong> BCCLP213123</p>
                 <p><strong>Capital Nominal:</strong> {selectedInstrumento.capitalNominal} {selectedInstrumento.moneda}</p>
-                <p><strong>Tasa Anual:</strong> 4% </p>
+                <p><strong>Tasa Cupon:</strong> 4% </p>
                 <p><strong>Frecuencia Pago:</strong>Semestral</p>
                 <p><strong>Vencimiento:</strong> 10/10/2040</p>
                 <p><strong>Corte Mínimo:</strong> {selectedInstrumento.corteMinimo} {selectedInstrumento.moneda}</p>
@@ -492,6 +499,14 @@ const EmisionIIFBCentral = () => {
                   Agregar
                 </button>
               </div>
+              <div className="form-field">
+              <label htmlFor="porcentajeAsignadoPDBC">Cargar desde CSV</label>
+              <input
+                type="file"
+                className="form-input"
+              />
+            </div>    
+
             </form>
 
             {asignaciones.length > 0 && (
@@ -632,7 +647,7 @@ const EmisionIIFBCentral = () => {
                 />
               </div>
               <div className="form-group-modal">
-                <label htmlFor="tasaAnual">Tasa Anual (%)</label>
+                <label htmlFor="tasaAnual">Tasa Cupon (%)</label>
                 <input
                   type="number"
                   id="tasaAnual"
@@ -644,20 +659,6 @@ const EmisionIIFBCentral = () => {
                   step="0.01"
                   className="form-input"
                 />
-              </div>
-              <div className="form-group-modal">
-                <label htmlFor="frecuenciaPago">Frecuencia Pago Cupón</label>
-                <select
-                  id="frecuenciaPago"
-                  value={frecuenciaPago}
-                  onChange={(e) => setFrecuenciaPago(e.target.value)}
-                  required
-                  className="form-select"
-                >
-                  <option value="">Seleccione la frecuencia</option>
-                  <option value="Semestral">Semestral</option>
-                  <option value="Anual">Anual</option>
-                </select>
               </div>
               <div className="form-group-modal">
                 <label htmlFor="fechaVencimientoBCU">Fecha de Vencimiento</label>
@@ -818,6 +819,12 @@ const EmisionIIFBCentral = () => {
                     <td className="review-label">Capital Nominal:</td>
                     <td className="review-value">{selectedInstrumento.capitalNominal} {selectedInstrumento.moneda}</td>
                   </tr>
+                  {selectedInstrumento.tipo === 'BCU' && (
+                    <tr>
+                      <td className="review-label">Tasa Cupón: 4%</td>
+                      <td className="review-value">{selectedInstrumento.tasaAnual}</td>
+                    </tr>
+                  )}
                   <tr>
                     <td className="review-label">Moneda:</td>
                     <td className="review-value">{selectedInstrumento.moneda}</td>
