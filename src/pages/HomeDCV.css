@@ -1,0 +1,170 @@
+.home-dcv-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.home-dcv-main {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 120px);
+}
+
+.home-dcv-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #003DA5;
+  margin: 0 0 2rem 0;
+}
+
+.home-dcv-content {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+.operaciones-tabla-container {
+  margin: 2rem 0;
+}
+
+.operaciones-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.operaciones-tabla thead {
+  background-color: #003DA5;
+  color: #fff;
+}
+
+.operaciones-tabla th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.operaciones-tabla td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+}
+
+.operaciones-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.operaciones-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.nemonico-cell {
+  font-weight: 600;
+  color: #003DA5;
+}
+
+.monto-cell {
+  font-weight: 500;
+  color: #333;
+}
+
+.acciones-cell {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-confirmar,
+.btn-rechazar {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  width: 100px;
+}
+
+.btn-confirmar {
+  background-color: #28a745;
+}
+
+.btn-confirmar:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-rechazar {
+  background-color: #dc3545;
+}
+
+.btn-rechazar:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.btn-confirmar:active,
+.btn-rechazar:active {
+  transform: translateY(0);
+}
+
+.no-data {
+  text-align: center;
+  padding: 3rem !important;
+  color: #999;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .home-dcv-main {
+    padding: 1.5rem;
+  }
+
+  .home-dcv-title {
+    font-size: 2rem;
+  }
+
+  .home-dcv-content {
+    padding: 1.5rem;
+  }
+
+  .operaciones-tabla-container {
+    overflow-x: auto;
+  }
+
+  .operaciones-tabla {
+    font-size: 0.8rem;
+  }
+
+  .operaciones-tabla th,
+  .operaciones-tabla td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .acciones-cell {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .btn-confirmar,
+  .btn-rechazar {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+}

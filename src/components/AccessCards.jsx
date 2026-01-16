@@ -10,6 +10,9 @@ const AccessCards = () => {
       <Link to="/login-participante" className="access-card">
         <h2 className="access-card-title">Acceso Participantes</h2>
       </Link>
+      <Link to="/login-dcv" className="access-card">
+        <h2 className="access-card-title">Acceso DCV</h2>
+      </Link>
     </div>
   );
 };

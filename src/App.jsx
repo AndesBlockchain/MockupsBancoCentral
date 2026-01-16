@@ -2,10 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import LoginBancoCentral from './pages/LoginBancoCentral'
 import LoginParticipante from './pages/LoginParticipante'
+import LoginDCV from './pages/LoginDCV'
 import ConectarMetamaskBCentral from './pages/ConectarMetamaskBCentral'
 import ConectarMetamaskParticipante from './pages/ConectarMetamaskParticipante'
+import ConectarMetamaskDCV from './pages/ConectarMetamaskDCV'
 import HomeBancoCentral from './pages/HomeBancoCentral'
 import HomeParticipante from './pages/HomeParticipante'
+import HomeDCV from './pages/HomeDCV'
 import AdministrarBancos from './pages/AdministrarBancos'
 import AdministrarCBDC from './pages/AdministrarCBDC'
 import ManejarWalletBCentral from './pages/ManejarWalletBCentral'
@@ -41,10 +44,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login-banco-central" element={<LoginBancoCentral />} />
         <Route path="/login-participante" element={<LoginParticipante />} />
+        <Route path="/login-dcv" element={<LoginDCV />} />
         <Route path="/conectar-metamask-bcentral" element={<ConectarMetamaskBCentral />} />
         <Route path="/conectar-metamask-participante" element={<ConectarMetamaskParticipante />} />
+        <Route path="/conectar-metamask-dcv" element={<ConectarMetamaskDCV />} />
         <Route path="/home-banco-central" element={<HomeBancoCentral />} />
         <Route path="/home-participante" element={<HomeParticipante />} />
+        <Route path="/home-dcv" element={<HomeDCV />} />
         <Route path="/administrar-bancos" element={<AdministrarBancos />} />
         <Route path="/administrar-cbdc" element={<AdministrarCBDC />} />
         <Route path="/wallet-banco-central" element={<ManejarWalletBCentral />} />
