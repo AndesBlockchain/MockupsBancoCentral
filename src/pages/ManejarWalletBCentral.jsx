@@ -41,7 +41,7 @@ const ManejarWalletBCentral = () => {
   return (
     <DashboardLayout>
       <div className="page-header">
-        <h1 className="dashboard-title">Manejar Wallet Banco Central</h1>
+        <h1 className="dashboard-title">Transferir</h1>
         <div className="saldo-header">
           Saldo Banco Central: <span className="saldo-amount">${saldoBancoCentral}</span>
         </div>

@@ -7,6 +7,8 @@ const CartolaBancoCentral = () => {
     {
       id: 1,
       fecha: '2025-12-15 14:30',
+      usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
       institucion: 'Banco Central',
       monto: '10,000,000',
       tipo: 'Minting'
@@ -14,6 +16,9 @@ const CartolaBancoCentral = () => {
     {
       id: 2,
       fecha: '2025-12-15 13:15',
+            usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
+
       institucion: 'Banco Central',
       monto: '15,500,000',
       tipo: 'Burning'
@@ -21,6 +26,9 @@ const CartolaBancoCentral = () => {
     {
       id: 3,
       fecha: '2025-12-15 11:45',
+      usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
+
       institucion: 'Banco Estado',
       monto: '8,000,000',
       tipo: 'Entrada'
@@ -28,6 +36,9 @@ const CartolaBancoCentral = () => {
     {
       id: 4,
       fecha: '2025-12-14 16:20',
+            usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
+
       institucion: 'Banco BCI',
       monto: '20,000,000',
       tipo: 'Salida'
@@ -35,6 +46,9 @@ const CartolaBancoCentral = () => {
     {
       id: 5,
       fecha: '2025-12-14 15:00',
+            usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
+
       institucion: 'Banco Scotiabank',
       monto: '12,750,000',
       tipo: 'Entrada'
@@ -49,6 +63,9 @@ const CartolaBancoCentral = () => {
     {
       id: 7,
       fecha: '2025-12-13 14:45',
+            usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
+
       institucion: 'Banco Santander',
       monto: '18,000,000',
       tipo: 'Entrada'
@@ -56,6 +73,9 @@ const CartolaBancoCentral = () => {
     {
       id: 8,
       fecha: '2025-12-13 12:00',
+            usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
+
       institucion: 'Banco Estado',
       monto: '9,250,000',
       tipo: 'Salida'
@@ -71,21 +91,25 @@ const CartolaBancoCentral = () => {
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
         Historial de operaciones de CBDC realizadas en la wallet del Banco Central.
       </p>
+      <p className="text-lg"><b>Saldo Disponible:</b> $5.000.000.000</p>
 
       <div className="table-container">
         <table className="cartola-table">
           <thead>
             <tr>
               <th>Fecha</th>
+              <th>Hash</th>
               <th>Institución</th>
               <th>Tipo</th>
               <th>Monto</th>
+              <th>Usuario</th>
             </tr>
           </thead>
           <tbody>
             {operaciones.map((operacion) => (
               <tr key={operacion.id}>
                 <td className="fecha-cell">{operacion.fecha}</td>
+                <td className="fecha-cell">{operacion.hash}</td>
                 <td className="institucion-cell">{operacion.institucion}</td>
                 <td className="tipo-cell">
                   <span className={`badge-tipo ${operacion.tipo.toLowerCase()}`}>
@@ -94,6 +118,9 @@ const CartolaBancoCentral = () => {
                 </td>
                 <td className={`monto-cell ${operacion.tipo.toLowerCase()}`}>
                   {operacion.tipo === 'Entrada' ? '+' : '-'}${operacion.monto}
+                </td>
+                <td className="fecha-cell">
+                  {operacion.usuario}
                 </td>
               </tr>
             ))}
