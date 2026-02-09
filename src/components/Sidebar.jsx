@@ -13,7 +13,7 @@ const Sidebar = () => {
   const menuItems = [
     { path: '/home-banco-central', label: 'Inicio' },
     { path: '/administrar-bancos', label: 'Administrar Bancos' },
-    { path: '/administrar-cbdc', label: 'Administrar CBDC' },
+    { path: '/administrar-cbdc', label: 'Administrar MDBC' },
     {
       id: 'wallet',
       label: 'Wallet Banco Central',

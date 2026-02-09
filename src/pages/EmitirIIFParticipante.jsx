@@ -33,7 +33,7 @@ const EmitirIIFParticipante = () => {
       isin: 'CL0008001234',
       nemonico: 'BSANT-26',
       emisor: nombreInstitucion,
-      fechaVencimiento: '2026-12-31',
+      fechaVencimiento: '31-12-2026',
       capitalNominal: 50000000,
       institucionCompradora: 'Banco de Chile',
       precioVenta: 49500000
@@ -44,7 +44,7 @@ const EmitirIIFParticipante = () => {
       isin: 'CL0008005678',
       nemonico: 'BSANT-27',
       emisor: nombreInstitucion,
-      fechaVencimiento: '2027-06-30',
+      fechaVencimiento: '30-06-2027',
       capitalNominal: 75000000,
       institucionCompradora: 'Banco BCI',
       precioVenta: 74800000

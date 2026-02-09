@@ -6,12 +6,12 @@ import './AdministrarCalendario.css';
 const AdministrarCalendario = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [nuevaFecha, setNuevaFecha] = useState('');
-  const [fechaActual, setFechaActual] = useState('2025-12-18');
+  const [fechaActual, setFechaActual] = useState('18-12-2025');
   const [fechasIngresadas, setFechasIngresadas] = useState([
-    { id: 1, fecha: '2025-12-15', timestamp: '14:32:10' },
-    { id: 2, fecha: '2025-12-16', timestamp: '09:15:43' },
-    { id: 3, fecha: '2025-12-17', timestamp: '16:20:55' },
-    { id: 4, fecha: '2025-12-18', timestamp: '10:05:22' },
+    { id: 1, fecha: '15-12-2025', timestamp: '14:32:10' },
+    { id: 2, fecha: '16-12-2025', timestamp: '09:15:43' },
+    { id: 3, fecha: '17-12-2025', timestamp: '16:20:55' },
+    { id: 4, fecha: '18-12-2025', timestamp: '10:05:22' },
   ]);
 
   const openModal = () => {

@@ -75,6 +75,32 @@
   font-family: inherit;
 }
 
+.btn-suspender {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: #dcad35;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.btn-autorizar {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: #35dc4a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
 .btn-eliminar:hover {
   background-color: #c82333;
   transform: translateY(-2px);
@@ -213,6 +239,16 @@
   }
 
   .btn-eliminar {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-suspender {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-autorizar {
     padding: 0.4rem 0.75rem;
     font-size: 0.85rem;
   }

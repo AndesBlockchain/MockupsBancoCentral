@@ -6,79 +6,75 @@ const CartolaBancoCentral = () => {
   const [operaciones] = useState([
     {
       id: 1,
-      fecha: '2025-12-15 14:30',
+      fecha: '15-12-2025 14:30',
       usuario: "Juan Perez",
       hash: '0x123456789abcdef',
       institucion: 'Banco Central',
-      monto: '10,000,000',
-      tipo: 'Minting'
+      monto: '10.000.000',
+      tipo: 'Acuñación'
     },
     {
       id: 2,
-      fecha: '2025-12-15 13:15',
-            usuario: "Juan Perez",
+      fecha: '15-12-2025 13:15',
+      usuario: "Juan Perez",
       hash: '0x123456789abcdef',
-
       institucion: 'Banco Central',
-      monto: '15,500,000',
-      tipo: 'Burning'
+      monto: '15.500.000',
+      tipo: 'Quema'
     },
     {
       id: 3,
-      fecha: '2025-12-15 11:45',
+      fecha: '15-12-2025 11:45',
       usuario: "Juan Perez",
       hash: '0x123456789abcdef',
-
       institucion: 'Banco Estado',
-      monto: '8,000,000',
-      tipo: 'Entrada'
+      monto: '8.000.000',
+      tipo: 'Abono'
     },
     {
       id: 4,
-      fecha: '2025-12-14 16:20',
-            usuario: "Juan Perez",
+      fecha: '15-12-2025 16:20',
+      usuario: "Juan Perez",
       hash: '0x123456789abcdef',
-
       institucion: 'Banco BCI',
-      monto: '20,000,000',
-      tipo: 'Salida'
+      monto: '20.000.000',
+      tipo: 'Egreso'
     },
     {
       id: 5,
-      fecha: '2025-12-14 15:00',
-            usuario: "Juan Perez",
+      fecha: '15-12-2025 15:00',
+      usuario: "Juan Perez",
       hash: '0x123456789abcdef',
-
       institucion: 'Banco Scotiabank',
-      monto: '12,750,000',
-      tipo: 'Entrada'
+      monto: '12.750.000',
+      tipo: 'Abono'
     },
     {
       id: 6,
-      fecha: '2025-12-14 10:30',
+      fecha: '15-12-2025 10:30',
+      usuario: "Juan Perez",
+      hash: '0x123456789abcdef',
       institucion: 'Banco de Chile',
-      monto: '5,500,000',
-      tipo: 'Salida'
+      monto: '5.500.000',
+      tipo: 'Egreso'
     },
     {
       id: 7,
-      fecha: '2025-12-13 14:45',
-            usuario: "Juan Perez",
+      fecha: '15-12-2025 14:45',
+      usuario: "Juan Perez",
       hash: '0x123456789abcdef',
-
       institucion: 'Banco Santander',
-      monto: '18,000,000',
-      tipo: 'Entrada'
+      monto: '18.000.000',
+      tipo: 'Abono'
     },
     {
       id: 8,
-      fecha: '2025-12-13 12:00',
-            usuario: "Juan Perez",
+      fecha: '15-12-2025 12:00',
+      usuario: "Juan Perez",
       hash: '0x123456789abcdef',
-
       institucion: 'Banco Estado',
-      monto: '9,250,000',
-      tipo: 'Salida'
+      monto: '9.250.000',
+      tipo: 'Egreso'
     },
   ]);
 
@@ -117,7 +113,7 @@ const CartolaBancoCentral = () => {
                   </span>
                 </td>
                 <td className={`monto-cell ${operacion.tipo.toLowerCase()}`}>
-                  {operacion.tipo === 'Entrada' ? '+' : '-'}${operacion.monto}
+                  ${operacion.monto}
                 </td>
                 <td className="fecha-cell">
                   {operacion.usuario}

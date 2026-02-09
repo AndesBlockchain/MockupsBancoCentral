@@ -7,7 +7,7 @@ const VencimientosPagados = () => {
     {
       id: 1,
       nemonico: 'BCHCL20241115000001',
-      fechaPago: '2024-12-15',
+      fechaPago: '15-12-2024',
       institucion: 'Banco de Chile',
       montoPagado: 2500000,
       tipoPago: 'Cupón',
@@ -16,7 +16,7 @@ const VencimientosPagados = () => {
     {
       id: 2,
       nemonico: 'BCHCL20241115000002',
-      fechaPago: '2024-12-10',
+      fechaPago: '10-12-2024',
       institucion: 'Banco Santander',
       montoPagado: 50000000,
       tipoPago: 'Capital',
@@ -25,7 +25,7 @@ const VencimientosPagados = () => {
     {
       id: 3,
       nemonico: 'BCHCL20241115000003',
-      fechaPago: '2024-12-05',
+      fechaPago: '05-12-2024',
       institucion: 'Banco Estado',
       montoPagado: 1800000,
       tipoPago: 'Cupón',
@@ -34,7 +34,7 @@ const VencimientosPagados = () => {
     {
       id: 4,
       nemonico: 'BCHCL20241115000004',
-      fechaPago: '2024-11-28',
+      fechaPago: '28-11-2024',
       institucion: 'Banco BCI',
       montoPagado: 75000000,
       tipoPago: 'Capital',
@@ -43,7 +43,7 @@ const VencimientosPagados = () => {
     {
       id: 5,
       nemonico: 'BCHCL20241115000005',
-      fechaPago: '2024-11-20',
+      fechaPago: '20-11-2024',
       institucion: 'Banco de Chile',
       montoPagado: 100000000,
       tipoPago: 'Capital',
@@ -52,7 +52,7 @@ const VencimientosPagados = () => {
     {
       id: 6,
       nemonico: 'BCHCL20241115000006',
-      fechaPago: '2024-11-15',
+      fechaPago: '15-11-2024',
       institucion: 'Banco Santander',
       montoPagado: 3200000,
       tipoPago: 'Cupón',
@@ -61,7 +61,7 @@ const VencimientosPagados = () => {
     {
       id: 7,
       nemonico: 'BCHCL20241115000007',
-      fechaPago: '2024-11-10',
+      fechaPago: '10-11-2024',
       institucion: 'Banco Estado',
       montoPagado: 60000000,
       tipoPago: 'Capital',
@@ -70,7 +70,7 @@ const VencimientosPagados = () => {
     {
       id: 8,
       nemonico: 'BCHCL20241115000008',
-      fechaPago: '2024-11-05',
+      fechaPago: '05-11-2024',
       institucion: 'Banco BCI',
       montoPagado: 4500000,
       tipoPago: 'Cupón',

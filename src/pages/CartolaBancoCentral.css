@@ -80,23 +80,19 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.badge-tipo.minting {
-  background-color: #fce8e6;
-  color: #2fd332;
-}
-
-.badge-tipo.burning {
-  background-color: #fce8e6;
-  color: #d32f2f;
-}
-
-.badge-tipo.entrada {
-  background-color: #e6f4ea;
+.badge-tipo.acuñacion {
   color: #1e7e34;
 }
 
-.badge-tipo.salida {
-  background-color: #fce8e6;
+.badge-tipo.quema {
+  color: #d32f2f;
+}
+
+.badge-tipo.abono {
+  color: #1e7e34;
+}
+
+.badge-tipo.egreso {
   color: #d32f2f;
 }
 
@@ -106,11 +102,19 @@
   font-size: 1.1rem;
 }
 
-.monto-cell.entrada {
+.monto-cell.abono {
   color: #1e7e34;
 }
 
-.monto-cell.salida {
+.monto-cell.egreso {
+  color: #d32f2f;
+}
+
+.monto-cell.acuñacion {
+  color: #1e7e34;
+}
+
+.monto-cell.quema {
   color: #d32f2f;
 }
 

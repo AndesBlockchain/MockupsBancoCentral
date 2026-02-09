@@ -7,14 +7,14 @@ const ManejarWalletBCentral = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedInstitucion, setSelectedInstitucion] = useState(null);
   const [monto, setMonto] = useState('');
-  const [saldoBancoCentral] = useState('200,000,000');
+  const [saldoBancoCentral] = useState('200.000.000');
 
   const [instituciones] = useState([
-    { id: 1, nombre: 'Banco de Chile', saldo: '50,000,000' },
-    { id: 2, nombre: 'Banco Santander', saldo: '75,000,000' },
-    { id: 3, nombre: 'Banco Estado', saldo: '45,000,000' },
-    { id: 4, nombre: 'Banco BCI', saldo: '60,000,000' },
-    { id: 5, nombre: 'Banco Scotiabank', saldo: '55,000,000' },
+    { id: 1, nombre: 'Banco de Chile', saldo: '50.000.000' },
+    { id: 2, nombre: 'Banco Santander', saldo: '75.000.000' },
+    { id: 3, nombre: 'Banco Estado', saldo: '45.000.000' },
+    { id: 4, nombre: 'Banco BCI', saldo: '60.000.000' },
+    { id: 5, nombre: 'Banco Scotiabank', saldo: '55.000.000' },
   ]);
 
   const handleTransferir = (institucion) => {

@@ -5,11 +5,11 @@ import './AdministrarUF.css';
 const AdministrarUF = () => {
   const fileInputRef = useRef(null);
   const [ufPrices, setUfPrices] = useState([
-    { id: 1, fecha: '2025-12-01', precio: '36.542,12' },
-    { id: 2, fecha: '2025-12-02', precio: '36.548,76' },
-    { id: 3, fecha: '2025-12-03', precio: '36.555,43' },
-    { id: 4, fecha: '2025-12-04', precio: '36.562,21' },
-    { id: 5, fecha: '2025-12-05', precio: '36.568,89' },
+    { id: 1, fecha: '01-02-2025', precio: '36.542,12' },
+    { id: 2, fecha: '02-02-2025', precio: '36.548,76' },
+    { id: 3, fecha: '03-02-2025', precio: '36.555,43' },
+    { id: 4, fecha: '04-02-2025', precio: '36.562,21' },
+    { id: 5, fecha: '05-02-2025', precio: '36.568,89' },
   ]);
 
   const handleCargarPrecios = () => {

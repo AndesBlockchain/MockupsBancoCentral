@@ -36,10 +36,11 @@ const TransferirParticipante = () => {
             <label htmlFor="address">Institución</label>
             <select className="form-select">
               <option value="">Seleccione una institución</option>
-                <option>Banco de Chile</option>
-                <option>Banco Santander</option>
-                <option>BCI</option>
-              </select>
+              <option>Banco Central</option>
+              <option>Banco de Chile</option>
+              <option>Banco Santander</option>
+              <option>BCI</option>
+            </select>
           </div>
 
           <div className="form-group">

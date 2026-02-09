@@ -12,21 +12,25 @@ const AdministrarUsuarios = () => {
       id: 1,
       nombre: 'Juan Pérez',
       address: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1',
+      accion: 'Eliminar'
     },
     {
       id: 2,
       nombre: 'María González',
       address: '0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed',
+      accion: 'Suspender'
     },
     {
       id: 3,
       nombre: 'Pedro Silva',
       address: '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359',
+      accion: 'Autorizar'
     },
     {
       id: 4,
       nombre: 'Ana Martínez',
       address: '0xdD870fA1b7C4700F2BD7f44238821C26f7392148',
+      accion: 'Autorizar'
     },
   ]);
 
@@ -76,22 +80,16 @@ const AdministrarUsuarios = () => {
                 </td>
                 <td className="actions-cell">
                   <button
-                    className="btn-eliminar"
+                    className={`btn-${usuario.accion.toLowerCase()}`}
                     onClick={() => handleEliminar(usuario.id)}
                   >
-                    Eliminar
+                    {usuario.accion}
                   </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
-
-      <div className="btn-agregar-container">
-        <button className="btn-agregar-usuario" onClick={openModal}>
-          Agregar Usuario
-        </button>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>

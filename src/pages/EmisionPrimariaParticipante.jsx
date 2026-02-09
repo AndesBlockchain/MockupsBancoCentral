@@ -14,8 +14,8 @@ const EmisionPrimariaParticipante = () => {
       id: 1,
       isin: 'CL0001234567',
       nemonico: 'BCHILEBE-24',
-      fechaEmision: '2024-01-15',
-      fechaVencimiento: '2024-12-31',
+      fechaEmision: '15-01-2024',
+      fechaVencimiento: '31-12-2024',
       tipo: 'BCU',
       capitalNominal: 10000000,
       precio: 9850000,
@@ -25,8 +25,8 @@ const EmisionPrimariaParticipante = () => {
       frecuenciaPago: 'Semestral',
       corteMinimo: 1000000,
       cupones: [
-        { fecha: '2024-07-15', monto: '225,000', estado: 'pendiente' },
-        { fecha: '2024-12-31', monto: '10,225,000', estado: 'pendiente' },
+        { fecha: '15-07-2024', monto: '225.000', estado: 'pendiente' },
+        { fecha: '31-12-2024', monto: '10.225.000', estado: 'pendiente' },
       ],
       tenedores: [
         { nombre: 'Banco Scotiabank', monto: 10000000, porcentaje: 100 }
@@ -36,8 +36,8 @@ const EmisionPrimariaParticipante = () => {
       id: 2,
       isin: 'CL0007654321',
       nemonico: 'BCHILEBE-25',
-      fechaEmision: '2024-12-01',
-      fechaVencimiento: '2025-06-30',
+      fechaEmision: '01-12-2024',
+      fechaVencimiento: '30-06-2025',
       tipo: 'PDBC',
       capitalNominal: 5000000,
       precio: 5025000,
@@ -51,8 +51,8 @@ const EmisionPrimariaParticipante = () => {
       id: 3,
       isin: 'CL0009876543',
       nemonico: 'BCHILEBE-26',
-      fechaEmision: '2024-09-15',
-      fechaVencimiento: '2025-03-15',
+      fechaEmision: '15-09-2024',
+      fechaVencimiento: '15-03-2025',
       tipo: 'BCU',
       capitalNominal: 15000000,
       precio: 14900000,
@@ -62,7 +62,7 @@ const EmisionPrimariaParticipante = () => {
       frecuenciaPago: 'Semestral',
       corteMinimo: 1500000,
       cupones: [
-        { fecha: '2025-03-15', monto: '15,285,000', estado: 'pendiente' },
+        { fecha: '15-03-2025', monto: '15.285.000', estado: 'pendiente' },
       ],
       tenedores: [
         { nombre: 'Banco Santander', monto: 15000000, porcentaje: 100 }
