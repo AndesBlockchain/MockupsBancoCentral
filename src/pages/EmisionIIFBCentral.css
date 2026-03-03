@@ -140,6 +140,30 @@
   transform: translateY(0);
 }
 
+.btn-modificar-asignacion {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: #0069d9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-modificar-asignacion:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 105, 217, 0.3);
+}
+
+.btn-modificar-asignacion:active {
+  transform: translateY(0);
+}
+
 .isin-cell {
   text-align: center;
 }
@@ -253,6 +277,30 @@
   color: #6c757d;
   border: 1px solid #adb5bd;
   text-decoration: line-through;
+}
+
+.btn-eliminar-instrumento {
+  padding: 0.4rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-eliminar-instrumento:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(220, 53, 69, 0.3);
+}
+
+.btn-eliminar-instrumento:active {
+  transform: translateY(0);
 }
 
 /* Operaciones de venta en modal de info */

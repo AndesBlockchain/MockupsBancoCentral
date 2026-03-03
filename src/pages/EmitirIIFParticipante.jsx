@@ -51,6 +51,10 @@ const EmitirIIFParticipante = () => {
     }
   ]);
 
+  const handleEliminarBono = (id) => {
+    setBonosEmitidos(bonosEmitidos.filter((b) => b.id !== id));
+  };
+
   const handleCrearBono = (e) => {
     e.preventDefault();
     const nuevoBono = {
@@ -94,6 +98,7 @@ const EmitirIIFParticipante = () => {
               <th>Emisor</th>
               <th>Fecha Vencimiento</th>
               <th>Valor Nominal</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -105,6 +110,14 @@ const EmitirIIFParticipante = () => {
                 <td>{bono.emisor}</td>
                 <td>{bono.fechaVencimiento}</td>
                 <td>${bono.capitalNominal.toLocaleString('es-CL')}</td>
+                <td>
+                  <button
+                    className="btn-eliminar-bono"
+                    onClick={() => handleEliminarBono(bono.id)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

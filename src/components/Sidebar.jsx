@@ -45,7 +45,7 @@ const Sidebar = () => {
     },
     { path: '/administrar-usuarios', label: 'Administrar Usuarios' },
     { path: '/administrar-uf', label: 'Administrar UF' },
-    { path: '/administrar-calendario', label: 'Administrar Calendario' },
+    { path: '/administrar-calendario', label: 'Forzar Pagos' },
   ];
 
   useEffect(() => {

@@ -35,7 +35,7 @@ const CrearIIF = () => {
 
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
-  const [instrumentos] = useState([
+  const [instrumentos, setInstrumentos] = useState([
     {
       id: 1,
       isin: 'CL0001234567',
@@ -215,6 +215,10 @@ const CrearIIF = () => {
     'Banco BCI',
     'Banco Scotiabank',
   ];
+
+  const handleEliminarInstrumento = (id) => {
+    setInstrumentos(instrumentos.filter((inst) => inst.id !== id));
+  };
 
   const handleVerInfo = (instrumento) => {
     setSelectedInstrumento(instrumento);
@@ -400,6 +404,7 @@ const CrearIIF = () => {
               <th>Capital Nominal</th>
               <th>Moneda</th>
               <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -426,6 +431,16 @@ const CrearIIF = () => {
                   <span className={`estado estado-${instrumento.estado}`}>
                     {ESTADO_LABELS[instrumento.estado] ?? instrumento.estado}
                   </span>
+                </td>
+                <td className="actions-cell">
+                  {instrumento.estado === 'creado' && (
+                    <button
+                      className="btn-eliminar-instrumento"
+                      onClick={() => handleEliminarInstrumento(instrumento.id)}
+                    >
+                      Eliminar
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

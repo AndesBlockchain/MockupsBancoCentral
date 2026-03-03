@@ -42,7 +42,8 @@ const SidebarParticipante = () => {
       expanded: isPasivosExpanded,
       toggleHandler: () => setIsPasivosExpanded(!isPasivosExpanded),
       subitems: [
-        { path: '/emitir-iif-participante', label: 'Emitir IRF' },
+        { path: '/emitir-iif-participante', label: 'Crear IRF' },
+        { path: '/asignar-irf-participante', label: 'Asignar IRF' },
         { path: '/emision-primaria-participante', label: 'Pago de Vencimientos' },
       ]
     },

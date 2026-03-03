@@ -38,6 +38,22 @@
   border-bottom: none;
 }
 
+.btn-eliminar-bono {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-eliminar-bono:hover {
+  background-color: #b02a37;
+}
+
 .btn-crear-bono {
   width: 100%;
   padding: 1rem;
