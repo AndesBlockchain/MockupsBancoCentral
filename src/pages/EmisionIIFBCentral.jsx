@@ -13,6 +13,22 @@ const EmisionIIFBCentral = () => {
   const [asignaciones, setAsignaciones] = useState([]);
   const [asignacionesPDBC, setAsignacionesPDBC] = useState([]);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const [operacionesVenta, setOperacionesVenta] = useState([
+    { id: 1, instrumentoId: 2, fecha: '22-02-2024', institucion: 'Banco de Chile',   monto: '20.000.000', estado: 'completado' },
+    { id: 2, instrumentoId: 2, fecha: '25-02-2024', institucion: 'Banco Santander',  monto: '15.000.000', estado: 'completado' },
+    { id: 3, instrumentoId: 2, fecha: '01-03-2024', institucion: 'Banco Estado',     monto: '15.000.000', estado: 'pendiente'  },
+    { id: 4, instrumentoId: 3, fecha: '12-01-2024', institucion: 'Banco BCI',        monto: '80.000.000', estado: 'completado' },
+    { id: 5, instrumentoId: 3, fecha: '15-01-2024', institucion: 'Banco Scotiabank', monto: '70.000.000', estado: 'completado' },
+    { id: 6, instrumentoId: 3, fecha: '18-01-2024', institucion: 'Banco Estado',     monto: '50.000.000', estado: 'pendiente'  },
+    { id: 7, instrumentoId: 4, fecha: '06-03-2024', institucion: 'Banco de Chile',   monto: '40.000.000', estado: 'completado' },
+    { id: 8, instrumentoId: 4, fecha: '08-03-2024', institucion: 'Banco Santander',  monto: '35.000.000', estado: 'completado' },
+    { id: 9, instrumentoId: 5, fecha: '03-02-2024', institucion: 'Banco Estado',     monto: '60.000.000', estado: 'pendiente'  },
+    { id: 10, instrumentoId: 6, fecha: '16-03-2024', institucion: 'Banco BCI',       monto: '30.000.000', estado: 'pendiente'  },
+    { id: 11, instrumentoId: 6, fecha: '18-03-2024', institucion: 'Banco Scotiabank', monto: '30.000.000', estado: 'pendiente' },
+    { id: 12, instrumentoId: 7, fecha: '22-01-2024', institucion: 'Banco de Chile',  monto: '50.000.000', estado: 'completado' },
+    { id: 13, instrumentoId: 7, fecha: '25-01-2024', institucion: 'Banco Estado',    monto: '40.000.000', estado: 'completado' },
+    { id: 14, instrumentoId: 7, fecha: '28-01-2024', institucion: 'Banco BCI',       monto: '30.000.000', estado: 'completado' },
+  ]);
 
   // Estados para crear PDBC
   const [isin, setIsin] = useState('');
@@ -131,6 +147,10 @@ const EmisionIIFBCentral = () => {
   const closeInfoModal = () => {
     setIsInfoModalOpen(false);
     setSelectedInstrumento(null);
+  };
+
+  const handleCancelarOperacion = (operacionId) => {
+    setOperacionesVenta(operacionesVenta.filter((op) => op.id !== operacionId));
   };
 
   const handleVender = (instrumento) => {
@@ -783,7 +803,7 @@ const EmisionIIFBCentral = () => {
         </div>
       </Modal>
 
-      <Modal isOpen={isInfoModalOpen} onClose={closeInfoModal} className="modal-info-instrumento">
+      <Modal isOpen={isInfoModalOpen} onClose={closeInfoModal} className="modal-bcu-wide">
         {selectedInstrumento && (
           <div className="modal-form">
             <h3 className="modal-form-title">Información del Instrumento</h3>
@@ -821,8 +841,8 @@ const EmisionIIFBCentral = () => {
                   </tr>
                   {selectedInstrumento.tipo === 'BCU' && (
                     <tr>
-                      <td className="review-label">Tasa Cupón: 4%</td>
-                      <td className="review-value">{selectedInstrumento.tasaAnual}</td>
+                      <td className="review-label">Tasa Cupón:</td>
+                      <td className="review-value">4%</td>
                     </tr>
                   )}
                   <tr>
@@ -845,6 +865,55 @@ const EmisionIIFBCentral = () => {
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <div className="review-info-section">
+              <h4 className="review-subtitle">Operaciones de Venta</h4>
+              {(() => {
+                const ops = operacionesVenta.filter((op) => op.instrumentoId === selectedInstrumento.id);
+                return ops.length === 0 ? (
+                  <p className="ops-venta-empty">No hay operaciones registradas para este instrumento.</p>
+                ) : (
+                  <div className="asignaciones-tabla-container">
+                    <table className="asignaciones-tabla">
+                      <thead>
+                        <tr>
+                          <th>Fecha</th>
+                          <th>Institución</th>
+                          <th>Monto</th>
+                          <th>Estado</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {ops.map((op) => (
+                          <tr key={op.id}>
+                            <td>{op.fecha}</td>
+                            <td>{op.institucion}</td>
+                            <td className="ops-monto-cell">{op.monto} {selectedInstrumento.moneda}</td>
+                            <td>
+                              <span className={`ops-estado ops-estado-${op.estado}`}>
+                                {op.estado === 'pendiente' ? 'Pendiente' : 'Completado'}
+                              </span>
+                            </td>
+                            <td>
+                              {op.estado === 'pendiente' && (
+                                <button
+                                  type="button"
+                                  className="btn-cancelar-operacion"
+                                  onClick={() => handleCancelarOperacion(op.id)}
+                                >
+                                  Cancelar
+                                </button>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              })()}
             </div>
 
             <button

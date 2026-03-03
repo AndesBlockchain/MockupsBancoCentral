@@ -19,6 +19,8 @@ const CrearIIF = () => {
   const [nemonico, setNemonico] = useState('');
   const [valorNominal, setValorNominal] = useState('');
   const [fechaVencimiento, setFechaVencimiento] = useState('');
+  const [corteMinimoPDBC, setCorteMinimoPDBC] = useState('');
+  const [isPdbcReviewModalOpen, setIsPdbcReviewModalOpen] = useState(false);
 
   // Estados para crear BCU
   const [isinBCU, setIsinBCU] = useState('');
@@ -37,7 +39,7 @@ const CrearIIF = () => {
     {
       id: 1,
       isin: 'CL0001234567',
-      nemonico: 'BCHCL20251212000001',
+      nemonico: 'BCHBCU20250115000001',
       tipo: 'BCU',
       fechaEmision: '15-01-2024',
       fechaVencimiento: '15-01-2025',
@@ -49,7 +51,7 @@ const CrearIIF = () => {
     {
       id: 2,
       isin: 'CL0002345678',
-      nemonico: 'BCHCL20251212000001',
+      nemonico: 'BCHPDBC20240820000002',
       tipo: 'PDBC',
       fechaEmision: '20-02-2024',
       fechaVencimiento: '20-08-2024',
@@ -60,7 +62,7 @@ const CrearIIF = () => {
     {
       id: 3,
       isin: 'CL0003456789',
-      nemonico: 'BCHCL20251212000001',
+      nemonico: 'BCHBCU20260110000003',
       tipo: 'BCU',
       fechaEmision: '10-01-2024',
       fechaVencimiento: '10-01-2026',
@@ -71,7 +73,7 @@ const CrearIIF = () => {
     {
       id: 4,
       isin: 'CL0004567890',
-      nemonico: 'BCHCL20251212000001',
+      nemonico: 'BCHPDBC20240905000004',
       tipo: 'PDBC',
       fechaEmision: '05-03-2024',
       fechaVencimiento: '05-09-2024',
@@ -82,7 +84,7 @@ const CrearIIF = () => {
     {
       id: 5,
       isin: 'CL0005678901',
-      nemonico: 'BCHCL20251212000001',
+      nemonico: 'BCHBCU20270201000005',
       tipo: 'BCU',
       fechaEmision: '01-02-2024',
       fechaVencimiento: '01-02-2027',
@@ -94,7 +96,7 @@ const CrearIIF = () => {
     {
       id: 6,
       isin: 'CL0006789012',
-      nemonico: 'BCHCL20251212000001',
+      nemonico: 'BCHPDBC20241215000006',
       tipo: 'PDBC',
       fechaEmision: '15-03-2024',
       fechaVencimiento: '15-12-2024',
@@ -105,7 +107,7 @@ const CrearIIF = () => {
     {
       id: 7,
       isin: 'CL0007890123',
-      nemonico: 'BCHCL20251212000001',
+      nemonico: 'BCHBCU20250720000007',
       tipo: 'BCU',
       fechaEmision: '20-01-2024',
       fechaVencimiento: '20-07-2025',
@@ -113,7 +115,98 @@ const CrearIIF = () => {
       moneda: 'CLP',
       estado: 'vendido',
     },
+    {
+      id: 8,
+      isin: 'CL0008901234',
+      nemonico: 'BCHPDBC20260410000008',
+      tipo: 'PDBC',
+      fechaEmision: '10-04-2025',
+      fechaVencimiento: '10-04-2026',
+      capitalNominal: '80.000.000',
+      moneda: 'CLP',
+      estado: 'en-colocacion',
+    },
+    {
+      id: 9,
+      isin: 'CL0009012345',
+      nemonico: 'BCHBCU20270920000009',
+      tipo: 'BCU',
+      fechaEmision: '20-09-2025',
+      fechaVencimiento: '20-09-2027',
+      capitalNominal: '180.000.000',
+      corteMinimo: '18.000.000',
+      moneda: 'UF',
+      estado: 'en-colocacion',
+    },
+    {
+      id: 10,
+      isin: 'CL0010123456',
+      nemonico: 'BCHPDBC20241130000010',
+      tipo: 'PDBC',
+      fechaEmision: '01-06-2024',
+      fechaVencimiento: '30-11-2024',
+      capitalNominal: '45.000.000',
+      moneda: 'CLP',
+      estado: 'pagado',
+    },
+    {
+      id: 11,
+      isin: 'CL0011234567',
+      nemonico: 'BCHBCU20250315000011',
+      tipo: 'BCU',
+      fechaEmision: '15-03-2024',
+      fechaVencimiento: '15-03-2025',
+      capitalNominal: '90.000.000',
+      corteMinimo: '9.000.000',
+      moneda: 'CLP',
+      estado: 'pagado',
+    },
+    {
+      id: 12,
+      isin: 'CL0012345678',
+      nemonico: 'BCHPDBC20240605000012',
+      tipo: 'PDBC',
+      fechaEmision: '01-01-2024',
+      fechaVencimiento: '05-06-2024',
+      capitalNominal: '30.000.000',
+      moneda: 'CLP',
+      estado: 'eliminado',
+    },
+    {
+      id: 13,
+      isin: 'CL0013456789',
+      nemonico: 'BCHBCU20241020000013',
+      tipo: 'BCU',
+      fechaEmision: '20-04-2024',
+      fechaVencimiento: '20-10-2024',
+      capitalNominal: '110.000.000',
+      corteMinimo: '11.000.000',
+      moneda: 'UF',
+      estado: 'eliminado',
+    },
   ]);
+
+  const ESTADO_ORDER = { 'creado': 0, 'en-colocacion': 1, 'vendido': 2, 'pagado': 3, 'eliminado': 4 };
+
+  const ESTADO_LABELS = {
+    'creado': 'Creado',
+    'en-colocacion': 'En colocación',
+    'vendido': 'Vendido',
+    'pagado': 'Pagado',
+    'eliminado': 'Eliminado',
+  };
+
+  const parseFecha = (dateStr) => {
+    const [d, m, y] = dateStr.split('-');
+    return new Date(Number(y), Number(m) - 1, Number(d));
+  };
+
+  const sortedInstrumentos = [...instrumentos].sort((a, b) => {
+    const estadoA = ESTADO_ORDER[a.estado] ?? 99;
+    const estadoB = ESTADO_ORDER[b.estado] ?? 99;
+    if (estadoA !== estadoB) return estadoA - estadoB;
+    return parseFecha(a.fechaVencimiento) - parseFecha(b.fechaVencimiento);
+  });
 
   const instituciones = [
     'Banco de Chile',
@@ -215,18 +308,29 @@ const CrearIIF = () => {
     setNemonico('');
     setValorNominal('');
     setFechaVencimiento('');
+    setCorteMinimoPDBC('');
     setIsModalOpen(true);
   };
 
   const handleSubmitCrearPDBC = (e) => {
     e.preventDefault();
+    setIsModalOpen(false);
+    setIsPdbcReviewModalOpen(true);
+  };
+
+  const handleConfirmarCrearPDBC = () => {
     console.log('Crear PDBC:', {
       isin,
       nemonico,
       valorNominal,
       fechaVencimiento,
+      corteMinimoPDBC,
     });
-    closeModal();
+    setIsPdbcReviewModalOpen(false);
+  };
+
+  const closePdbcReviewModal = () => {
+    setIsPdbcReviewModalOpen(false);
   };
 
   const handleCrearBCU = () => {
@@ -299,7 +403,7 @@ const CrearIIF = () => {
             </tr>
           </thead>
           <tbody>
-            {instrumentos.map((instrumento) => (
+            {sortedInstrumentos.map((instrumento) => (
               <tr key={instrumento.id}>
                 <td className="isin-cell">
                   <button
@@ -314,16 +418,15 @@ const CrearIIF = () => {
                     {instrumento.tipo}
                   </span>
                 </td>
-                <td>{instrumento.fechaEmision}</td>
-                <td>{instrumento.fechaVencimiento}</td>
+                <td className="fecha-cell">{instrumento.fechaEmision}</td>
+                <td className="fecha-cell">{instrumento.fechaVencimiento}</td>
                 <td className="capital-cell">{instrumento.capitalNominal}</td>
                 <td className="moneda-cell">{instrumento.moneda}</td>
-                <td>
+                <td className="estado-cell">
                   <span className={`estado estado-${instrumento.estado}`}>
-                    {instrumento.estado.charAt(0).toUpperCase() + instrumento.estado.slice(1)}
+                    {ESTADO_LABELS[instrumento.estado] ?? instrumento.estado}
                   </span>
                 </td>
-
               </tr>
             ))}
           </tbody>
@@ -586,17 +689,19 @@ const CrearIIF = () => {
                 />
               </div>
               <div className="form-group-modal">
-              <label htmlFor="valorNominal">Corte Mínimo</label>
+              <label htmlFor="corteMinimoPDBC">Corte Mínimo</label>
               <input
                 type="number"
                 id="corteMinimoPDBC"
+                value={corteMinimoPDBC}
+                onChange={(e) => setCorteMinimoPDBC(e.target.value)}
                 required
                 min="1"
                 className="form-input"
               />
             </div>
               <button type="submit" className="btn-modal-confirmar">
-                Crear PDBC
+                Confirmar Emisión
               </button>
             </form>
           </div>
@@ -781,6 +886,48 @@ const CrearIIF = () => {
             onClick={handleSubmitCrearBCU}
           >
             Crear BCU
+          </button>
+        </div>
+      </Modal>
+
+      <Modal isOpen={isPdbcReviewModalOpen} onClose={closePdbcReviewModal} className="modal-bcu-wide">
+        <div className="modal-form">
+          <h3 className="modal-form-title">Revisar Emisión PDBC</h3>
+
+          <div className="review-info-section">
+            <h4 className="review-subtitle">Datos del Instrumento</h4>
+            <table className="review-table">
+              <tbody>
+                <tr>
+                  <td className="review-label">ISIN:</td>
+                  <td className="review-value">{isin}</td>
+                </tr>
+                <tr>
+                  <td className="review-label">Nemónico:</td>
+                  <td className="review-value">{nemonico}</td>
+                </tr>
+                <tr>
+                  <td className="review-label">Valor Nominal:</td>
+                  <td className="review-value">{valorNominal} CLP</td>
+                </tr>
+                <tr>
+                  <td className="review-label">Fecha de Vencimiento:</td>
+                  <td className="review-value">{fechaVencimiento}</td>
+                </tr>
+                <tr>
+                  <td className="review-label">Corte Mínimo:</td>
+                  <td className="review-value">{corteMinimoPDBC} CLP</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <button
+            type="button"
+            className="btn-modal-confirmar"
+            onClick={handleConfirmarCrearPDBC}
+          >
+            Crear PDBC
           </button>
         </div>
       </Modal>

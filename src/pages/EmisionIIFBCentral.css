@@ -77,7 +77,7 @@
 
 .instrumentos-table th {
   padding: 1rem;
-  text-align: left;
+  text-align: center;
   font-weight: 600;
   font-size: 1rem;
   border-bottom: 2px solid #003DA5;
@@ -101,6 +101,15 @@
   padding: 1rem;
   font-size: 0.95rem;
   color: #333;
+  text-align: center;
+}
+
+.fecha-cell {
+  text-align: center;
+}
+
+.estado-cell {
+  text-align: center;
 }
 
 .actions-cell {
@@ -129,6 +138,10 @@
 
 .btn-vender:active {
   transform: translateY(0);
+}
+
+.isin-cell {
+  text-align: center;
 }
 
 .isin-cell code {
@@ -217,10 +230,88 @@
   border: 1px solid #ffc107;
 }
 
+.estado-en-colocacion {
+  background-color: #cce5ff;
+  color: #004085;
+  border: 1px solid #4da3ff;
+}
+
 .estado-vendido {
   background-color: #d4edda;
   color: #155724;
   border: 1px solid #28a745;
+}
+
+.estado-pagado {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #17a2b8;
+}
+
+.estado-eliminado {
+  background-color: #f5f5f5;
+  color: #6c757d;
+  border: 1px solid #adb5bd;
+  text-decoration: line-through;
+}
+
+/* Operaciones de venta en modal de info */
+.ops-venta-empty {
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+.ops-monto-cell {
+  text-align: right;
+  font-weight: 600;
+  color: #003DA5;
+}
+
+.ops-estado {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ops-estado-pendiente {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+}
+
+.ops-estado-completado {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #28a745;
+}
+
+.btn-cancelar-operacion {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-cancelar-operacion:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(220, 53, 69, 0.3);
+}
+
+.btn-cancelar-operacion:active {
+  transform: translateY(0);
 }
 
 .modal-form {

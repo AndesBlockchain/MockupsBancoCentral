@@ -413,7 +413,7 @@ const IIFsEmitidosBCentral = () => {
             <div className="modal-info">
               <p><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</p>
               <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
-              <p><strong>Monto Nominal:</strong>$50.000.000</p>
+              <p><strong>Capital Nominal:</strong> $50.000.000</p>
               <p><strong>Tipo:</strong> <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>{selectedInstrumento.tipo}</span></p>
             </div>
           )}
@@ -424,8 +424,8 @@ const IIFsEmitidosBCentral = () => {
                 <tr>
                   <th>Institución</th>
                   <th>Fecha Traspaso</th>
-                  <th>Monto Nominal</th>
-                  <th>Monto Pagado</th>
+                  <th>Capital Total</th>
+                  <th>Capital Pagado</th>
                 </tr>
               </thead>
               <tbody>
@@ -592,7 +592,7 @@ const IIFsEmitidosBCentral = () => {
             <div className="modal-info">
               <p><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</p>
               <p><strong>ISIN:</strong> {selectedInstrumento.isin}</p>
-              <p><strong>Monto Nominal:</strong>$100.000.000</p>
+              <p><strong>Capital Nominal:</strong> $100.000.000</p>
               <p><strong>Tipo:</strong> <span className={`badge badge-${selectedInstrumento.tipo.toLowerCase()}`}>{selectedInstrumento.tipo}</span></p>
             </div>
           )}
@@ -604,20 +604,28 @@ const IIFsEmitidosBCentral = () => {
                   <th>Fecha</th>
                   <th>De</th>
                   <th>A</th>
-                  <th>Monto Nominal</th>
-                  <th>Monto Pagado</th>
+                  <th>Capital Nominal</th>
+                  <th>Capital Pagado</th>
+                  <th>Moneda</th>
                 </tr>
               </thead>
               <tbody>
-                {historialTraspasos.map((traspaso) => (
-                  <tr key={traspaso.id}>
-                    <td>{traspaso.fecha}</td>
-                    <td>{traspaso.de}</td>
-                    <td>{traspaso.a}</td>
-                    <td className="monto-cell">$20.000.000 CLP</td>
-                    <td className="monto-cell">{traspaso.montoPagado} CLP</td>
-                  </tr>
-                ))}
+                {[...historialTraspasos]
+                  .sort((a, b) => {
+                    const parse = (d) => { const [dd, mm, yy] = d.split('-'); return new Date(yy, mm - 1, dd); };
+                    return parse(b.fecha) - parse(a.fecha);
+                  })
+                  .map((traspaso) => (
+                    <tr key={traspaso.id}>
+                      <td>{traspaso.fecha}</td>
+                      <td>{traspaso.de}</td>
+                      <td>{traspaso.a}</td>
+                      <td className="monto-cell">$20.000.000</td>
+                      <td className="monto-cell">{traspaso.montoPagado}</td>
+                      <td className="moneda-cell">CLP</td>
+                    </tr>
+                  ))
+                }
               </tbody>
             </table>
           </div>
@@ -652,7 +660,7 @@ const IIFsEmitidosBCentral = () => {
                       <thead>
                         <tr>
                           <th>Tenedor</th>
-                          <th>Monto Pagado</th>
+                          <th>Capital Nominal</th>
                           <th>Porcentaje</th>
                         </tr>
                       </thead>
