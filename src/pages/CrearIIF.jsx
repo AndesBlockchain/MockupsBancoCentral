@@ -391,7 +391,7 @@ const CrearIIF = () => {
         </button>
       </div>
 
-      <h2 className="section-subtitle">Instrumentos Emitidos</h2>
+      <h2 className="section-subtitle">Instrumentos Creados</h2>
 
       <div className="table-container">
         <table className="instrumentos-table">
@@ -408,7 +408,7 @@ const CrearIIF = () => {
             </tr>
           </thead>
           <tbody>
-            {sortedInstrumentos.map((instrumento) => (
+            {sortedInstrumentos.filter((i) => i.estado === 'creado').map((instrumento) => (
               <tr key={instrumento.id}>
                 <td className="isin-cell">
                   <button
@@ -433,14 +433,58 @@ const CrearIIF = () => {
                   </span>
                 </td>
                 <td className="actions-cell">
-                  {instrumento.estado === 'creado' && (
-                    <button
-                      className="btn-eliminar-instrumento"
-                      onClick={() => handleEliminarInstrumento(instrumento.id)}
-                    >
-                      Eliminar
-                    </button>
-                  )}
+                  <button
+                    className="btn-eliminar-instrumento"
+                    onClick={() => handleEliminarInstrumento(instrumento.id)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 className="section-subtitle" style={{ marginTop: '2.5rem' }}>Instrumentos Eliminados</h2>
+
+      <div className="table-container">
+        <table className="instrumentos-table">
+          <thead>
+            <tr>
+              <th>Nemotécnico</th>
+              <th>Tipo</th>
+              <th>Fecha Emisión</th>
+              <th>Fecha Vencimiento</th>
+              <th>Capital Nominal</th>
+              <th>Moneda</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedInstrumentos.filter((i) => i.estado === 'eliminado').map((instrumento) => (
+              <tr key={instrumento.id}>
+                <td className="isin-cell">
+                  <button
+                    className="nemonico-button"
+                    onClick={() => handleVerInfo(instrumento)}
+                  >
+                    {instrumento.nemonico}
+                  </button>
+                </td>
+                <td className="tipo-cell">
+                  <span className={`badge badge-${instrumento.tipo.toLowerCase()}`}>
+                    {instrumento.tipo}
+                  </span>
+                </td>
+                <td className="fecha-cell">{instrumento.fechaEmision}</td>
+                <td className="fecha-cell">{instrumento.fechaVencimiento}</td>
+                <td className="capital-cell">{instrumento.capitalNominal}</td>
+                <td className="moneda-cell">{instrumento.moneda}</td>
+                <td className="estado-cell">
+                  <span className={`estado estado-${instrumento.estado}`}>
+                    {ESTADO_LABELS[instrumento.estado] ?? instrumento.estado}
+                  </span>
                 </td>
               </tr>
             ))}

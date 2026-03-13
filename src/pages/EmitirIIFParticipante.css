@@ -38,6 +38,17 @@
   border-bottom: none;
 }
 
+.btn-crear-bono-empresa {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-crear-bono-empresa:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
 .btn-eliminar-bono {
   padding: 0.35rem 0.75rem;
   font-size: 0.85rem;

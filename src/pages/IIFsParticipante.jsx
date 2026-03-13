@@ -9,20 +9,18 @@ const IIFsParticipante = () => {
   const [isPrendarModalOpen, setIsPrendarModalOpen] = useState(false);
   const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
   const [isPrepararPagoModalOpen, setIsPrepararPagoModalOpen] = useState(false);
+  const [isVentasProcesoModalOpen, setIsVentasProcesoModalOpen] = useState(false);
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
 
   // Estados para los campos del modal Vender
   const [contraparte, setContraparte] = useState('');
   const [montoNominal, setMontoNominal] = useState('');
   const [montoPagado, setMontoPagado] = useState('');
-  const [listaVentas, setListaVentas] = useState([]);
-  const [archivoCSV, setArchivoCSV] = useState(null);
+  const [precio, setPrecio] = useState('');
 
   // Estados para los campos del modal Venta Privada
   const [precioVentaPrivada, setPrecioVentaPrivada] = useState('');
   const [secretoTransferencia, setSecretoTransferencia] = useState('');
-  const [listaVentasPrivadas, setListaVentasPrivadas] = useState([]);
-  const [archivoCSVPrivada, setArchivoCSVPrivada] = useState(null);
 
   // Estado para el campo del modal Prendar
   const [addressPrendatario, setAddressPrendatario] = useState('');
@@ -52,6 +50,10 @@ const IIFsParticipante = () => {
       fechaEmision: '15-01-2023',
       fechaVencimiento: '31-12-2023',
       capitalNominal: 8000000,
+      capitalPendienteVenta: 2000000,
+      ventasEnProceso: [
+        { id: 1, contraparte: 'Banco de Chile', capitalNominal: 2000000, capitalPagado: 1950000, precio: 97.5 },
+      ],
       moneda: 'CLP',
       tasaAnual: 4.5,
       frecuenciaPago: 'Semestral',
@@ -71,6 +73,8 @@ const IIFsParticipante = () => {
       fechaEmision: '30-03-2024',
       fechaVencimiento: '30-09-2024',
       capitalNominal: 12000000,
+      capitalPendienteVenta: 0,
+      ventasEnProceso: [],
       moneda: 'CLP',
       prendado: true,
       estado: 'vigente',
@@ -83,6 +87,11 @@ const IIFsParticipante = () => {
       fechaEmision: '15-03-2024',
       fechaVencimiento: '15-03-2026',
       capitalNominal: 20000000,
+      capitalPendienteVenta: 5000000,
+      ventasEnProceso: [
+        { id: 1, contraparte: 'Banco BCI', capitalNominal: 3000000, capitalPagado: 2940000, precio: 98.0 },
+        { id: 2, contraparte: 'Banco Santander', capitalNominal: 2000000, capitalPagado: 1960000, precio: 98.0 },
+      ],
       moneda: 'UF',
       tasaAnual: 3.8,
       frecuenciaPago: 'Anual',
@@ -102,6 +111,8 @@ const IIFsParticipante = () => {
       fechaEmision: '30-06-2024',
       fechaVencimiento: '31-12-2026',
       capitalNominal: 6000000,
+      capitalPendienteVenta: 0,
+      ventasEnProceso: [],
       moneda: 'CLP',
       prendado: true,
       estado: 'vigente',
@@ -114,6 +125,12 @@ const IIFsParticipante = () => {
       fechaEmision: '30-06-2024',
       fechaVencimiento: '30-06-2027',
       capitalNominal: 50000000,
+      capitalPendienteVenta: 10000000,
+      ventasEnProceso: [
+        { id: 1, contraparte: 'Banco Estado', capitalNominal: 5000000, capitalPagado: 4900000, precio: 98.0 },
+        { id: 2, contraparte: 'Banco Itaú', capitalNominal: 3000000, capitalPagado: 2940000, precio: 98.0 },
+        { id: 3, contraparte: 'Banco Security', capitalNominal: 2000000, capitalPagado: 1960000, precio: 98.0 },
+      ],
       moneda: 'CLP',
       tasaAnual: 5.2,
       frecuenciaPago: 'Semestral',
@@ -146,77 +163,34 @@ const IIFsParticipante = () => {
     setIsPrendarModalOpen(true);
   };
 
-  const handleAgregarVenta = (e) => {
+  const handleConfirmarVender = (e) => {
     e.preventDefault();
-    const nuevaVenta = {
-      id: Date.now(),
+    console.log('Confirmar venta:', {
+      instrumento: selectedInstrumento,
       contraparte,
-      montoNominal: parseFloat(montoNominal),
-      montoPagado: parseFloat(montoPagado)
-    };
-    setListaVentas([...listaVentas, nuevaVenta]);
+      montoNominal,
+      precio,
+      montoPagado,
+    });
     setContraparte('');
     setMontoNominal('');
+    setPrecio('');
     setMontoPagado('');
-  };
-
-  const handleEliminarVenta = (id) => {
-    setListaVentas(listaVentas.filter(venta => venta.id !== id));
-  };
-
-  const handleCargarCSV = (e) => {
-    const archivo = e.target.files[0];
-    if (archivo) {
-      setArchivoCSV(archivo);
-      // Aquí iría la lógica para procesar el CSV
-      console.log('Archivo CSV cargado:', archivo.name);
-    }
-  };
-
-  const handleConfirmarVender = () => {
-    console.log('Confirmar ventas:', {
-      instrumento: selectedInstrumento,
-      ventas: listaVentas
-    });
-    setListaVentas([]);
-    setArchivoCSV(null);
     setIsVenderModalOpen(false);
     setSelectedInstrumento(null);
   };
 
-  const handleAgregarVentaPrivada = (e) => {
+  const handleConfirmarVentaPrivada = (e) => {
     e.preventDefault();
-    const nuevaVentaPrivada = {
-      id: Date.now(),
+    console.log('Confirmar venta privada:', {
+      instrumento: selectedInstrumento,
       contraparte,
-      montoPagado: parseFloat(precioVentaPrivada),
-      secreto: secretoTransferencia
-    };
-    setListaVentasPrivadas([...listaVentasPrivadas, nuevaVentaPrivada]);
+      precioVentaPrivada,
+      secretoTransferencia,
+    });
     setContraparte('');
     setPrecioVentaPrivada('');
     setSecretoTransferencia('');
-  };
-
-  const handleEliminarVentaPrivada = (id) => {
-    setListaVentasPrivadas(listaVentasPrivadas.filter(venta => venta.id !== id));
-  };
-
-  const handleCargarCSVPrivada = (e) => {
-    const archivo = e.target.files[0];
-    if (archivo) {
-      setArchivoCSVPrivada(archivo);
-      console.log('Archivo CSV de venta privada cargado:', archivo.name);
-    }
-  };
-
-  const handleConfirmarVentaPrivada = () => {
-    console.log('Confirmar ventas privadas:', {
-      instrumento: selectedInstrumento,
-      ventas: listaVentasPrivadas
-    });
-    setListaVentasPrivadas([]);
-    setArchivoCSVPrivada(null);
     setIsVentaPrivadaModalOpen(false);
     setSelectedInstrumento(null);
   };
@@ -248,6 +222,15 @@ const IIFsParticipante = () => {
     setIsDetalleModalOpen(true);
   };
 
+  const handleVerVentasProceso = (instrumento) => {
+    setSelectedInstrumento(instrumento);
+    setIsVentasProcesoModalOpen(true);
+  };
+
+  const handleCancelarVenta = (ventaId) => {
+    console.log('Cancelar venta:', ventaId);
+  };
+
   const closeDetalleModal = () => {
     setIsDetalleModalOpen(false);
     setSelectedInstrumento(null);
@@ -267,12 +250,15 @@ const IIFsParticipante = () => {
               <th>Tipo de Instrumento</th>
               <th>Fecha de Vencimiento</th>
               <th>Capital Nominal</th>
+              <th>Capital Disponible</th>
+              <th>Capital Pendiente de Venta</th>
+              <th>Moneda</th>
               <th>Prendado</th>
               <th>Operar Instrumento</th>
             </tr>
           </thead>
           <tbody>
-            {misIIFs.map((instrumento) => (
+            {[...misIIFs].sort((a, b) => b.capitalNominal - a.capitalNominal).map((instrumento) => (
               <tr key={instrumento.id}>
                 <td className="isin-cell">
                   <button
@@ -289,6 +275,9 @@ const IIFsParticipante = () => {
                 </td>
                 <td>{instrumento.fechaVencimiento}</td>
                 <td>${instrumento.capitalNominal.toLocaleString('es-CL')}</td>
+                <td>${(instrumento.capitalNominal - instrumento.capitalPendienteVenta).toLocaleString('es-CL')}</td>
+                <td>${instrumento.capitalPendienteVenta.toLocaleString('es-CL')}</td>
+                <td>{instrumento.moneda}</td>
                 <td className={instrumento.prendado ? 'prendado-si' : 'prendado-no'}>
                   {instrumento.prendado ? 'Sí' : 'No'}
                 </td>
@@ -323,6 +312,13 @@ const IIFsParticipante = () => {
                     <button disabled={instrumento.tipo!=="Bono Empresa"} className="btn-prendar" onClick={() => handlePrepararPago(instrumento)}>
                       Preparar Pago
                     </button>
+                    <button
+                      className="btn-ventas-proceso"
+                      onClick={() => handleVerVentasProceso(instrumento)}
+                      disabled={instrumento.capitalPendienteVenta === 0}
+                    >
+                      Ventas en Proceso
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -336,26 +332,22 @@ const IIFsParticipante = () => {
         <div className="modal-iif-content">
           <h2>Vender Instrumento</h2>
 
-          {/* Fila de campos */}
-          <form onSubmit={handleAgregarVenta} className="vender-form-inline">
-            <div className="form-field-inline">
+          <form onSubmit={handleConfirmarVender} className="iif-form">
+            <div className="form-group">
               <label htmlFor="contraparte">Contraparte</label>
               <select
                 id="contraparte"
                 value={contraparte}
                 onChange={(e) => setContraparte(e.target.value)}
                 required
-                className="form-select-inline"
               >
                 <option value="">Seleccionar</option>
                 {instituciones.map((inst, index) => (
-                  <option key={index} value={inst}>
-                    {inst}
-                  </option>
+                  <option key={index} value={inst}>{inst}</option>
                 ))}
               </select>
             </div>
-            <div className="form-field-inline">
+            <div className="form-group">
               <label htmlFor="montoNominal">Nominal</label>
               <input
                 type="number"
@@ -365,10 +357,21 @@ const IIFsParticipante = () => {
                 placeholder="Nominal"
                 required
                 min="1"
-                className="form-input-inline"
               />
             </div>
-            <div className="form-field-inline">
+            <div className="form-group">
+              <label htmlFor="precio">Precio</label>
+              <input
+                type="number"
+                id="precio"
+                value={precio}
+                onChange={(e) => setPrecio(e.target.value)}
+                placeholder="Precio"
+                required
+                min="1"
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="montoPagado">Monto Pagado</label>
               <input
                 type="number"
@@ -378,70 +381,12 @@ const IIFsParticipante = () => {
                 placeholder="Monto"
                 required
                 min="1"
-                className="form-input-inline"
               />
             </div>
-            <button type="submit" className="btn-agregar-inline">
-              Agregar
+            <button type="submit" className="btn-modal-confirmar">
+              Confirmar Venta
             </button>
           </form>
-
-          {/* Campo para cargar CSV */}
-          <div className="csv-upload-section">
-            <label htmlFor="csvFile" className="csv-upload-label">
-              Cargar desde archivo
-            </label>
-            <input
-              type="file"
-              id="csvFile"
-              accept=".csv"
-              onChange={handleCargarCSV}
-              className="csv-upload-input"
-            />
-          </div>
-
-          {/* Tabla de ventas */}
-          {listaVentas.length > 0 && (
-            <div className="ventas-tabla-container">
-              <table className="ventas-tabla">
-                <thead>
-                  <tr>
-                    <th>Contraparte</th>
-                    <th>Nominal</th>
-                    <th>Monto Pagado</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {listaVentas.map((venta) => (
-                    <tr key={venta.id}>
-                      <td>{venta.contraparte}</td>
-                      <td>${venta.montoNominal.toLocaleString('es-CL')}</td>
-                      <td>${venta.montoPagado.toLocaleString('es-CL')}</td>
-                      <td>
-                        <button
-                          className="btn-eliminar-venta"
-                          onClick={() => handleEliminarVenta(venta.id)}
-                        >
-                          Eliminar
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          {/* Botón confirmar */}
-          <button
-            type="button"
-            className="btn-modal-confirmar"
-            onClick={handleConfirmarVender}
-            disabled={listaVentas.length === 0}
-          >
-            Confirmar Venta
-          </button>
         </div>
       </Modal>
 
@@ -449,30 +394,23 @@ const IIFsParticipante = () => {
       <Modal isOpen={isVentaPrivadaModalOpen} onClose={() => setIsVentaPrivadaModalOpen(false)}>
         <div className="modal-iif-content">
           <h2>Venta Privada</h2>
-          <p className="modal-explicacion">
-            El secreto que ingrese quedará asociado al vale vista con que le paguen el instrumento, y lo necesitará para hacer el cobro.
-          </p>
 
-          {/* Fila de campos */}
-          <form onSubmit={handleAgregarVentaPrivada} className="vender-form-inline">
-            <div className="form-field-inline">
+          <form onSubmit={handleConfirmarVentaPrivada} className="iif-form">
+            <div className="form-group">
               <label htmlFor="contrapartePrivada">Contraparte</label>
               <select
                 id="contrapartePrivada"
                 value={contraparte}
                 onChange={(e) => setContraparte(e.target.value)}
                 required
-                className="form-select-inline"
               >
                 <option value="">Seleccionar</option>
                 {instituciones.map((inst, index) => (
-                  <option key={index} value={inst}>
-                    {inst}
-                  </option>
+                  <option key={index} value={inst}>{inst}</option>
                 ))}
               </select>
             </div>
-            <div className="form-field-inline">
+            <div className="form-group">
               <label htmlFor="precioVentaPrivada">Monto Pagado</label>
               <input
                 type="number"
@@ -482,10 +420,9 @@ const IIFsParticipante = () => {
                 placeholder="Monto"
                 required
                 min="1"
-                className="form-input-inline"
               />
             </div>
-            <div className="form-field-inline">
+            <div className="form-group">
               <label htmlFor="secretoTransferencia">Secreto</label>
               <input
                 type="text"
@@ -494,70 +431,12 @@ const IIFsParticipante = () => {
                 onChange={(e) => setSecretoTransferencia(e.target.value)}
                 placeholder="Secreto"
                 required
-                className="form-input-inline"
               />
             </div>
-            <button type="submit" className="btn-agregar-inline">
-              Agregar
+            <button type="submit" className="btn-modal-confirmar">
+              Confirmar Venta Privada
             </button>
           </form>
-
-          {/* Campo para cargar CSV */}
-          <div className="csv-upload-section">
-            <label htmlFor="csvFilePrivada" className="csv-upload-label">
-              Cargar desde archivo
-            </label>
-            <input
-              type="file"
-              id="csvFilePrivada"
-              accept=".csv"
-              onChange={handleCargarCSVPrivada}
-              className="csv-upload-input"
-            />
-          </div>
-
-          {/* Tabla de ventas privadas */}
-          {listaVentasPrivadas.length > 0 && (
-            <div className="ventas-tabla-container">
-              <table className="ventas-tabla">
-                <thead>
-                  <tr>
-                    <th>Contraparte</th>
-                    <th>Monto Pagado</th>
-                    <th>Secreto</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {listaVentasPrivadas.map((venta) => (
-                    <tr key={venta.id}>
-                      <td>{venta.contraparte}</td>
-                      <td>${venta.montoPagado.toLocaleString('es-CL')}</td>
-                      <td>{venta.secreto}</td>
-                      <td>
-                        <button
-                          className="btn-eliminar-venta"
-                          onClick={() => handleEliminarVentaPrivada(venta.id)}
-                        >
-                          Eliminar
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          {/* Botón confirmar */}
-          <button
-            type="button"
-            className="btn-modal-confirmar"
-            onClick={handleConfirmarVentaPrivada}
-            disabled={listaVentasPrivadas.length === 0}
-          >
-            Confirmar Venta Privada
-          </button>
         </div>
       </Modal>
 
@@ -567,15 +446,18 @@ const IIFsParticipante = () => {
           <h2>Prendar Instrumento</h2>
           <form onSubmit={handleConfirmarPrendar} className="iif-form">
             <div className="form-group">
-              <label htmlFor="addressPrendatario">Address del Prendatario</label>
-              <input
-                type="text"
+              <label htmlFor="addressPrendatario">Prendatario</label>
+              <select
                 id="addressPrendatario"
                 value={addressPrendatario}
                 onChange={(e) => setAddressPrendatario(e.target.value)}
-                placeholder="0x..."
                 required
-              />
+              >
+                <option value="">Seleccionar institución</option>
+                {instituciones.map((inst, index) => (
+                  <option key={index} value={inst}>{inst}</option>
+                ))}
+              </select>
             </div>
             <button type="submit" className="btn-modal-confirmar">
               Confirmar Prenda
@@ -736,6 +618,60 @@ const IIFsParticipante = () => {
               )}
             </>
           )}
+        </div>
+      </Modal>
+
+      {/* Modal Ventas en Proceso */}
+      <Modal isOpen={isVentasProcesoModalOpen} onClose={() => setIsVentasProcesoModalOpen(false)} className="modal-detalle-wide">
+        <div className="modal-iif-content">
+          <h2>Ventas en Proceso</h2>
+          {selectedInstrumento && (
+            <>
+              <div className="ventas-proceso-resumen">
+                <span><strong>Nemónico:</strong> {selectedInstrumento.nemonico}</span>
+                <span><strong>Capital Nominal:</strong> ${selectedInstrumento.capitalNominal.toLocaleString('es-CL')} {selectedInstrumento.moneda}</span>
+                <span><strong>Fecha de Vencimiento:</strong> {selectedInstrumento.fechaVencimiento}</span>
+              </div>
+              <div className="ventas-tabla-container">
+                <table className="ventas-tabla">
+                  <thead>
+                    <tr>
+                      <th>Contraparte</th>
+                      <th>Capital Nominal</th>
+                      <th>Capital Pagado</th>
+                      <th>Precio</th>
+                      <th>Acción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedInstrumento.ventasEnProceso.map((venta) => (
+                      <tr key={venta.id}>
+                        <td>{venta.contraparte}</td>
+                        <td>${venta.capitalNominal.toLocaleString('es-CL')}</td>
+                        <td>${venta.capitalPagado.toLocaleString('es-CL')}</td>
+                        <td>{venta.precio}</td>
+                        <td>
+                          <button
+                            className="btn-eliminar-venta"
+                            onClick={() => handleCancelarVenta(venta.id)}
+                          >
+                            Cancelar
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+          <button
+            type="button"
+            className="btn-modal-confirmar"
+            onClick={() => setIsVentasProcesoModalOpen(false)}
+          >
+            Cerrar
+          </button>
         </div>
       </Modal>
     </DashboardLayoutParticipante>

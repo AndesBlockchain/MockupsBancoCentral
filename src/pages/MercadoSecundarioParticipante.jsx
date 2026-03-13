@@ -163,12 +163,20 @@ const MercadoSecundarioParticipante = () => {
                 </td>
                 <td>${instrumento.precioVenta.toLocaleString('es-CL')}</td>
                 <td>
-                  <button
-                    className="btn-comprar"
-                    onClick={() => handleComprar(instrumento)}
-                  >
-                    Pagar
-                  </button>
+                  <div className="actions-buttons">
+                    <button
+                      className="btn-comprar"
+                      onClick={() => handleComprar(instrumento)}
+                    >
+                      Pagar
+                    </button>
+                    <button
+                      className="btn-rechazar"
+                      onClick={() => console.log('Rechazar:', instrumento.id)}
+                    >
+                      Rechazar
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

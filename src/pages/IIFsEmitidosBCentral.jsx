@@ -26,7 +26,7 @@ const IIFsEmitidosBCentral = () => {
       tasaAnual: 4.5,
       frecuenciaPago: 'Semestral',
       corteMinimo: '15.000.000',
-      estado: 'vigente',
+      estado: 'vendido',
       cupones: [
         { fecha: '15-07-2024', monto: '3.375.000', estado: 'pagado' },
         { fecha: '15-01-2025', monto: '3.375.000', estado: 'pagado' },
@@ -45,7 +45,7 @@ const IIFsEmitidosBCentral = () => {
       fechaVencimiento: '20-08-2025',
       valorNominal: '75.000.000',
       moneda: 'CLP',
-      estado: 'vigente',
+      estado: 'vendido',
     },
     {
       id: 3,
@@ -59,7 +59,7 @@ const IIFsEmitidosBCentral = () => {
       tasaAnual: 5.0,
       frecuenciaPago: 'Semestral',
       corteMinimo: '20.000.000',
-      estado: 'vigente',
+      estado: 'vendido',
       cupones: [
         { fecha: '10-12-2024', monto: '5.000.000', estado: 'pagado' },
         { fecha: '10-06-2025', monto: '5.000.000', estado: 'pendiente' },
@@ -80,7 +80,7 @@ const IIFsEmitidosBCentral = () => {
       fechaVencimiento: '05-12-2025',
       valorNominal: '50.000.000',
       moneda: 'CLP',
-      estado: 'vigente',
+      estado: 'vendido',
     },
     {
       id: 5,
@@ -94,7 +94,7 @@ const IIFsEmitidosBCentral = () => {
       tasaAnual: 4.0,
       frecuenciaPago: 'Anual',
       corteMinimo: '18.000.000',
-      estado: 'vigente',
+      estado: 'vendido',
       cupones: [
         { fecha: '15-03-2025', monto: '7.200.000', estado: 'pendiente' },
         { fecha: '15-03-2026', monto: '7.200.000', estado: 'pendiente' },

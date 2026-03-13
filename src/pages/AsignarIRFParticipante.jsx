@@ -290,7 +290,6 @@ const AsignarIRFParticipante = () => {
           <thead>
             <tr>
               <th>Nemotécnico</th>
-              <th>Emisor</th>
               <th>Fecha Emisión</th>
               <th>Fecha Vencimiento</th>
               <th>Capital Nominal</th>
@@ -310,7 +309,6 @@ const AsignarIRFParticipante = () => {
                     {instrumento.nemonico}
                   </button>
                 </td>
-                <td>{instrumento.emisor}</td>
                 <td>{instrumento.fechaEmision}</td>
                 <td>{instrumento.fechaVencimiento}</td>
                 <td className="capital-cell">{instrumento.capitalNominal}</td>

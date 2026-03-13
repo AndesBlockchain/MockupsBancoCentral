@@ -246,7 +246,8 @@
   margin-bottom: 0.5rem;
 }
 
-.iif-form .form-group input {
+.iif-form .form-group input,
+.iif-form .form-group select {
   width: 100%;
   padding: 0.875rem 1rem;
   font-size: 1rem;
@@ -256,7 +257,12 @@
   font-family: inherit;
 }
 
-.iif-form .form-group input:focus {
+.iif-form .form-group select {
+  height: 3.2rem;
+}
+
+.iif-form .form-group input:focus,
+.iif-form .form-group select:focus {
   outline: none;
   border-color: #003DA5;
   box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
@@ -694,6 +700,50 @@
 
 .btn-eliminar-venta:active {
   transform: translateY(0);
+}
+
+.btn-ventas-proceso {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #fd7e14;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-ventas-proceso:hover {
+  background-color: #e8690a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(253, 126, 20, 0.3);
+}
+
+.btn-ventas-proceso:active {
+  transform: translateY(0);
+}
+
+.btn-ventas-proceso:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.ventas-proceso-resumen {
+  display: flex;
+  gap: 2rem;
+  background-color: #f0f4ff;
+  border: 1px solid #c7d7f5;
+  border-radius: 8px;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  color: #333;
 }
 
 .btn-modal-confirmar:disabled {
