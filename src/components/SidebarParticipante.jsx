@@ -33,6 +33,7 @@ const SidebarParticipante = () => {
         { path: '/iifs-participante', label: 'Mi Cartera' },
         { path: '/mercado-secundario-participante', label: 'Mis IRF por comprar' },
         { path: '/valores-prendados-participante', label: 'Valores Prendados' },
+        { path: '/liberar-mdbc-secretos-participante', label: 'Liberar MDBC' },
 
       ]
     },

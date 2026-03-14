@@ -27,6 +27,7 @@ import PedirValeVistaParticipante from './pages/PedirValeVistaParticipante'
 import EmisionPrimariaParticipante from './pages/EmisionPrimariaParticipante'
 import IIFsParticipante from './pages/IIFsParticipante'
 import ValoresPrendadosParticipante from './pages/ValoresPrendadosParticipante'
+import LiberarMDBCSecretosParticipante from './pages/LiberarMDBCSecretosParticipante'
 import GenerarWalletPivoteParticipante from './pages/GenerarWalletPivoteParticipante'
 import EmitirIIFParticipante from './pages/EmitirIIFParticipante'
 import AsignarIRFParticipante from './pages/AsignarIRFParticipante'
@@ -75,6 +76,7 @@ function App() {
         <Route path="/emitir-iif-participante" element={<EmitirIIFParticipante />} />
         <Route path="/asignar-irf-participante" element={<AsignarIRFParticipante />} />
         <Route path="/valores-prendados-participante" element={<ValoresPrendadosParticipante />} />
+        <Route path="/liberar-mdbc-secretos-participante" element={<LiberarMDBCSecretosParticipante />} />
         <Route path="/generar-wallet-pivote-participante" element={<GenerarWalletPivoteParticipante />} />
         <Route path="/administrar-uf" element={<AdministrarUF />} />
         <Route path="/administrar-calendario" element={<AdministrarCalendario />} />
