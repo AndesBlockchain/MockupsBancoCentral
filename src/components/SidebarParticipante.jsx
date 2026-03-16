@@ -45,7 +45,7 @@ const SidebarParticipante = () => {
       subitems: [
         { path: '/emitir-iif-participante', label: 'Crear IRF' },
         { path: '/asignar-irf-participante', label: 'Asignar IRF' },
-        { path: '/emision-primaria-participante', label: 'Pago de Vencimientos' },
+        { path: '/emision-primaria-participante', label: 'Próximos Vencimientos' },
       ]
     },
     { path: '/usuarios-participante', label: 'Usuarios' },

@@ -1,3 +1,88 @@
+/* Filtros */
+.uf-filtros {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.uf-filtro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.uf-filtro-item label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.uf-select {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  min-width: 180px;
+  font-family: inherit;
+}
+
+.uf-input-anio {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100px;
+  font-family: inherit;
+}
+
+.btn-buscar-uf {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background-color: #003DA5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.btn-buscar-uf:hover {
+  background-color: #0052CC;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 61, 165, 0.3);
+}
+
+.uf-tabla-titulo {
+  font-size: 1.1rem;
+  color: #003DA5;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Tabla 3 columnas */
+.uf-table-3col {
+  table-layout: fixed;
+}
+
+.uf-col-separator {
+  width: 16px !important;
+  background-color: #f0f2f5 !important;
+  border-left: 2px solid #e0e0e0;
+  border-right: 2px solid #e0e0e0;
+  padding: 0 !important;
+}
+
+thead .uf-col-separator {
+  background-color: #002d7a !important;
+  border-left: 2px solid #002d7a;
+  border-right: 2px solid #002d7a;
+}
+
 .table-container {
   overflow-x: auto;
   margin-top: 1.5rem;
@@ -90,7 +175,37 @@
   color: #0052CC;
 }
 
+.uf-carga-notas {
+  list-style: disc;
+  margin: 0.75rem 0 0 1.2rem;
+  padding: 0;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.uf-carga-notas li {
+  margin-bottom: 0.25rem;
+}
+
 @media (max-width: 768px) {
+  .uf-filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .uf-select {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .uf-input-anio {
+    width: 100%;
+  }
+
+  .btn-buscar-uf {
+    width: 100%;
+  }
+
   .btn-container {
     flex-direction: column;
     gap: 1rem;

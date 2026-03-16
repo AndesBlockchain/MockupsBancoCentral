@@ -2,12 +2,15 @@ import { useState } from 'react';
 import DashboardLayoutParticipante from '../components/DashboardLayoutParticipante';
 import Modal from '../components/Modal';
 import './MisIIFsParticipante.css';
+import './TransferirParticipante.css';
 
 const EmisionPrimariaParticipante = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
   const [isTenedoresModalOpen, setIsTenedoresModalOpen] = useState(false);
   const [selectedInstrumento, setSelectedInstrumento] = useState(null);
+
+  const saldoCBDC = 150000000;
 
   const instrumentos = [
     {
@@ -102,7 +105,14 @@ const EmisionPrimariaParticipante = () => {
   };
 
   return (
-    <DashboardLayoutParticipante title="Pago de Vencimientos">
+    <DashboardLayoutParticipante title="Próximos Vencimientos">
+      <div className="info-bar-participante" style={{ marginBottom: '1.5rem' }}>
+        <div className="info-bar-item">
+          <span className="info-bar-label">Saldo CBDC:</span>
+          <span className="info-bar-value">${saldoCBDC.toLocaleString('es-CL')}</span>
+        </div>
+      </div>
+
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
         Acá esta el listado de sus instrumentos financieros que están próximos a vencer. Realice el pago a los tenedores haciendo clic en el botón "Pagar" correspondiente a cada instrumento.
       </p>

@@ -74,6 +74,16 @@ const PagoPDBCBCU = () => {
     },
   ]);
 
+  const PRECIO_UF = 40000;
+
+  const calcularMontoCLP = (vencimiento) => {
+    const monto = Number(vencimiento.montoVencimiento.replace(/\./g, ''));
+    if (vencimiento.moneda === 'UF') {
+      return monto * PRECIO_UF;
+    }
+    return monto;
+  };
+
   const handlePagar = (vencimiento) => {
     setSelectedPago(vencimiento);
     setIsConfirmModalOpen(true);
@@ -106,6 +116,7 @@ const PagoPDBCBCU = () => {
               <th>Tipo Vencimiento</th>
               <th>Monto Vencimiento</th>
               <th>Moneda</th>
+              <th>Monto a Pagar (CLP)</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -126,12 +137,13 @@ const PagoPDBCBCU = () => {
                 </td>
                 <td className="monto-cell">{vencimiento.montoVencimiento}</td>
                 <td className="moneda-cell">{vencimiento.moneda}</td>
+                <td className="monto-cell">${calcularMontoCLP(vencimiento).toLocaleString('es-CL')}</td>
                 <td className="actions-cell">
                   <button
                     className="btn-pagar"
                     onClick={() => handlePagar(vencimiento)}
                   >
-                    Pagar {vencimiento.tipoVencimiento}
+                    Pagar
                   </button>
                 </td>
               </tr>
